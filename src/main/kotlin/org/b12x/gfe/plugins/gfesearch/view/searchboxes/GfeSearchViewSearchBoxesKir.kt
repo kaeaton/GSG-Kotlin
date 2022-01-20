@@ -47,7 +47,11 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
         completedSearchBox.add(Group(individualSearchBoxAssembler("5' UTR")))
 
         for (i in 1 until numberOfBoxes) {
-            if (currentKirLocus.skippedExons.any{it == i} ) { continue }
+            if (currentKirLocus.skippedExons.any{it == i} ) {
+                completedSearchBox.add(Group(individualSearchBoxAssembler("Exon $i", true)))
+                completedSearchBox.add(Group(individualSearchBoxAssembler("Intron $i", true)))
+                continue
+            }
             completedSearchBox.add(Group(individualSearchBoxAssembler("Exon $i")))
             completedSearchBox.add(Group(individualSearchBoxAssembler("Intron $i")))
         }
@@ -59,7 +63,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
     }
 
 
-    private fun individualSearchBoxAssembler(labelName: String): VBox {
+    private fun individualSearchBoxAssembler(labelName: String, skipped: Boolean = false): VBox {
         var currentCheckBox: CheckBox by singleAssign()
         var currentTextField: TextField by singleAssign()
 
@@ -104,6 +108,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
                 maxWidth = 60.px
                 alignment = Pos.CENTER
                 padding = box(0.px, 5.px, 0.px, 5.px)
+                isDisable = skipped
             }
         }
         searchBoxComponent.add(Group(rotatedLabel))

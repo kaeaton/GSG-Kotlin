@@ -38,13 +38,13 @@ class GfeSearchTableView(dataFormat: String): View() {
             readonlyColumn("Name", GfeSearchResult::name)
             readonlyColumn("GFE", GfeSearchResult::gfeName)
         }
-        treetableview<String>(TreeItem("Items")) {
-            column<String, String>("Type", { it.value.valueProperty() })
-            populate {
-                if (it.value == "Items") tableData.keys
-                else tableData[it.value]?.asList()
-            }
-        }
+//        treetableview<String>(TreeItem("Items")) {
+//            column<String, String>("Type", { it.value.valueProperty() })
+//            populate {
+//                if (it.value == "Items") tableData.keys
+//                else tableData[it.value]?.asList()
+//            }
+//        }
 //        add(prettyTableView)
     }
 
