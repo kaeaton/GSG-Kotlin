@@ -71,7 +71,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
             style {
                 rotate = 90.deg
                 padding = box(0.px, 0.px, 0.px, 10.px)
-                fontSize = 14.px
+                fontSize = Dimension(1.3, Dimension.LinearUnits.em)
             }
         }
 
@@ -88,6 +88,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
             }
 
             currentTextField = textfield("") {
+                filterInput { it.controlNewText.isInt() }
                 style {
                     prefWidth = 40.px
                     prefHeight = 25.px
@@ -101,6 +102,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
                 }
 
             if (labelName == "Workshop Status") {
+                currentTextField.filterInput { it.controlNewText.any() }
                 currentTextField.setText("w")
             }
 

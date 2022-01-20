@@ -1,6 +1,9 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
 import javafx.beans.property.ReadOnlyStringWrapper
+import javafx.geometry.HPos
+import javafx.geometry.Pos
+import javafx.geometry.VPos
 import javafx.scene.control.TreeItem
 import tornadofx.*
 import tornadofx.column
@@ -37,15 +40,17 @@ class GfeSearchTableView(dataFormat: String): View() {
         tableview(data) {
             readonlyColumn("Name", GfeSearchResult::name)
             readonlyColumn("GFE", GfeSearchResult::gfeName)
+
+            style {
+                fontSize = Dimension(1.2, Dimension.LinearUnits.em)
+                prefWidth = Dimension(900.0, Dimension.LinearUnits.px)
+                prefHeight = Dimension(300.0, Dimension.LinearUnits.px)
+            }
         }
-//        treetableview<String>(TreeItem("Items")) {
-//            column<String, String>("Type", { it.value.valueProperty() })
-//            populate {
-//                if (it.value == "Items") tableData.keys
-//                else tableData[it.value]?.asList()
-//            }
-//        }
-//        add(prettyTableView)
+        style {
+            alignment = Pos.CENTER
+            hAlignment = HPos.CENTER
+        }
     }
 
 
