@@ -73,7 +73,7 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes") {
                     padding = box(10.px)
                 }
             }
-            currentCheckBox.selectedProperty().addListener { observable, oldValue, newValue ->
+            currentCheckBox.selectedProperty().addListener { _, _, _ ->
                 if(!currentCheckBox.isSelected) {
                     selectAllCheckBox.isSelected = false
                 }
@@ -89,13 +89,13 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes") {
                 }
             }
             currentTextField.textProperty()
-                .addListener { observable, oldValue, newValue ->
+                .addListener { _, oldValue, newValue ->
                     println("textfield changed from $oldValue to $newValue")
                 }
 
             if (labelName == "Workshop Status") {
                 currentTextField.filterInput { it.controlNewText.any() }
-                currentTextField.setText("w")
+                currentTextField.text = "w"
             }
 
             style {

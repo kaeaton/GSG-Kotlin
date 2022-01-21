@@ -3,7 +3,6 @@ package org.b12x.gfe.plugins.gfesearch.view
 import tornadofx.*
 
 class GfeSearchButtonSubmit : View("Submit") {
-    private val resultsTextField = textfield("Nothing to display")
 
     override val root = vbox {
         button("Submit") {
@@ -13,7 +12,6 @@ class GfeSearchButtonSubmit : View("Submit") {
                 resultsTextField.text = "Data submitted"
             }
         }
-        add(resultsTextField)
     }
 }
 
