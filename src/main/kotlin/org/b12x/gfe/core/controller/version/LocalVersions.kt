@@ -4,6 +4,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.model.DataDownload
 import org.b12x.gfe.core.model.parsers.ParserVersionData
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.utilities.DirectoryManagement
 import org.b12x.gfe.utilities.FileManagement
 import java.io.File
@@ -33,7 +34,7 @@ class LocalVersions(loci: String) {
                 // make sure we're looking at folders, that they have files in them
                 // and what they have in them actually contains data
                 if (it.exists() and it.isDirectory and folderContainsData(it)) {
-                    val locusAvailable = getLocusAvailable(it)
+                    val locusAvailable = getLocusAvailable(it).sorted()
                     val version = Version(it, it.name.toString(), locusAvailable)
                     versions.add(version)
                 }
@@ -52,7 +53,7 @@ class LocalVersions(loci: String) {
 
         if (folder.isDirectory) {
             folder.listFiles().forEach {
-                if (fileContainsData(it)) {
+                if (fileContainsData(it) and (it.name != ".DS_Store")) {
                     allLocusAvailable.add(locusName(it))
                 }
             }
@@ -75,7 +76,6 @@ class LocalVersions(loci: String) {
 
     // get the locus name out of the file name
     private fun locusName(file: File) = file.toString().split("_")[1]
-
 
     fun returnOnlineVersionFile(): File {
         val onlineVersionsFile = gsgDataLocation + "onlineVersions.txt"

@@ -9,7 +9,7 @@ class GfeSearchButtonSubmit : View("Submit") {
             action {
                 GfeSearchLayoutData.resetArraysSoft()
                 println("You pressed the GFE Search submit button.")
-                resultsTextField.text = "Data submitted"
+//                resultsTextField.text = "Data submitted"
             }
         }
     }

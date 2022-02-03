@@ -4,6 +4,7 @@ import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
 import tornadofx.*
 
@@ -26,9 +27,9 @@ class HlaStateGfeSearch : LociStateGfeSearch {
         var versions = versionList.allVersionNames
 
         val gfeSearchComboBoxVersion = find(GfeSearchChoiceBoxVersion::class)
-        val verObList1 = gfeSearchComboBoxVersion.versionsObservableList
-        verObList1.clear()
-        verObList1.addAll(versions)
+        val versionObservableList = gfeSearchComboBoxVersion.versionsObservableList
+        versionObservableList.clear()
+        versionObservableList.addAll(versions)
 
         gfeSearchComboBoxVersion.currentVersion = PrefsGfeSearch.currentGfeSearchVersionHla
     }
@@ -42,10 +43,17 @@ class HlaStateGfeSearch : LociStateGfeSearch {
     }
 
     fun getHlaLocusNames(): List<String> {
-        val locusNames = ArrayList<String>()
-        HlaLoci.values().forEach {
-            locusNames.add(it.toString())
+        lateinit var locusNames: List<String>
+        var versions = GfeSearchLayoutData.currentVersionList
+        var version = GfeSearchLayoutData.currentVersion
+
+        versions.forEach {
+            if (it.name == version) {
+                locusNames = it.locusAvailable
+                println("potential locus name: ${it.locusAvailable}")
+            }
         }
+
         return locusNames
     }
 
@@ -53,7 +61,7 @@ class HlaStateGfeSearch : LociStateGfeSearch {
 
     // I know it's not spelled locuses, but loci is already used.
     override fun updateLocuses(ctx: LociStateContextGfeSearch) {
-        val locusNames = getHlaLocusNames()
+        var locusNames = getHlaLocusNames()
 
         val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
         val locObservableList = gfeSearchChoiceBoxLocus.locusObservableList
