@@ -15,7 +15,7 @@ interface LociStateGfeSearch {
     /* Locus*/
     fun getCurrentLocus(ctx: LociStateContextGfeSearch): LociEnum
     fun setCurrentLocus(ctx: LociStateContextGfeSearch, currentLocus: String)
-    fun getCurrentLocusNamesList(ctx: LociStateContextGfeSearch): List<String>
-    fun updateLocuses(ctx: LociStateContextGfeSearch)
+    fun getInitialLocusNamesList(ctx: LociStateContextGfeSearch): List<String>
+    fun updateLocuses(ctx: LociStateContextGfeSearch, currentVersion: String)
     fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): View
 }

@@ -52,13 +52,13 @@ class LociStateContextGfeSearch {
         currentState?.setCurrentLocus(this, currentLocus)
             ?: HlaStateGfeSearch().setCurrentLocus(this, currentLocus)
 
-    fun updateLocus() =
-        currentState?.updateLocuses(this)
-            ?: HlaStateGfeSearch().updateLocuses(this)
+    fun updateLocuses(currentVersion: String) =
+        currentState?.updateLocuses(this, currentVersion)
+            ?: HlaStateGfeSearch().updateLocuses(this, currentVersion)
 
-    fun getCurrentLocusNamesList() =
-        currentState?.getCurrentLocusNamesList(this)
-            ?: HlaStateGfeSearch().getCurrentLocusNamesList(this)
+    fun getInitialLocusNamesList() =
+        currentState?.getInitialLocusNamesList(this)
+            ?: HlaStateGfeSearch().getInitialLocusNamesList(this)
 
     fun createNewSearchBoxes() =
         currentState?.createNewSearchBoxes(this)

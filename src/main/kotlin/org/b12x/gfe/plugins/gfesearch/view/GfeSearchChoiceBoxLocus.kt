@@ -4,26 +4,30 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import org.b12x.gfe.core.controller.loci.LociEnum
+import org.b12x.gfe.core.view.ChoiceBoxLocus
 import tornadofx.*
 
-class GfeSearchChoiceBoxLocus : View() {
+class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLocus {
 
     private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
 
-    private var locusNames : List<String> = stateContext.getCurrentLocusNamesList()
-    var locusObservableList: ObservableList<String> = FXCollections.observableArrayList(locusNames)
+//    var locusNames : List<String> = stateContext.getInitialLocusNamesList()
+    var locusNames : List<String> = listOf("one", "Two")
+    override var locusObservableList: ObservableList<String> = FXCollections.observableArrayList(locusNames)
 
-    private val currentLocusProperty = SimpleStringProperty(stateContext.getCurrentLocus().toString())
-    var currentLocus: String by currentLocusProperty
+    private val currentLocusProperty = SimpleStringProperty(GfeSearchLayoutData.currentLocus)
+    override var currentLocus: String by currentLocusProperty
 
-    private var choiceBoxLocus = choicebox<String>(currentLocusProperty, locusObservableList) {
+    override var choiceBoxLocus = choicebox<String>(currentLocusProperty, locusObservableList) {
         action {
             if (this.value != null) {
-                stateContext.setCurrentLocus(this.value)
-                currentLocus = this.value
+                GfeSearchLayoutData.updateLocus(this.value)
+//                stateContext.setCurrentLocus(this.value)
+//                currentLocus = this.value
             }
             GfeSearchLayoutData.resetArraysHard()
-            swapSearchBoxes(stateContext.getCurrentLocus())
+//            swapSearchBoxes(stateContext.getCurrentLocus())
+            swapSearchBoxes(GfeSearchLayoutData.currentLocusEnum)
         }
     }
 

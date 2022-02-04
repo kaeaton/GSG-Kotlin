@@ -20,7 +20,7 @@ class GfeSearchChoiceBoxLoci(whichTab: String) : View("Available Loci"), ComboBo
             PrefsGfeSearch.currentGfeSearchLociGroup = this.value
             stateContext.setState(this.value)
             stateContext.updateVersions()
-            stateContext.updateLocus()
+            stateContext.updateLocuses(stateContext.getCurrentVersion())
             GfeSearchLayoutData.resetArraysHard()
             find(GfeSearchChoiceBoxLocus::class).swapSearchBoxes(stateContext.getCurrentLocus())
         }

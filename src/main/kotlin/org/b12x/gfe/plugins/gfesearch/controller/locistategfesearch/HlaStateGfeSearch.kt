@@ -1,10 +1,13 @@
 package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
 import org.b12x.gfe.core.controller.loci.HlaLoci
+import org.b12x.gfe.core.controller.locus.LocusList
+import org.b12x.gfe.core.controller.version.LocalVersions
+import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.*
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
 import tornadofx.*
 
@@ -35,33 +38,39 @@ class HlaStateGfeSearch : LociStateGfeSearch {
     }
 
     /* Locus */
-    override fun getCurrentLocus(ctx: LociStateContextGfeSearch): HlaLoci
-        = HlaLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusHla } ?: HlaLoci.A
+    override fun getCurrentLocus(ctx: LociStateContextGfeSearch): HlaLoci =
+        HlaLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusHla } ?: HlaLoci.A
 
     override fun setCurrentLocus(ctx: LociStateContextGfeSearch, newLocus: String) {
         PrefsGfeSearch.currentGfeSearchLocusHla = newLocus
     }
 
-    fun getHlaLocusNames(): List<String> {
-        lateinit var locusNames: List<String>
-        var versions = GfeSearchLayoutData.currentVersionList
-        var version = GfeSearchLayoutData.currentVersion
+    fun getHlaLocusNames(currentVersion: String): List<String> {
+        val localVersions = LocalVersions("HLA")
+        val versionList = localVersions.versionsList
+//        val currentVersion = find(GfeSearchChoiceBoxVersion::class).currentVersion
+        lateinit var currentVersionObject: Version
 
-        versions.forEach {
-            if (it.name == version) {
-                locusNames = it.locusAvailable
-                println("potential locus name: ${it.locusAvailable}")
+        versionList.forEach {
+            if (it.name == currentVersion) {
+                currentVersionObject = it
             }
         }
 
-        return locusNames
+        val choiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
+        val locusList = LocusList(currentVersionObject, choiceBoxLocus)
+        locusList.updateLocusList()
+
+        return locusList.newLocusList
     }
 
-    override fun getCurrentLocusNamesList(ctx: LociStateContextGfeSearch) = getHlaLocusNames()
+    override fun getInitialLocusNamesList(ctx: LociStateContextGfeSearch) =
+        getHlaLocusNames(PrefsGfeSearch.currentGfeSearchVersionHla)
 
     // I know it's not spelled locuses, but loci is already used.
-    override fun updateLocuses(ctx: LociStateContextGfeSearch) {
-        var locusNames = getHlaLocusNames()
+    override fun updateLocuses(ctx: LociStateContextGfeSearch, currentVersion: String) {
+        val currentVersion = find(GfeSearchChoiceBoxVersion::class).currentVersion
+        var locusNames = getHlaLocusNames(currentVersion)
 
         val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
         val locObservableList = gfeSearchChoiceBoxLocus.locusObservableList

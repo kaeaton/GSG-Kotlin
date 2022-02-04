@@ -88,10 +88,10 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes") {
                     alignment = Pos.CENTER
                 }
             }
-            currentTextField.textProperty()
-                .addListener { _, oldValue, newValue ->
-                    println("textfield changed from $oldValue to $newValue")
-                }
+//            currentTextField.textProperty()
+//                .addListener { _, oldValue, newValue ->
+//                    println("textfield changed from $oldValue to $newValue")
+//                }
 
             if (labelName == "Workshop Status") {
                 currentTextField.filterInput { it.controlNewText.any() }

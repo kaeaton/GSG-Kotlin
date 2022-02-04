@@ -96,10 +96,10 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
                     alignment = Pos.CENTER
                 }
             }
-            currentTextField.textProperty()
-                .addListener { observable, oldValue, newValue ->
-                    println("textfield changed from $oldValue to $newValue")
-                }
+//            currentTextField.textProperty()
+//                .addListener { observable, oldValue, newValue ->
+//                    println("textfield changed from $oldValue to $newValue")
+//                }
 
             if (labelName == "Workshop Status") {
                 currentTextField.filterInput { it.controlNewText.any() }

@@ -1,10 +1,7 @@
 package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
-import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.loci.KirLoci
-import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.version.VersionList
-import org.b12x.gfe.core.view.ComboBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
@@ -52,10 +49,10 @@ class KirStateGfeSearch: LociStateGfeSearch {
         return locusNames
     }
 
-    override fun getCurrentLocusNamesList(ctx: LociStateContextGfeSearch) = getKirLocusNames()
+    override fun getInitialLocusNamesList(ctx: LociStateContextGfeSearch) = getKirLocusNames()
 
     // I know it's not spelled locuses, but loci is already used.
-    override fun updateLocuses(ctx: LociStateContextGfeSearch) {
+    override fun updateLocuses(ctx: LociStateContextGfeSearch, currentVersion: String) {
         val locusNames = getKirLocusNames()
 
         val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
