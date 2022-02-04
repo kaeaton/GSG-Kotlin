@@ -49,10 +49,8 @@ class KirStateGfeSearch: LociStateGfeSearch {
         return locusNames
     }
 
-    override fun getInitialLocusNamesList(ctx: LociStateContextGfeSearch) = getKirLocusNames()
-
     // I know it's not spelled locuses, but loci is already used.
-    override fun updateLocuses(ctx: LociStateContextGfeSearch, currentVersion: String) {
+    override fun updateLocuses(ctx: LociStateContextGfeSearch) {
         val locusNames = getKirLocusNames()
 
         val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)

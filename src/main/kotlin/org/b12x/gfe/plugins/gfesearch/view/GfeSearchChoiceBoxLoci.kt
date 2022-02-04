@@ -16,11 +16,9 @@ class GfeSearchChoiceBoxLoci(whichTab: String) : View("Available Loci"), ComboBo
 
     override val choiceBoxLoci = choicebox<String>(currentLociProperty, loci) {
         action {
-            currentLoci = this.value
-            PrefsGfeSearch.currentGfeSearchLociGroup = this.value
-            stateContext.setState(this.value)
+            GfeSearchLayoutData.updateLoci(this.value)
             stateContext.updateVersions()
-            stateContext.updateLocuses(stateContext.getCurrentVersion())
+            stateContext.updateLocuses()
             GfeSearchLayoutData.resetArraysHard()
             find(GfeSearchChoiceBoxLocus::class).swapSearchBoxes(stateContext.getCurrentLocus())
         }

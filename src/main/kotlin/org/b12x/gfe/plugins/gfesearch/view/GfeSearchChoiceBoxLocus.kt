@@ -22,11 +22,8 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
         action {
             if (this.value != null) {
                 GfeSearchLayoutData.updateLocus(this.value)
-//                stateContext.setCurrentLocus(this.value)
-//                currentLocus = this.value
             }
             GfeSearchLayoutData.resetArraysHard()
-//            swapSearchBoxes(stateContext.getCurrentLocus())
             swapSearchBoxes(GfeSearchLayoutData.currentLocusEnum)
         }
     }

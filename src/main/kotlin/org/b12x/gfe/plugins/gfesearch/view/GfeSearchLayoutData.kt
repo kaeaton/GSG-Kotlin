@@ -6,6 +6,8 @@ import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
+
 //import org.b12x.gfe.utilities.getLocusType
 
 class GfeSearchLayoutData {
@@ -19,24 +21,39 @@ class GfeSearchLayoutData {
         fun updateLoci(loci: String) {
             currentLoci = loci
             lociStateContextGfeSearch.setState(loci)
+            PrefsGfeSearch.currentGfeSearchLociGroup = loci
         }
 
         /* Version */
         var currentVersion: String = lociStateContextGfeSearch.getCurrentVersion()
 
         var currentVersionList: ArrayList<Version>
+
         init {
-            val localVersions = LocalVersions(currentLoci)
+            var localVersions = LocalVersions(currentLoci)
             currentVersionList = localVersions.createVersions()
+
         }
 
-        lateinit var currentVersionObject: Version
-        init {
+        var currentVersionObject: Version = findCurrentVersionObject(currentVersion)
+
+        fun findCurrentVersionObject(version: String): Version {
+            lateinit var versionObject: Version
             currentVersionList.forEach {
                 if (it.name == currentVersion) {
-                    currentVersionObject = it
+                    versionObject = it
                 }
             }
+            return versionObject
+        }
+
+        fun updateVersions(version: String) {
+            currentVersion = version
+            lociStateContextGfeSearch.setCurrentVersion(currentVersion)
+            lociStateContextGfeSearch.updateVersions()
+            val localVersions = LocalVersions(currentLoci)
+            currentVersionList = localVersions.createVersions()
+            currentVersionObject = findCurrentVersionObject(currentVersion)
         }
 
         /* Locus */

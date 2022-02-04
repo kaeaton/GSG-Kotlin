@@ -28,7 +28,7 @@ class GfeSearchChoiceBoxVersion : View("GFE Search Version Choice box") {
                 stateContext.setCurrentVersion(this.value)
                 GfeSearchLayoutData.currentVersion = this.value
                 currentVersion = this.value
-                stateContext.updateLocuses(this.value)
+                stateContext.updateLocuses()
 
             }
         }
