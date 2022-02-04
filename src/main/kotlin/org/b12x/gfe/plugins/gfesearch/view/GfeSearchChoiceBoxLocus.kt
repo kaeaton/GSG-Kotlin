@@ -11,8 +11,8 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
 
     private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
 
-//    var locusNames : List<String> = stateContext.getInitialLocusNamesList()
-    var locusNames : List<String> = listOf("one", "Two")
+    var locusNames : List<String> = GfeSearchLayoutData.currentLocusList
+//    var locusNames : List<String> = listOf("one", "Two")
     override var locusObservableList: ObservableList<String> = FXCollections.observableArrayList(locusNames)
 
     private val currentLocusProperty = SimpleStringProperty(GfeSearchLayoutData.currentLocus)
