@@ -70,7 +70,7 @@ class LocalVersions(loci: String) {
         return false
     }
 
-    // A file with only a header and no data is 50 bytes or fewer
+    // A file with only a header and no data is headerLength bytes or fewer
     // (usually 18, but this gives some leeway to change the header)
     private fun fileContainsData(file: File) = file.length() > headerLength
 

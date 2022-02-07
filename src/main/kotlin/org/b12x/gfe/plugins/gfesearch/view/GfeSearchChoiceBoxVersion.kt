@@ -11,18 +11,18 @@ import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateCon
 import tornadofx.*
 import tornadofx.Stylesheet.Companion.empty
 
-class GfeSearchChoiceBoxVersion : View("GFE Search Version Choice box") {
+class GfeSearchChoiceBoxVersion : View("GFE Search Version Choice box"), ComboBoxVersion {
 
     private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
 
-    private val versionList: VersionList = VersionList(stateContext.getLoci())
+    override var versionList: VersionList = VersionList(stateContext.getLoci())
     var versions: List<String> = versionList.allVersionNames
-    var versionsObservableList: ObservableList<String> = FXCollections.observableArrayList(versions)
+    override var versionsObservableList: ObservableList<String> = FXCollections.observableArrayList(versions)
 
     private val currentVersionProperty = SimpleStringProperty(stateContext.getCurrentVersion())
-    var currentVersion: String by currentVersionProperty
+    override var currentVersion: String by currentVersionProperty
 
-    private var choiceBoxVersion = choicebox<String>(currentVersionProperty, versionsObservableList) {
+    override var choiceBoxVersion = choicebox<String>(currentVersionProperty, versionsObservableList) {
         action {
             if (this.value != null) {
                 stateContext.setCurrentVersion(this.value)
