@@ -20,6 +20,7 @@ class TestApp: App(TestLayout::class, Styles::class) {
 //        }
 
     override fun start(stage: Stage) {
+
         super.start(parentStage)
         stage.width = 400.0
         stage.height = 300.0

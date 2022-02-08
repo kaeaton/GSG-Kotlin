@@ -1,6 +1,8 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
+import org.b12x.gfe.core.controller.loci.HlaLoci
+import org.b12x.gfe.plugins.gfesearch.view.searchboxes.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -8,9 +10,9 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
 class GfeSearchViewSearchBoxesHlaTest {
-    val gfeSearchViewSearchBoxesHla = GfeSearchViewSearchBoxesHla()
+    val gfeSearchViewSearchBoxesHla = GfeSearchViewSearchBoxesHla(HlaLoci.DQA1)
 //    val dataClass = gfeSearchBoxes.currentSearchData
-    val numberOfSearchBoxes = 3
+    val numberOfSearchBoxes = 10
 
     @Test
     fun completedSearchBoxGenerator_returns_hbox() {
@@ -50,8 +52,8 @@ class GfeSearchViewSearchBoxesHlaTest {
                 Arguments.of(4, "Exon 2"),
                 Arguments.of(5, "Intron 2"),
                 Arguments.of(6, "Exon 3"),
-                Arguments.of(7, "Intron 4"),
-                Arguments.of(8, "Exon 5"),
+                Arguments.of(7, "Intron 3"),
+                Arguments.of(8, "Exon 4"),
                 Arguments.of(9, "3' UTR")
             )
     }

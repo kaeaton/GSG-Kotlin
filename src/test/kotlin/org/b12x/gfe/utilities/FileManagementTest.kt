@@ -11,7 +11,7 @@ import java.nio.file.Paths
 
 class FileManagementTest {
 
-    val fileManagement = FileManagement()
+    val fileManagement = FileManagement
     val GSG_DATA = "/Documents/GSG/GSGData"
     val USER_DIRECTORY = System.getProperty("user.home")
     val TESTING_FOLDER_W_SLASH = "/TEST2/output/"
@@ -32,26 +32,26 @@ class FileManagementTest {
     // Uncomment the 1 minute thread sleep to run properly.
     @Test
     fun doesNotOverwriteAFile() {
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt", true)
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "csv", true)
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt")
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "csv")
 //        Thread.sleep(60_000)
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt", true)
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "tsv", true)
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt")
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "tsv")
         assertTrue(fileManagement.doesFileExist("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH$TEST_FILE_1.txt"))
         assertTrue(fileManagement.doesFileExist("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH$TEST_FILE_1.csv"))
     }
 
     @Test
     fun doesTheFileExist() {
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt", true)
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt")
         assertTrue(fileManagement.doesFileExist("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH$TEST_FILE_1.txt"))
     }
 
     @Test
     fun createAFile() {
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt", true)
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_WO_SLASH", TEST_FILE_2, "csv", true)
-        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_WO_SLASH", TEST_FILE_3, "tsv", true)
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH", TEST_FILE_1, "txt")
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_WO_SLASH", TEST_FILE_2, "csv")
+        fileManagement.createFile("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_WO_SLASH", TEST_FILE_3, "tsv")
         assertTrue(fileManagement.doesFileExist("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH$TEST_FILE_1.txt"))
         assertTrue(fileManagement.doesFileExist("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH$TEST_FILE_2.csv"))
         assertTrue(fileManagement.doesFileExist("$USER_DIRECTORY$GSG_DATA$TESTING_FOLDER_W_SLASH$TEST_FILE_3.tsv"))

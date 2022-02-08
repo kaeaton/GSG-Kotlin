@@ -54,7 +54,7 @@ dependencies {
 }
 
 // JavaFX module to include
-javafx { modules("javafx.controls", "javafx.fxml", "javafx.graphics") }
+javafx { modules("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.swing") }
 
 // Set Kotlin/JVM target versions
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {

@@ -7,7 +7,7 @@ import java.io.File
 class DirectoryManagementTest {
 
     val directoryManagement = DirectoryManagement()
-//    val fileManagement = FileManagement()
+    val fileManagement = FileManagement
     val GSG_DATA = "/Documents/GSG/GSGData"
     val NESTED_DIRECTORIES = "/Documents/GSG/GSGData/TEST2/3.31.0/"
     val VERSION = "3.31.0"
@@ -39,7 +39,7 @@ class DirectoryManagementTest {
     @Test
     fun overwriteAFolder() {
         directoryManagement.createFolder("$USER_DIRECTORY$NESTED_DIRECTORIES", true)
-        fileManagement.createFile("$USER_DIRECTORY$NESTED_DIRECTORIES", TEST_FILE_1, "txt", true)
+        fileManagement.createFile("$USER_DIRECTORY$NESTED_DIRECTORIES", TEST_FILE_1, "txt")
         assertTrue(directoryManagement.doesFolderExist("$USER_DIRECTORY$NESTED_DIRECTORIES"))
         assertTrue(fileManagement.doesFileExist("$USER_DIRECTORY$NESTED_DIRECTORIES$TEST_FILE_1.txt"))
         directoryManagement.createFolder("$USER_DIRECTORY$NESTED_DIRECTORIES", true)
