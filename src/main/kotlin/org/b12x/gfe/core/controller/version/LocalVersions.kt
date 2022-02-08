@@ -11,7 +11,7 @@ import java.io.File
 import java.nio.file.Paths
 import kotlin.io.path.exists
 
-class LocalVersions(loci: String) {
+class LocalVersions (loci: String) {
 
     private val directoryManagement = DirectoryManagement()
     private val gsgDataLocation = directoryManagement.setLociLocation(loci)

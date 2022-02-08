@@ -1,33 +1,23 @@
 package org.b12x.gfe.core.controller.locus
 
-import javafx.application.Platform
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
 import javafx.embed.swing.JFXPanel
-import javafx.scene.Parent
-import javafx.scene.control.ChoiceBox
-import javafx.stage.Stage
-import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.view.ChoiceBoxLocus
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
-import org.b12x.gfe.plugins.gfesearch.view.TestApp
-import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import tornadofx.*
 import java.io.File
-import kotlin.system.exitProcess
 
 class LocusListTest {
 
+    // starts JavaFX so the rest of the tests can use it
     val jFXPanel = JFXPanel()
 
-    val testChoiceBoxLocus = find(TestChoiceBoxLocus::class)
+    val testChoiceBoxLocus = find(TestChoiceBoxLocus::class) // choiceBox items = 2
 
-    val goalTestList = listOf("HLA, KIR, ABO")
+    val goalTestList = listOf("HLA, KIR, ABO") // after choiceBox items will hopefully = 3
     val testVersionObject = Version(folder = File(""), name = "Test", locusAvailable = goalTestList)
 
     @Test

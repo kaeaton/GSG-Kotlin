@@ -2,8 +2,6 @@ package org.b12x.gfe.plugins.gfesearch.controller
 
 import io.reactivex.rxjava3.kotlin.*
 import javafx.beans.Observable
-import org.b12x.gfe.plugins.gfesearch.view.TestApp
-import org.b12x.gfe.plugins.gfesearch.view.TestLayout
 import org.b12x.gfe.utilities.preference.PrefsManager
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
@@ -21,14 +19,13 @@ import kotlin.system.exitProcess
 
 class BuildRegexTest {
 
-//    val testApp = TestApp()
-    val testLayout = TestLayout()
-    val textFields = testLayout.textFields
-    val checkBoxes = testLayout.checkBoxes
+//    val testLayout = TestLayout()
+//    val textFields = testLayout.textFields
+//    val checkBoxes = testLayout.checkBoxes
 
     @Test
     fun getIntDefault() {
-        assertEquals(textFields.size, checkBoxes.size)
+//        assertEquals(textFields.size, checkBoxes.size)
     }
 
     companion object ArgumentsParameters {
@@ -36,9 +33,7 @@ class BuildRegexTest {
         @BeforeAll
         @JvmStatic
         internal fun setup() {
-//            runAsync {
-                launch<TestApp>()
-//            }
+//
 //            textFields.forEach {
 //
 //            }
