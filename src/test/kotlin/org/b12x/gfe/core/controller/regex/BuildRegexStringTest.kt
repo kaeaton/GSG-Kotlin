@@ -2,9 +2,12 @@ package org.b12x.gfe.core.controller.regex
 
 import javafx.embed.swing.JFXPanel
 import javafx.scene.control.CheckBox
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotEquals
+import javafx.scene.control.TextField
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
+import java.lang.IllegalArgumentException
 
 class BuildRegexStringTest {
     val jfxPanel = JFXPanel()
@@ -29,5 +32,30 @@ class BuildRegexStringTest {
     @Test
     fun noCheckNorNumber_returnRegexString() {
         assertEquals("(\\\\d+)-", buildRegexString.noCheckNorNumber())
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["w", "z", " ", "", "11"])
+    fun workshopStatus_returnW(textFieldContents: String) {
+        assertEquals("w", buildRegexString.workshopStatus(textFieldContents))
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["\\d", "\\d-", "\\d-$", "([1-9]{1}|\\d{2,6})-", "234-$", "\\d$", "234$",  "([1-9]{1}|\\d{2,6})$"])
+    fun CloseRegex_removeDashThenAddDollarSign(stringInput: String) {
+        val testingRegex = """^.+[^-]\$""".toRegex()
+        val parsedStringInput = buildRegexString.closeRegex(stringInput)
+        val parsedRegex = testingRegex.matches(parsedStringInput)
+        assertTrue(parsedRegex)
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = [" ", "", "^", "$", "-"])
+    fun CloseRegex_throwsIllegalArgumentException(stringInput: String) {
+        val testingRegex = """^.+[^-]\$""".toRegex()
+        val parsedStringInput = buildRegexString.closeRegex(stringInput)
+        assertThrows(IllegalArgumentException::class.java) {
+            testingRegex.matches(parsedStringInput)
+        }
     }
 }
