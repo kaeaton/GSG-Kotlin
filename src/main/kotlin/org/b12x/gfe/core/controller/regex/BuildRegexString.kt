@@ -57,24 +57,22 @@ class BuildRegexString {
 
         // matches a dash as the last character of the string
         val closingDashSearchRegex = """^.+-$""".toRegex()
+        val closingDollarSignSearchRegex = """^.+-?\$$""".toRegex()
+        val closingDashAndDollarSearchRegex = """^.*-\$$""".toRegex()
 
         // matches a letter, number or _ as last character of the string
-        val validStringRegex = """^.+\\w$""".toRegex()
-        var finalRegex = regexStringToClose
+        val validStringRegex = """^.+\w+$""".toRegex()
+        var finalRegex: String
 
-        try {
-            if (closingDashSearchRegex.matches(regexStringToClose)) {
-                finalRegex = regexStringToClose.subSequence(0, (regexStringToClose.length - 1)).toString()
-            } else if (validStringRegex.matches(regexStringToClose)) {
-                finalRegex = regexStringToClose
-            } else {
-                throw IllegalArgumentException()
-            }
-        } catch (e: IllegalArgumentException) {
-            print(e.stackTrace)
+        if (closingDashSearchRegex.matches(regexStringToClose) ||
+            closingDollarSignSearchRegex.matches(regexStringToClose) ||
+            closingDashAndDollarSearchRegex.matches(regexStringToClose)) {
+            finalRegex = regexStringToClose.subSequence(0, (regexStringToClose.length - 1)).toString()
+        } else if (validStringRegex.matches(regexStringToClose)) {
+            finalRegex = regexStringToClose
+        } else {
+            throw IllegalArgumentException()
         }
-
-
 
         finalRegex = "$finalRegex$"
         return finalRegex
