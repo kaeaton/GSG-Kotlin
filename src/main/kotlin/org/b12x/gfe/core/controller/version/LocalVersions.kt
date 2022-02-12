@@ -61,7 +61,7 @@ class LocalVersions (loci: String) {
         return allLocusAvailable
     }
 
-    // Check to see if there are any files in the folder with data in them
+    // Check to see if there are any files in the folder with data in them.
     // It doesn't matter how many
     private fun folderContainsData(folder: File): Boolean {
         if (folder.exists() and folder.isDirectory) {

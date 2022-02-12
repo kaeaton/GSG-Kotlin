@@ -13,8 +13,8 @@ object ParserHlaData {
 
     fun parseResponse(response: Response): JsonArray<String> {
         val body = response.body?.string() ?: ""
-        val stringBuilder: StringBuilder = StringBuilder(body)
-        val parser: Parser = Parser.default()
+        val stringBuilder = StringBuilder(body)
+        val parser = Parser.default()
 
         val parsedObject = parser.parse(stringBuilder) as JsonArray<String>
 //        println("HLA: ${parsedObject}")

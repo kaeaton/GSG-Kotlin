@@ -46,9 +46,6 @@ class DataDownload(lociGroup: String) {
         when (dataType) {
             "version" -> ParserVersionData.parseResponse(loci, response)
             "data" -> "/Documents/GSG/GSGData/$loci/"
-            else -> {
-                null // do nothing
-            }
         }
 
 //        val body = response.body?.string() ?: ""

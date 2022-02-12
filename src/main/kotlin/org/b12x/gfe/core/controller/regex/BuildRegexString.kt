@@ -48,7 +48,7 @@ class BuildRegexString {
 
 
     /**
-     * Finishes a regex string. 
+     * Finishes a regex string.
      *
      * @params the string to finish
      * @return a string ready to be converted to regex
