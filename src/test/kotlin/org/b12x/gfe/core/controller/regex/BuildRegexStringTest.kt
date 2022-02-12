@@ -27,13 +27,13 @@ class BuildRegexStringTest {
         val checkBoxes = listOf(CheckBox(), CheckBox())
         checkBoxes[0].isSelected = true
         checkBoxes[1].isSelected = false
-        assertEquals("([1-9]{1}|\\\\d{2,6})-", buildRegexString.checkBoxChecked(checkBoxes[0]))
-        assertEquals("(\\\\d+)-", buildRegexString.checkBoxChecked(checkBoxes[1]))
+        assertEquals("([1-9]{1}|\\d{2,6})-", buildRegexString.checkBoxChecked(checkBoxes[0]))
+        assertEquals("(\\d+)-", buildRegexString.checkBoxChecked(checkBoxes[1]))
     }
 
     @Test
     fun noCheckNorNumber_returnRegexString() {
-        assertEquals("(\\\\d+)-", buildRegexString.noCheckNorNumber())
+        assertEquals("(\\d+)-", buildRegexString.noCheckNorNumber())
     }
 
     @ParameterizedTest

@@ -24,9 +24,9 @@ class BuildRegexString {
      */
     fun checkBoxChecked(checkBox: CheckBox): String {
         if (checkBox.isSelected) {
-            return "([1-9]{1}|\\\\d{2,6})-"
+            return "([1-9]{1}|\\d{2,6})-"
         }
-        return "(\\\\d+)-"
+        return "(\\d+)-"
     }
 
     /**
@@ -34,7 +34,7 @@ class BuildRegexString {
      *
      * @return a valid regex string to append to main regex string
      */
-    fun noCheckNorNumber() = "(\\\\d+)-"
+    fun noCheckNorNumber() = "(\\d+)-"
 
     /**
      * Sets workshop status to a valid option.
@@ -48,28 +48,37 @@ class BuildRegexString {
 
 
     /**
-     * Finishes a regex string.
+     * Finishes a regex string. 
      *
      * @params the string to finish
      * @return a string ready to be converted to regex
      */
     fun closeRegex(regexStringToClose: String): String {
 
-        // matches a dash as the last character of the string
+        // matches the last character(s) of a string
         val closingDashSearchRegex = """^.+-$""".toRegex()
-        val closingDollarSignSearchRegex = """^.+-?\$$""".toRegex()
+        val closingDollarSignSearchRegex = """^.+\$$""".toRegex()
         val closingDashAndDollarSearchRegex = """^.*-\$$""".toRegex()
 
-        // matches a letter, number or _ as last character of the string
-        val validStringRegex = """^.+\w+$""".toRegex()
+        // matches a letter or number as last character of the string
+        val validStringRegex = """^.+[A-Za-z0-9]+$""".toRegex()
         var finalRegex: String
 
-        if (closingDashSearchRegex.matches(regexStringToClose) ||
-            closingDollarSignSearchRegex.matches(regexStringToClose) ||
-            closingDashAndDollarSearchRegex.matches(regexStringToClose)) {
+        // matches: ending "-$"
+        if (closingDashAndDollarSearchRegex.matches(regexStringToClose)) {
+            finalRegex = regexStringToClose.subSequence(0, (regexStringToClose.length - 2)).toString()
+
+        // matches ending "-" or "$"
+        } else if (closingDashSearchRegex.matches(regexStringToClose) ||
+            closingDollarSignSearchRegex.matches(regexStringToClose)
+        ) {
             finalRegex = regexStringToClose.subSequence(0, (regexStringToClose.length - 1)).toString()
+
+        // no change needed
         } else if (validStringRegex.matches(regexStringToClose)) {
             finalRegex = regexStringToClose
+
+        // bad argument
         } else {
             throw IllegalArgumentException()
         }
