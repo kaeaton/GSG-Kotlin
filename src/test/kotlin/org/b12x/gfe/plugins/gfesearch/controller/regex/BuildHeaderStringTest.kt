@@ -71,7 +71,7 @@ class BuildHeaderStringTest {
 
     @Test
     fun assembleHeaderString_returnValidString() {
-        val desiredRegexString = "HLA-Aw-*-x-3-*-2"
+        val desiredRegexString = "HLA-Aw-*-x-3-*-2" // ! for non-existent exon
         BuildHeaderString.assembleHeaderString(testGfeSearchData)
         Assertions.assertEquals(desiredRegexString, testGfeSearchData.regex)
     }
