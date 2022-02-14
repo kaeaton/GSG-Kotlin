@@ -1,5 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.controller
 
+import javafx.embed.swing.JFXPanel
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import org.junit.jupiter.api.Test
@@ -7,18 +8,20 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 
 class GfeSearchDataTest {
-    val emptyGfeSearchData = GfeSearchData()
-//    val testApp = TestApp()
+
+    val jfxPanel = JFXPanel()
+
+    val gfeSearchData = GfeSearchData(
+        checkBoxList =  listOf(CheckBox(), CheckBox(), CheckBox(), CheckBox()),
+        textFieldList = listOf(TextField(), TextField(), TextField(), TextField())
+    )
 
     @Test
     fun getDefaultGfeData() {
-        assertEquals(ArrayList<CheckBox>(), emptyGfeSearchData.checkArray)
-        assertEquals(ArrayList<TextField>(), emptyGfeSearchData.textArray)
-        assertEquals("", emptyGfeSearchData.regex)
-        assertEquals("CSV", emptyGfeSearchData.textFormat)
-        assertEquals(false, emptyGfeSearchData.writeToFile)
-        assertTrue(emptyGfeSearchData.checkArray.isEmpty())
-        assertTrue(emptyGfeSearchData.textArray.isEmpty())
+        assertEquals("", gfeSearchData.regex)
+        assertEquals("CSV", gfeSearchData.textFormat)
+        assertEquals(false, gfeSearchData.writeToFile)
+        assertEquals(gfeSearchData.checkBoxList.size, gfeSearchData.textFieldList.size)
     }
 
 //    @Test

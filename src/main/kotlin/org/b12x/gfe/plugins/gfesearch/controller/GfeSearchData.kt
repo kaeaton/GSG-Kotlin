@@ -7,10 +7,10 @@ data class GfeSearchData(
     val loci: String = "HLA",
     val version: String = "2.0.0",
     val locus: String = "HLA-A",
-    val checkArray: ArrayList<CheckBox> = ArrayList(),
-    val textArray: ArrayList<TextField> = ArrayList(),
-    val regex: String = "",
-    val header: String = "",
+    val checkBoxList: List<CheckBox>,
+    val textFieldList: List<TextField>,
+    var regex: String = "",
+    var header: String = "",
     val textFormat: String = "CSV",
     val writeToFile: Boolean = false
 )

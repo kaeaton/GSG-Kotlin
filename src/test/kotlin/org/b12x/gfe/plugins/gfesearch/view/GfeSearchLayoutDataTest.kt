@@ -1,5 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
+import javafx.embed.swing.JFXPanel
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
@@ -9,6 +10,8 @@ import tornadofx.*
 
 
 class GfeSearchLayoutDataTest : View("Test") {
+
+    val jfxPanel = JFXPanel()
 
     lateinit var checkArray: ArrayList<CheckBox>
     lateinit var textArray: ArrayList<TextField>

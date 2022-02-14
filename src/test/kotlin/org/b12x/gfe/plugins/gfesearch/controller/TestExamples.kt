@@ -1,23 +1,13 @@
 package org.b12x.gfe.plugins.gfesearch.controller
 
-import io.reactivex.rxjava3.kotlin.*
-import javafx.beans.Observable
-import org.b12x.gfe.utilities.preference.PrefsManager
 import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
-import tornadofx.*
-import kotlin.system.exitProcess
 
 
-class BuildRegexTest {
+class TestExamples {
 
 //    val testLayout = TestLayout()
 //    val textFields = testLayout.textFields

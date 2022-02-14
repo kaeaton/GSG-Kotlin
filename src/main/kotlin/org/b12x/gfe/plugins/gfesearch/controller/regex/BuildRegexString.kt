@@ -1,19 +1,52 @@
-package org.b12x.gfe.core.controller.regex
+package org.b12x.gfe.plugins.gfesearch.controller.regex
 
 import javafx.scene.control.CheckBox
-import java.lang.IllegalArgumentException
-import java.util.*
+import javafx.scene.control.TextField
+import org.b12x.gfe.plugins.gfesearch.controller.GfeSearchData
+import tornadofx.Component
+import kotlin.IllegalArgumentException
 
-class BuildRegexString {
+object BuildRegexString {
+
+    /**
+     * Assembles a string for conversion to regex.
+     *
+     * @params a GfeSearchData instance
+     * @return a string ready to be converted to regex
+     */
+    fun assembleRegexString(gfeSearchData: GfeSearchData) {
+        if (!doTheListsMatch(gfeSearchData.checkBoxList, gfeSearchData.textFieldList)) {
+            throw IllegalArgumentException("The lists are not the same size.")
+        }
+
+        var regexString = "^${gfeSearchData.locus}w-"
+        for (i in 1 until gfeSearchData.checkBoxList.size) {
+            regexString += if(gfeSearchData.textFieldList[i].text.isEmpty()) {
+                checkBoxChecked(gfeSearchData.checkBoxList[i])
+            } else {
+                numberProvided(gfeSearchData.textFieldList[i])
+            }
+        }
+        gfeSearchData.regex = closeRegex(regexString)
+    }
+
+    /**
+     * Sanity check: are the lists the same length?
+     *
+     * @params a list of checkboxes
+     * @params a list of textfields
+     * @return a boolean
+     */
+    fun doTheListsMatch(listCB: List<CheckBox>, listTF: List<TextField>) = listCB.size == listTF.size
 
     /**
      * Converts a filled textfield to appropriate regex.
      * The textfield contents (if any) will overwrite a checked checkbox.
      *
-     * @params the string to convert
+     * @params the textfield containing a number
      * @return a valid regex string to append to main regex string
      */
-    fun numberProvided(int: Int) = "$int-"
+    fun numberProvided(textField: TextField) = "${textField.text}-"
 
     /**
      * Converts a checked checkbox to appropriate regex.
@@ -30,25 +63,17 @@ class BuildRegexString {
     }
 
     /**
-     * Converts an unchecked checkbox and no textfield content to appropriate regex.
-     *
-     * @return a valid regex string to append to main regex string
-     */
-    fun noCheckNorNumber() = "(\\d+)-"
-
-    /**
      * Sets workshop status to a valid option.
      * This would be only for the first textfield in the textfield array.
      *
-     * @params the current workshop status
      * @return a string of a valid workshop status
      */
-    fun workshopStatus(textFieldContents: String) = "w"
-    // Pretty pointless for now, new options are coming
-
+    fun workshopStatus(textField: TextField) = "w-"
+    // Seems sort of stupid, but It needs to be here,
+    // if they change that option they get no results.)
 
     /**
-     * Finishes a regex string.
+     * Closes a regex string.
      *
      * @params the string to finish
      * @return a string ready to be converted to regex
@@ -80,7 +105,7 @@ class BuildRegexString {
 
         // bad argument
         } else {
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("Invalid String")
         }
 
         finalRegex = "$finalRegex$"
