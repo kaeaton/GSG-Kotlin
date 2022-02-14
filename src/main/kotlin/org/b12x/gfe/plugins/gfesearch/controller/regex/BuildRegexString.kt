@@ -7,6 +7,7 @@ import tornadofx.Component
 import kotlin.IllegalArgumentException
 
 object BuildRegexString {
+    // refactor for StringBuilder
 
     /**
      * Assembles a string for conversion to regex.
