@@ -8,8 +8,6 @@ import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
 
-//import org.b12x.gfe.utilities.getLocusType
-
 object GfeSearchLayoutData {
 
     /* State Context */
@@ -65,6 +63,10 @@ object GfeSearchLayoutData {
         currentLocusEnum = lociStateContextGfeSearch.getCurrentLocus()
         currentLocus = currentLocusEnum.toString()
     }
+
+    /* Output Files*/
+    var textFormat = "CVS" // Add to state
+    var writeToFile = false // Add to state
 
     /* Search Array Data */
     var checkList: MutableList<CheckBox> = ArrayList()

@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource
 import java.lang.IllegalArgumentException
 
 class BuildHeaderStringTest {
+    // necessary to initialize JavaFX
     val jfxPanel = JFXPanel()
 
     @Test
@@ -61,8 +62,8 @@ class BuildHeaderStringTest {
 
     @Test
     fun assembleHeaderString_throwsIllegalArgumentException_listLengthNotSame() {
-        val shortCheckBoxList = listOf(CheckBox(), CheckBox(), CheckBox())
-        val shortTextFieldList = listOf(TextField(), TextField())
+        val shortCheckBoxList = mutableListOf(CheckBox(), CheckBox(), CheckBox())
+        val shortTextFieldList = mutableListOf(TextField(), TextField())
         val exceptionGfeSearchData = GfeSearchData(checkBoxList = shortCheckBoxList, textFieldList = shortTextFieldList)
         assertThrows<IllegalArgumentException> {
             BuildHeaderString.assembleHeaderString(exceptionGfeSearchData)
@@ -71,12 +72,13 @@ class BuildHeaderStringTest {
 
     @Test
     fun assembleHeaderString_returnValidString() {
-        val desiredRegexString = "HLA-Aw-*-x-3-*-2" // ! for non-existent exon
+        val desiredHeaderString = "HLA-Aw-*-x-3-*-2" // ! for non-existent exon
         BuildHeaderString.assembleHeaderString(testGfeSearchData)
-        Assertions.assertEquals(desiredRegexString, testGfeSearchData.regex)
+        Assertions.assertEquals(desiredHeaderString, testGfeSearchData.regex)
     }
 
     companion object {
+        // necessary to initialize JavaFX
         val jfxPanel = JFXPanel()
 
         val cb1 = CheckBox()
@@ -93,15 +95,15 @@ class BuildHeaderStringTest {
         val tf5 = TextField()
         val tf6 = TextField("2")
 
-        fun createCBList(): List<CheckBox> {
+        fun createCBList(): MutableList<CheckBox> {
             cb3.isSelected = true
             cb4.isSelected = true
-            return listOf(cb1, cb2, cb3, cb4, cb5, cb6)
+            return mutableListOf(cb1, cb2, cb3, cb4, cb5, cb6)
         }
 
         val testGfeSearchData = GfeSearchData(
             checkBoxList = createCBList(),
-            textFieldList = listOf(tf1, tf2, tf3, tf4, tf5, tf6)
+            textFieldList = mutableListOf(tf1, tf2, tf3, tf4, tf5, tf6)
         )
     }
 

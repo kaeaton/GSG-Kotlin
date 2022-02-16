@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 
 class GfeSearchDataTest {
-
+    // necessary to initialize JavaFX
     val jfxPanel = JFXPanel()
 
     val gfeSearchData = GfeSearchData(
-        checkBoxList =  listOf(CheckBox(), CheckBox(), CheckBox(), CheckBox()),
-        textFieldList = listOf(TextField(), TextField(), TextField(), TextField())
+        checkBoxList =  mutableListOf(CheckBox(), CheckBox(), CheckBox(), CheckBox()),
+        textFieldList = mutableListOf(TextField(), TextField(), TextField(), TextField())
     )
 
     @Test

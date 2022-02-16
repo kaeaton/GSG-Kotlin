@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource
 import java.lang.IllegalArgumentException
 
 class BuildRegexStringTest {
+    // necessary to initialize JavaFX
     val jfxPanel = JFXPanel()
 
     @Test
@@ -62,8 +63,8 @@ class BuildRegexStringTest {
 
     @Test
     fun assembleRegexString_throwsIllegalArgumentException_listLengthNotSame() {
-        val shortCheckBoxList = listOf(CheckBox(), CheckBox(), CheckBox())
-        val shortTextFieldList = listOf(TextField(), TextField())
+        val shortCheckBoxList = mutableListOf(CheckBox(), CheckBox(), CheckBox())
+        val shortTextFieldList = mutableListOf(TextField(), TextField())
         val exceptionGfeSearchData = GfeSearchData(checkBoxList = shortCheckBoxList, textFieldList = shortTextFieldList)
         assertThrows<IllegalArgumentException> {
             BuildRegexString.assembleRegexString(exceptionGfeSearchData)
@@ -78,6 +79,7 @@ class BuildRegexStringTest {
     }
 
     companion object {
+        // necessary to initialize JavaFX
         val jfxPanel = JFXPanel()
 
         val cb1 = CheckBox()
@@ -94,15 +96,15 @@ class BuildRegexStringTest {
         val tf5 = TextField("7")
         val tf6 = TextField("2")
 
-        fun createCBList(): List<CheckBox> {
+        fun createCBList(): MutableList<CheckBox> {
             cb3.isSelected = true
             cb4.isSelected = true
-            return listOf(cb1, cb2, cb3, cb4, cb5, cb6)
+            return mutableListOf(cb1, cb2, cb3, cb4, cb5, cb6)
         }
 
         val testGfeSearchData = GfeSearchData(
             checkBoxList = createCBList(),
-            textFieldList = listOf(tf1, tf2, tf3, tf4, tf5, tf6)
+            textFieldList = mutableListOf(tf1, tf2, tf3, tf4, tf5, tf6)
         )
     }
 }
