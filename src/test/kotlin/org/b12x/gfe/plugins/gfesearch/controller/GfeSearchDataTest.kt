@@ -5,7 +5,7 @@ import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import java.io.File
 
 class GfeSearchDataTest {
     // necessary to initialize JavaFX
@@ -13,7 +13,8 @@ class GfeSearchDataTest {
 
     val gfeSearchData = GfeSearchData(
         checkBoxList =  mutableListOf(CheckBox(), CheckBox(), CheckBox(), CheckBox()),
-        textFieldList = mutableListOf(TextField(), TextField(), TextField(), TextField())
+        textFieldList = mutableListOf(TextField(), TextField(), TextField(), TextField()),
+        dataFile = File("")
     )
 
     @Test

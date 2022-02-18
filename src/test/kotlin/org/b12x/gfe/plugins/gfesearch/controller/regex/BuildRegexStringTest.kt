@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import java.io.File
 import java.lang.IllegalArgumentException
 
 class BuildRegexStringTest {
@@ -65,7 +66,7 @@ class BuildRegexStringTest {
     fun assembleRegexString_throwsIllegalArgumentException_listLengthNotSame() {
         val shortCheckBoxList = mutableListOf(CheckBox(), CheckBox(), CheckBox())
         val shortTextFieldList = mutableListOf(TextField(), TextField())
-        val exceptionGfeSearchData = GfeSearchData(checkBoxList = shortCheckBoxList, textFieldList = shortTextFieldList)
+        val exceptionGfeSearchData = GfeSearchData(checkBoxList = shortCheckBoxList, textFieldList = shortTextFieldList, dataFile = File(""))
         assertThrows<IllegalArgumentException> {
             BuildRegexString.assembleRegexString(exceptionGfeSearchData)
         }
@@ -104,7 +105,8 @@ class BuildRegexStringTest {
 
         val testGfeSearchData = GfeSearchData(
             checkBoxList = createCBList(),
-            textFieldList = mutableListOf(tf1, tf2, tf3, tf4, tf5, tf6)
+            textFieldList = mutableListOf(tf1, tf2, tf3, tf4, tf5, tf6),
+            dataFile = File("")
         )
     }
 }

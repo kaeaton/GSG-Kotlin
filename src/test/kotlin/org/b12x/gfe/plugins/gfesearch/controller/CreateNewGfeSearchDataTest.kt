@@ -3,6 +3,8 @@ package org.b12x.gfe.plugins.gfesearch.controller
 import javafx.embed.swing.JFXPanel
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
+import org.b12x.gfe.core.model.DataFiles
+import org.b12x.gfe.core.model.DataFilesTest
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.checkList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.currentLoci
@@ -15,6 +17,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
+import java.io.File
 
 class CreateNewGfeSearchDataTest {
     // necessary to initialize JavaFX
@@ -25,8 +28,8 @@ class CreateNewGfeSearchDataTest {
         Mockito.mockStatic(GfeSearchLayoutData::class.java).use { mocked ->
             mocked.verify {
                 currentLoci = "KIR"
-                currentVersion = "2.0.1"
-                currentLocus = "HLA-DQB1"
+                currentVersion = "2.7.0"
+                currentLocus = "KIR2DL4"
                 textFormat = "TSV"
                 writeToFile = true
                 checkList = testCheckList
@@ -34,20 +37,22 @@ class CreateNewGfeSearchDataTest {
             }
         }
 
-        val regexString = "^HLA-DQB1w-(\\d+)-([1-9]{1}|\\d{2,6})-3-7-2$"
-        val headerString = "HLA-DQB1w-*-x-3-7-2"
+        val regexString = "^KIR2DL4w-(\\d+)-([1-9]{1}|\\d{2,6})-3-7-2$"
+        val headerString = "KIR2DL4w-*-x-3-7-2"
+        val userDirectory = System.getProperty("user.home")
 
         val gfeSearchData = CreateNewGfeSearchData.generateSearchData()
 
         assertEquals("KIR", gfeSearchData.loci)
-        assertEquals("2.0.1", gfeSearchData.version)
-        assertEquals("HLA-DQB1", gfeSearchData.locus)
+        assertEquals("2.7.0", gfeSearchData.version)
+        assertEquals("KIR2DL4", gfeSearchData.locus)
         assertEquals(testCheckList, gfeSearchData.checkBoxList)
         assertEquals(testTextList, gfeSearchData.textFieldList)
         assertEquals(regexString, gfeSearchData.regex)
         assertEquals(headerString, gfeSearchData.header)
         assertEquals("TSV", gfeSearchData.textFormat)
         assertTrue(gfeSearchData.writeToFile)
+        assertEquals(File("${userDirectory}/Documents/GSG/GSGData/KIR/2.7.0/neo4j_KIR_2.7.0_Download.csv"), gfeSearchData.dataFile)
     }
 
     companion object {
