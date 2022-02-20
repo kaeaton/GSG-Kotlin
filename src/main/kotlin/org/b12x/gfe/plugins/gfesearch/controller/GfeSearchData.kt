@@ -16,4 +16,4 @@ data class GfeSearchData(
     val textFormat: String = "CSV",
     val writeToFile: Boolean = false,
     val dataFile: File
-) :SearchData
+) : SearchData

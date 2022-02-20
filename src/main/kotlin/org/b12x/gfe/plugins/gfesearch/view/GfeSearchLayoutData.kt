@@ -29,7 +29,6 @@ object GfeSearchLayoutData {
     init {
         var localVersions = LocalVersions(currentLoci)
         currentVersionList = localVersions.createVersions()
-
     }
 
     var currentVersionObject: Version = findCurrentVersionObject(currentVersion)

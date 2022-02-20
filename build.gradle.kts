@@ -36,6 +36,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
     implementation("com.beust:klaxon:5.5")
 
+    // CSV parsing
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.2.0")
+
     // Text comparison
     // https://mvnrepository.com/artifact/io.github.java-diff-utils/java-diff-utils
     implementation("io.github.java-diff-utils:java-diff-utils:4.11")

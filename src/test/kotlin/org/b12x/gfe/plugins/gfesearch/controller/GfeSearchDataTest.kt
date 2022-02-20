@@ -24,10 +24,4 @@ class GfeSearchDataTest {
         assertEquals(false, gfeSearchData.writeToFile)
         assertEquals(gfeSearchData.checkBoxList.size, gfeSearchData.textFieldList.size)
     }
-
-//    @Test
-//    fun testTestApp() {
-//        assertEquals()
-//    }
-
 }

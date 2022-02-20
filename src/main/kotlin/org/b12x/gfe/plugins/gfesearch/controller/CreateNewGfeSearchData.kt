@@ -32,6 +32,4 @@ object CreateNewGfeSearchData {
 
         return gfeSearchData
     }
-
-
 }
