@@ -3,7 +3,7 @@ package org.b12x.gfe.plugins.gfesearch.view
 import org.b12x.gfe.plugins.gfesearch.controller.CreateNewGfeSearchData
 import tornadofx.*
 
-class GfeSearchButtonSubmit : View("Submit") {
+object GfeSearchButtonSubmit : View("Submit") {
 
     override val root = vbox {
         button("Submit") {
