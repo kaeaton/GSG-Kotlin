@@ -40,7 +40,7 @@ object GfeSearchTableView : View() {
             style {
                 fontSize = Dimension(1.2, Dimension.LinearUnits.em)
                 prefWidth = Dimension(650.0, Dimension.LinearUnits.px)
-                prefHeight = Dimension(300.0, Dimension.LinearUnits.px)
+                prefHeight = Dimension(350.0, Dimension.LinearUnits.px)
             }
         }
         style {

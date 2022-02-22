@@ -6,17 +6,20 @@ import tornadofx.*
 
 object GfeSearchInformationTextBox : View("My View") {
 
-    override val root = vbox {
-        val infoTextArea = textarea {
-            style {
-                prefWidth = Dimension(425.0, Dimension.LinearUnits.px)
-                prefHeight = Dimension(300.0, Dimension.LinearUnits.px)
-            }
+    var infoTextArea = textarea {
+        style {
+            fontSize = Dimension(1.1, Dimension.LinearUnits.em)
+            prefWidth = Dimension(425.0, Dimension.LinearUnits.px)
+            prefHeight = Dimension(350.0, Dimension.LinearUnits.px)
         }
+    }
+
+    override val root = vbox {
+        add(infoTextArea)
+
         style {
             alignment = Pos.CENTER
             hAlignment = HPos.CENTER
         }
-
     }
 }

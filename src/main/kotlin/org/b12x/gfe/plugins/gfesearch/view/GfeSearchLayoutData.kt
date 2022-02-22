@@ -11,7 +11,7 @@ import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSear
 object GfeSearchLayoutData {
 
     /* State Context */
-    var lociStateContextGfeSearch = LociStateContextGfeSearch()
+    val lociStateContextGfeSearch = LociStateContextGfeSearch()
 
     /* Loci */
     var currentLoci: String = lociStateContextGfeSearch.getLoci()
