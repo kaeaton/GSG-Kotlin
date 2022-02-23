@@ -2,21 +2,33 @@ package org.b12x.gfe.plugins.gfesearch.view
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
+import org.b12x.gfe.core.controller.loci.AvailableLoci
 import org.b12x.gfe.core.view.ComboBoxLoci
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
 import tornadofx.*
+import kotlin.properties.Delegates
 
-class GfeSearchChoiceBoxLoci(whichTab: String) : View("Available Loci"), ComboBoxLoci {
+object GfeSearchChoiceBoxLoci : View("Available Loci"), ComboBoxLoci {
 
-    val loci: ObservableList<String> = observableListOf("HLA", "KIR")
-    var stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    var stateContext = LociStateContextGfeSearch
 
-    private val currentLociProperty = SimpleStringProperty(stateContext.getLoci())
+    /* list of Loci */
+    val loci: ObservableList<String> = observableListOf(AvailableLoci.AVAILABLE_LOCI)
+
+    /* selected Loci */
+    private var currentLociProperty = SimpleStringProperty(stateContext.loci)
     override var currentLoci: String by currentLociProperty
+//    override var currentLoci: String by Delegates.observable(_, oldValue, newValue) {
 
+//}
+
+    /* choiceBox */
     override val choiceBoxLoci = choicebox<String>(currentLociProperty, loci) {
         action {
-            GfeSearchLayoutData.updateLoci(this.value)
+
+            stateContext.loci = this.value
+
             stateContext.updateVersions()
             stateContext.updateLocuses()
             GfeSearchLayoutData.resetArraysHard()

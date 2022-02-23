@@ -12,7 +12,7 @@ import java.io.File
 
 
 fun main() {
-    InternetAccess.isInternetAvailable()
+//    InternetAccess.isInternetAvailable()
 
     launch<GSG>()
 }

@@ -15,7 +15,7 @@ class GfeSearchChoiceBoxVersion : View("GFE Search Version Choice box"), ComboBo
 
     private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
 
-    override var versionList: VersionList = VersionList(stateContext.getLoci())
+    override var versionList: VersionList = VersionList(stateContext.loci.toString())
     var versions: List<String> = versionList.allVersionNames
     override var versionsObservableList: ObservableList<String> = FXCollections.observableArrayList(versions)
 

@@ -11,12 +11,16 @@ import tornadofx.find
 
 class GSG: App(MainView::class, Styles::class) {
 
-    private val gsgWidth = 1150.0
-    private val gsgHeight = 800.0
+    val gsgWidth = 1150.0
+    val gsgHeight = 800.0
 
     override fun start(stage: Stage) {
-        super.start(stage)
-        stage.width = gsgWidth
-        stage.height = gsgHeight
+        try {
+            super.start(stage)
+            stage.width = gsgWidth
+            stage.height = gsgHeight
+        } catch (ex: Exception) {
+            println(ex)
+        }
     }
 }

@@ -4,6 +4,7 @@ import javafx.geometry.HPos
 import javafx.geometry.Pos
 import javafx.scene.Group
 import javafx.scene.layout.Priority
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 import javax.swing.GroupLayout
 import kotlin.system.exitProcess
@@ -32,8 +33,12 @@ class GfeSearchViewBottomHalf : View() {
             add(Group(GfeSearchButtonSubmit.root))
 
             add(Group(button("Exit") {
-                setOnAction { exitProcess(0) }
+                action {
+//                    var stateContext = LociStateContextGfeSearch
+//                    stateContext.loci = GfeSearchChoiceBoxLoci.choiceBoxLoci.value
 
+                    exitProcess(0)
+                }
                 style {
                     startMargin = Dimension(10.0, Dimension.LinearUnits.px)
                 }

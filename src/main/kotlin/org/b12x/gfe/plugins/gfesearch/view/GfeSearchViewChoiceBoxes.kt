@@ -10,11 +10,11 @@ class GfeSearchViewChoiceBoxes : View("GFE Search Options") {
     private var gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
     private var versionChoiceBox = gfeSearchChoiceBoxVersion.root
 
-    private val gfeSearchChoiceBoxLoci = GfeSearchChoiceBoxLoci("GfeSearch")
+    private val gfeSearchChoiceBoxLoci = GfeSearchChoiceBoxLoci
     private val lociChoiceBox = gfeSearchChoiceBoxLoci.root
 
     override val root = borderpane {
-        left = hbox { add(lociChoiceBox) }
+        left = hbox { add(GfeSearchChoiceBoxLoci.root) }
         center = hbox { add(versionChoiceBox) }
         right = hbox { add(locusChoiceBox) }
     }

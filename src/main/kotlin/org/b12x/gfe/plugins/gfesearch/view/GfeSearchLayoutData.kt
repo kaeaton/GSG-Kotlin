@@ -7,14 +7,15 @@ import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
+import java.io.File
 
 object GfeSearchLayoutData {
 
     /* State Context */
-    val lociStateContextGfeSearch = LociStateContextGfeSearch()
+    var lociStateContextGfeSearch = LociStateContextGfeSearch
 
     /* Loci */
-    var currentLoci: String = lociStateContextGfeSearch.getLoci()
+    var currentLoci: String = lociStateContextGfeSearch.loci.toString()
     fun updateLoci(loci: String) {
         currentLoci = loci
         lociStateContextGfeSearch.setState(loci)
@@ -34,13 +35,22 @@ object GfeSearchLayoutData {
     var currentVersionObject: Version = findCurrentVersionObject(currentVersion)
 
     fun findCurrentVersionObject(version: String): Version {
-        lateinit var versionObject: Version
-        currentVersionList.forEach {
-            if (it.name == currentVersion) {
-                versionObject = it
-            }
-        }
-        return versionObject
+//        lateinit var versionObject: Version
+
+        val userDirectory = System.getProperty("user.home")
+        return Version(
+            File("${userDirectory}/Documents/GSG/GSGData/HLA/2.0.0/"),
+            "2.0.0",
+            locusAvailable = listOf("HLA-A", "HLA-C", "HLA-DQB1")
+        )
+
+//        currentVersionList.forEach {
+//            if (it.name == currentVersion) {
+//                versionObject = it
+//            }
+//        }
+
+//        return versionObject
     }
 
     fun updateVersions(version: String) {

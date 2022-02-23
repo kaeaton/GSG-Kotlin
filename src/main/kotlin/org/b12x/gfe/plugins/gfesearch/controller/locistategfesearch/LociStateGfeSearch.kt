@@ -5,6 +5,7 @@ import tornadofx.View
 
 interface LociStateGfeSearch {
     /* Loci */
+//    var loci: String
     fun getLoci(ctx: LociStateContextGfeSearch): String
 
     /* Version */

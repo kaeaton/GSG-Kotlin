@@ -6,10 +6,16 @@ import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
 import tornadofx.*
+import kotlin.properties.Delegates
 
-class KirStateGfeSearch: LociStateGfeSearch {
+object KirStateGfeSearch: LociStateGfeSearch {
 
     /* Loci */
+
+//    override var loci: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLociGroup) { _, oldValue, newValue ->
+//        PrefsGfeSearch.currentGfeSearchLociGroup = newValue
+//    }
+
     override fun getLoci(ctx: LociStateContextGfeSearch) = "KIR"
 
     /* Version */

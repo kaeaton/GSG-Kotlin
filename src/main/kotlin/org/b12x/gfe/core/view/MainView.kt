@@ -9,7 +9,7 @@ import tornadofx.*
 
 class MainView : View("GFE Search Generator") {
 
-    private val gfeSearchViewParent = find(GfeSearchViewParent::class)
+    private val gfeSearchViewParent = GfeSearchViewParent()
     private val optionsView = find(OptionsView::class)
     private val debugView = find(DebugView::class)
     private val tabStateContext = TabStateContext()

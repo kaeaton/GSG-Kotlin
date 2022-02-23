@@ -10,11 +10,17 @@ import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
 import tornadofx.*
+import kotlin.properties.Delegates
 
 
-class HlaStateGfeSearch : LociStateGfeSearch {
+object HlaStateGfeSearch : LociStateGfeSearch {
 
     /* Loci */
+
+//    override var loci: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLociGroup) {_, oldValue, newValue ->
+//        PrefsGfeSearch.currentGfeSearchLociGroup = newValue
+//    }
+
     override fun getLoci(ctx: LociStateContextGfeSearch) = "HLA"
 
     /* Version */
