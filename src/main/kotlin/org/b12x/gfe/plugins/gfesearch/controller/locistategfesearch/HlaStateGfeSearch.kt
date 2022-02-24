@@ -15,32 +15,20 @@ import kotlin.properties.Delegates
 
 object HlaStateGfeSearch : LociStateGfeSearch {
 
-    /* Loci */
-
-//    override var loci: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLociGroup) {_, oldValue, newValue ->
-//        PrefsGfeSearch.currentGfeSearchLociGroup = newValue
-//    }
-
-    override fun getLoci(ctx: LociStateContextGfeSearch) = "HLA"
-
     /* Version */
-    override fun getCurrentVersion(ctx: LociStateContextGfeSearch) =
-        PrefsGfeSearch.currentGfeSearchVersionHla
 
-    override fun setCurrentVersion(ctx: LociStateContextGfeSearch, newVersion: String) {
-        PrefsGfeSearch.currentGfeSearchVersionHla = newVersion
+    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionHla) { _, oldValue, newValue ->
+        PrefsGfeSearch.currentGfeSearchVersionHla = newValue
     }
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
         var versionList = VersionList("HLA")
         var versions = versionList.allVersionNames
 
-        val gfeSearchComboBoxVersion = find(GfeSearchChoiceBoxVersion::class)
-        val versionObservableList = gfeSearchComboBoxVersion.versionsObservableList
-        versionObservableList.clear()
-        versionObservableList.addAll(versions)
+        GfeSearchChoiceBoxVersion.versionsList.clear()
+        GfeSearchChoiceBoxVersion.versionsList.addAll(versions)
 
-        gfeSearchComboBoxVersion.currentVersion = PrefsGfeSearch.currentGfeSearchVersionHla
+        GfeSearchChoiceBoxVersion.currentVersion = version
     }
 
     /* Locus */

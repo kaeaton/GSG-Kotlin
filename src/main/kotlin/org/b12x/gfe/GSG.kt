@@ -9,18 +9,14 @@ import org.b12x.gfe.utilities.InternetAccess
 import tornadofx.App
 import tornadofx.find
 
-class GSG: App(MainView::class, Styles::class) {
+class GSG : App(MainView::class, Styles::class) {
 
-    val gsgWidth = 1150.0
-    val gsgHeight = 800.0
+    private val gsgWidth = 1150.0
+    private val gsgHeight = 800.0
 
     override fun start(stage: Stage) {
-        try {
-            super.start(stage)
-            stage.width = gsgWidth
-            stage.height = gsgHeight
-        } catch (ex: Exception) {
-            println(ex)
-        }
+        super.start(stage)
+        stage.width = gsgWidth
+        stage.height = gsgHeight
     }
 }

@@ -4,13 +4,11 @@ import org.b12x.gfe.core.controller.loci.LociEnum
 import tornadofx.View
 
 interface LociStateGfeSearch {
-    /* Loci */
-//    var loci: String
-    fun getLoci(ctx: LociStateContextGfeSearch): String
+
 
     /* Version */
-    fun getCurrentVersion(ctx: LociStateContextGfeSearch): String
-    fun setCurrentVersion(ctx: LociStateContextGfeSearch, currentVersion: String)
+    var version: String
+
     fun updateVersions(ctx: LociStateContextGfeSearch)
 
     /* Locus*/

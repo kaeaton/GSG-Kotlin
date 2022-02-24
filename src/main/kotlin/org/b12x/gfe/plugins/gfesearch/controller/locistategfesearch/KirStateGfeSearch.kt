@@ -8,34 +8,22 @@ import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesK
 import tornadofx.*
 import kotlin.properties.Delegates
 
-object KirStateGfeSearch: LociStateGfeSearch {
-
-    /* Loci */
-
-//    override var loci: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLociGroup) { _, oldValue, newValue ->
-//        PrefsGfeSearch.currentGfeSearchLociGroup = newValue
-//    }
-
-    override fun getLoci(ctx: LociStateContextGfeSearch) = "KIR"
+object KirStateGfeSearch : LociStateGfeSearch {
 
     /* Version */
-    override fun getCurrentVersion(ctx: LociStateContextGfeSearch) =
-        PrefsGfeSearch.currentGfeSearchVersionKir
 
-    override fun setCurrentVersion(ctx: LociStateContextGfeSearch, newVersion: String) {
-        PrefsGfeSearch.currentGfeSearchVersionKir = newVersion
+    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionKir) { _, oldValue, newValue ->
+        PrefsGfeSearch.currentGfeSearchVersionKir = newValue
     }
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
         var versionList = VersionList("KIR")
         var versions = versionList.allVersionNames
 
-        val gfeSearchComboBoxVersion = find(GfeSearchChoiceBoxVersion::class)
-        val verObList1 = gfeSearchComboBoxVersion.versionsObservableList
-        verObList1.clear()
-        verObList1.addAll(versions)
+        GfeSearchChoiceBoxVersion.versionsList.clear()
+        GfeSearchChoiceBoxVersion.versionsList.addAll(versions)
 
-        gfeSearchComboBoxVersion.currentVersion = PrefsGfeSearch.currentGfeSearchVersionKir
+        GfeSearchChoiceBoxVersion.currentVersion = version
     }
 
     /* Locus */

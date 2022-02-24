@@ -26,11 +26,14 @@ class VersionList(loci: String) {
 
     private fun combineVersionLists(): ArrayList<String> {
         val localVersionNames = ArrayList<String>()
+
         // arraylist of Version objects
         localVersions.versionsList.forEach {
             localVersionNames.add(it.name)
         }
-         onlineVersionNames.union(localVersionNames)
+
+        onlineVersionNames.union(localVersionNames)
+
         return localVersionNames
     }
 

@@ -12,18 +12,18 @@ import java.io.File
 object GfeSearchLayoutData {
 
     /* State Context */
-    var lociStateContextGfeSearch = LociStateContextGfeSearch
+    var stateContext = LociStateContextGfeSearch
 
     /* Loci */
-    var currentLoci: String = lociStateContextGfeSearch.loci.toString()
+    var currentLoci: String = stateContext.loci.toString()
     fun updateLoci(loci: String) {
         currentLoci = loci
-        lociStateContextGfeSearch.setState(loci)
+        stateContext.setState(loci)
         PrefsGfeSearch.currentGfeSearchLociGroup = loci
     }
 
     /* Version */
-    var currentVersion: String = lociStateContextGfeSearch.getCurrentVersion()
+    var currentVersion: String = stateContext.version
 
     var currentVersionList: ArrayList<Version>
 
@@ -55,21 +55,21 @@ object GfeSearchLayoutData {
 
     fun updateVersions(version: String) {
         currentVersion = version
-        lociStateContextGfeSearch.setCurrentVersion(currentVersion)
-        lociStateContextGfeSearch.updateVersions()
+        stateContext.version = currentVersion
+        stateContext.updateVersions()
         val localVersions = LocalVersions(currentLoci)
         currentVersionList = localVersions.createVersions()
         currentVersionObject = findCurrentVersionObject(currentVersion)
     }
 
     /* Locus */
-    var currentLocusEnum: LociEnum = lociStateContextGfeSearch.getCurrentLocus()
+    var currentLocusEnum: LociEnum = stateContext.getCurrentLocus()
     var currentLocus: String = currentLocusEnum.toString()
     var currentLocusList: List<String> = currentVersionObject.locusAvailable
 
     fun updateLocus(incomingCurrentLocus: String) {
-        lociStateContextGfeSearch.setCurrentLocus(incomingCurrentLocus)
-        currentLocusEnum = lociStateContextGfeSearch.getCurrentLocus()
+        stateContext.setCurrentLocus(incomingCurrentLocus)
+        currentLocusEnum = stateContext.getCurrentLocus()
         currentLocus = currentLocusEnum.toString()
     }
 

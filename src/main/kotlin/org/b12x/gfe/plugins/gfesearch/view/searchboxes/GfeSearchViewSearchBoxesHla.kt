@@ -7,12 +7,13 @@ import javafx.scene.control.TextField
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.LociEnum
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import tornadofx.*
 
 class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes") {
 
-    private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    private val stateContext = LociStateContextGfeSearch
 
     val gfeSearchBoxShared = GfeSearchBoxShared()
     val selectAllCheckBox: CheckBox = gfeSearchBoxShared.selectAllCheckBox

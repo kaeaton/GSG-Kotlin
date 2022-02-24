@@ -12,6 +12,4 @@ class LocusList(version: Version, choiceBoxLocus: ChoiceBoxLocus) {
         newLocusObservableList.clear()
         newLocusObservableList.addAll(newLocusList)
     }
-
-
 }

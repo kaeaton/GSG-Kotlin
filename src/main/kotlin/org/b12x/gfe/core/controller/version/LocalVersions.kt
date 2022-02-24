@@ -22,11 +22,12 @@ class LocalVersions (loci: String) {
     /**
      * Gets all versions for a specific set of genes in the user's GSG data directory.
      *
-     * @return a list of versions available locally
+     * @return a list of version objects representing versions available locally
      */
     fun createVersions(): ArrayList<Version> {
 
         val versions = ArrayList<Version>()
+
         // if the folder doesn't exist, there's nothing to add.
         if (Paths.get(gsgDataLocation).exists() and File(gsgDataLocation).isDirectory) {
             File(gsgDataLocation).listFiles().forEach {

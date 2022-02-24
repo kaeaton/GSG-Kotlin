@@ -1,11 +1,12 @@
 package org.b12x.gfe.plugins.gfesearch.view.searchboxes
 import javafx.geometry.Pos
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import tornadofx.*
 
 class GfeSearchBoxShared() : View(){
 
-    val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    val stateContext = LociStateContextGfeSearch
 
     val selectAllCheckBox = checkbox {
         style { padding = box(10.px, 10.px, 0.px, 10.px) }

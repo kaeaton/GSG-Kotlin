@@ -1,10 +1,11 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 
 class GfeSearchViewParent : View("GFE SEARCH") {
 
-    private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    private val stateContext = LociStateContextGfeSearch
 
     private var gfeSearchViewChoiceBoxes = GfeSearchViewChoiceBoxes()
 

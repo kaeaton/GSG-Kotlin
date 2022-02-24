@@ -5,11 +5,12 @@ import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.view.ChoiceBoxLocus
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 
 class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLocus {
 
-    private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    private val stateContext = LociStateContextGfeSearch
 
     var locusNames : List<String> = GfeSearchLayoutData.currentLocusList
 //    var locusNames : List<String> = listOf("one", "Two")
@@ -37,6 +38,6 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
     fun swapSearchBoxes(loci: LociEnum) {
         find(GfeSearchViewParent::class).gfeSearchBoxes.removeFromParent()
         find(GfeSearchViewParent::class).gfeSearchBoxes = stateContext.createNewSearchBoxes()
-        find(GfeSearchViewParent::class).root.center.add(find(GfeSearchViewParent::class).gfeSearchBoxes)
+//        find(GfeSearchViewParent::class).root.center.add(find(GfeSearchViewParent::class).gfeSearchBoxes)
     }
 }

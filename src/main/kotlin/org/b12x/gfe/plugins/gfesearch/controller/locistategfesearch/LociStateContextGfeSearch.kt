@@ -32,13 +32,9 @@ object LociStateContextGfeSearch {
 
     /* Version */
 
-    fun getCurrentVersion() =
-        currentState?.getCurrentVersion(this)
-            ?: HlaStateGfeSearch.getCurrentVersion(this)
-
-    fun setCurrentVersion(currentVersion: String) =
-        currentState?.setCurrentVersion(this, currentVersion)
-            ?: HlaStateGfeSearch.setCurrentVersion(this, currentVersion)
+    var version: String by Delegates.observable(currentState?.version.toString()) { _, oldValue, newValue ->
+        currentState?.version = newValue
+    }
 
     fun updateVersions() =
         currentState?.updateVersions(this)
