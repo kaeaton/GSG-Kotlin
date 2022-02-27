@@ -8,7 +8,7 @@ import tornadofx.Controller
 
 interface ChoiceBoxLocus {
 
-    var locusObservableList : ObservableList<String>
+    var locusList : ObservableList<String>
     var currentLocus: String
     var choiceBoxLocus : ChoiceBox<String>
 }

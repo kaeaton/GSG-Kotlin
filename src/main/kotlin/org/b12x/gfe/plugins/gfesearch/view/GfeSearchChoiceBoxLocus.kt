@@ -12,20 +12,23 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
 
     private val stateContext = LociStateContextGfeSearch
 
-    var locusNames : List<String> = GfeSearchLayoutData.currentLocusList
+    /* list of locuses */
+    var locusNames : List<String> = stateContext.versionObject.locusAvailable
 //    var locusNames : List<String> = listOf("one", "Two")
-    override var locusObservableList: ObservableList<String> = FXCollections.observableArrayList(locusNames)
+    override var locusList = observableListOf(locusNames)
 
-    private val currentLocusProperty = SimpleStringProperty(GfeSearchLayoutData.currentLocus)
+    /* selected locus */
+    private val currentLocusProperty = SimpleStringProperty(stateContext.locus)
     override var currentLocus: String by currentLocusProperty
 
-    override var choiceBoxLocus = choicebox<String>(currentLocusProperty, locusObservableList) {
+    /* choiceBox */
+    override var choiceBoxLocus = choicebox<String>(currentLocusProperty, locusList) {
         action {
             if (this.value != null) {
-                GfeSearchLayoutData.updateLocus(this.value)
+                stateContext.locus = (this.value.toString())
             }
             GfeSearchLayoutData.resetArraysHard()
-            swapSearchBoxes(GfeSearchLayoutData.currentLocusEnum)
+            swapSearchBoxes(stateContext.locusEnum)
         }
     }
 
@@ -38,6 +41,6 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
     fun swapSearchBoxes(loci: LociEnum) {
         find(GfeSearchViewParent::class).gfeSearchBoxes.removeFromParent()
         find(GfeSearchViewParent::class).gfeSearchBoxes = stateContext.createNewSearchBoxes()
-//        find(GfeSearchViewParent::class).root.center.add(find(GfeSearchViewParent::class).gfeSearchBoxes)
+        find(GfeSearchViewParent::class).root.center.add(find(GfeSearchViewParent::class).gfeSearchBoxes)
     }
 }

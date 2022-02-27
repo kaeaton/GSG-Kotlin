@@ -21,7 +21,7 @@ object PrefsGfeSearch {
     var currentGfeSearchLocusHla: String by Delegates.observable(
         prefs.get(
             "currentGfeSearchLocusHla",
-            "A"
+            "HLA-A"
         )
     ) { _, _, new ->
         prefs.put("currentGfeSearchLocusHla", new)

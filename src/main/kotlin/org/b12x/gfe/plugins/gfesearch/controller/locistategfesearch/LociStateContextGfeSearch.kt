@@ -1,13 +1,13 @@
 package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
 import org.b12x.gfe.core.controller.loci.LociEnum
-import tornadofx.View
+import org.b12x.gfe.core.controller.version.Version
 import kotlin.properties.Delegates
 
 object LociStateContextGfeSearch {
 
     /* Loci */
-    var loci: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLociGroup) { _, oldValue, newValue ->
+    var loci: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLociGroup) { _, _, newValue ->
         PrefsGfeSearch.currentGfeSearchLociGroup = newValue
     }
 
@@ -32,29 +32,26 @@ object LociStateContextGfeSearch {
 
     /* Version */
 
-    var version: String by Delegates.observable(currentState?.version.toString()) { _, oldValue, newValue ->
+    var version: String by Delegates.observable(currentState?.version.toString()) { _, _, newValue ->
         currentState?.version = newValue
     }
 
-    fun updateVersions() =
-        currentState?.updateVersions(this)
-            ?: HlaStateGfeSearch.updateVersions(this)
+    var versionObject: Version by Delegates.observable(currentState?.versionObject as Version) { _, _, _ -> }
+
+    fun updateVersions() = currentState?.updateVersions(this) ?: HlaStateGfeSearch.updateVersions(this)
 
     /* Locus */
 
-    fun getCurrentLocus() =
-        currentState?.getCurrentLocus(this)
-            ?: HlaStateGfeSearch.getCurrentLocus(this)
+    var locus: String by Delegates.observable(currentState?.locus.toString()) { _, _, newValue ->
+        currentState?.locus = newValue
+    }
 
-    fun setCurrentLocus(currentLocus: String) =
-        currentState?.setCurrentLocus(this, currentLocus)
-            ?: HlaStateGfeSearch.setCurrentLocus(this, currentLocus)
+    var locusEnum: LociEnum by Delegates.observable((currentState?.locusEnum) as LociEnum) { _, _, _ ->
 
-    fun updateLocuses() =
-        currentState?.updateLocuses(this)
-            ?: HlaStateGfeSearch.updateLocuses(this)
+    }
+
+    fun updateLocuses() = currentState?.updateLocuses(this) ?: HlaStateGfeSearch.updateLocuses(this)
 
     fun createNewSearchBoxes() =
-        currentState?.createNewSearchBoxes(this)
-            ?: HlaStateGfeSearch.createNewSearchBoxes(this)
+        currentState?.createNewSearchBoxes(this) ?: HlaStateGfeSearch.createNewSearchBoxes(this)
 }

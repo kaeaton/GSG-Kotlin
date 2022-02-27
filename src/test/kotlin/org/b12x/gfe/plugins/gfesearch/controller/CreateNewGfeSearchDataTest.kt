@@ -8,8 +8,6 @@ import org.b12x.gfe.core.model.DataFilesTest
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.checkList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.currentLoci
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.currentLocus
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.currentVersion
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.textFormat
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.textList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.writeToFile
@@ -28,8 +26,8 @@ class CreateNewGfeSearchDataTest {
         Mockito.mockStatic(GfeSearchLayoutData::class.java).use { mocked ->
             mocked.verify {
                 currentLoci = "KIR"
-                currentVersion = "2.7.0"
-                currentLocus = "KIR2DL4"
+//                currentVersion = "2.7.0"
+//                currentLocus = "KIR2DL4"
                 textFormat = "TSV"
                 writeToFile = true
                 checkList = testCheckList
@@ -44,7 +42,7 @@ class CreateNewGfeSearchDataTest {
         val gfeSearchData = CreateNewGfeSearchData.generateSearchData()
 
         assertEquals("KIR", gfeSearchData.loci)
-        assertEquals("2.7.0", gfeSearchData.version)
+//        assertEquals("2.7.0", gfeSearchData.version)
         assertEquals("KIR2DL4", gfeSearchData.locus)
         assertEquals(testCheckList, gfeSearchData.checkBoxList)
         assertEquals(testTextList, gfeSearchData.textFieldList)

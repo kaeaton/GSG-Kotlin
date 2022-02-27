@@ -18,7 +18,7 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes") {
     val gfeSearchBoxShared = GfeSearchBoxShared()
     val selectAllCheckBox: CheckBox = gfeSearchBoxShared.selectAllCheckBox
 
-    val completedSearchBox = completedSearchBoxGenerator(stateContext.getCurrentLocus().exons)
+    val completedSearchBox = completedSearchBoxGenerator(stateContext.locusEnum.exons)
 
     override val root = vbox {
         label {

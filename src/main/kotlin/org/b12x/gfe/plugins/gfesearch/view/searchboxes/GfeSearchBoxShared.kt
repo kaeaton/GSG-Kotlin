@@ -27,7 +27,7 @@ class GfeSearchBoxShared() : View(){
             }
         }
         selectAllBox.add(selectAllCheckBox)
-        selectAllBox.add(label(stateContext.getCurrentLocus().toString()) {
+        selectAllBox.add(label(stateContext.locus) {
             style {
                 padding = box(15.px, 0.px)
                 fontSize = 15.px

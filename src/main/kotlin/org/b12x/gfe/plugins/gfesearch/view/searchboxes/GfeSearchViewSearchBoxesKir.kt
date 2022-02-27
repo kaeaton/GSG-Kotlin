@@ -18,7 +18,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"),
 
     val gfeSearchBoxShared = GfeSearchBoxShared()
     val selectAllCheckBox: CheckBox = gfeSearchBoxShared.selectAllCheckBox
-    val currentKirLocus = stateContext.getCurrentLocus() as KirLoci
+    val currentKirLocus = stateContext.locusEnum as KirLoci
 
     val completedSearchBox = completedSearchBoxGenerator(currentKirLocus.exons)
 

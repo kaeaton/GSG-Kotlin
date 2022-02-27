@@ -25,7 +25,7 @@ object GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
 
             stateContext.updateLocuses()
             GfeSearchLayoutData.resetArraysHard()
-            find(GfeSearchChoiceBoxLocus::class).swapSearchBoxes(stateContext.getCurrentLocus())
+            find(GfeSearchChoiceBoxLocus::class).swapSearchBoxes(stateContext.locusEnum)
         }
     }
 
