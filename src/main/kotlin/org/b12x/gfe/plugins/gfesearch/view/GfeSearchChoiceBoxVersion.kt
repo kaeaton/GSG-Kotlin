@@ -1,8 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
 import javafx.beans.property.SimpleStringProperty
-import javafx.collections.FXCollections
-import javafx.collections.ObservableList
 import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.core.view.ComboBoxVersion
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch

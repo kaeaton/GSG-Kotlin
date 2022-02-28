@@ -3,6 +3,7 @@ plugins {
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
     kotlin("plugin.serialization") version "1.5.0"
+    id("org.jetbrains.dokka") version "1.6.10"
 }
 
 application { mainClassName = "org.b12x.gfe.MainKt" }
