@@ -5,12 +5,12 @@ import java.io.File
 import java.nio.file.Paths
 import kotlin.io.path.exists
 
-object CreateNewVersionObject {
+object CreateNewHlaVersionObject {
 
     private const val HEADER_LENGTH = 50  // bytes
 
     /**
-     * Creates a version object.
+     * Creates an HLA version object.
      *
      * @params the loci the version is part of.
      * @params the version.
@@ -81,10 +81,21 @@ object CreateNewVersionObject {
     fun getLocuses(folderLocation: String): List<String> {
         var allLocusesAvailable = ArrayList<String>()
 
+        File(folderLocation).listFiles().forEach {
+            if (validFile(it.path) and (it.extension == "csv")) {
+                allLocusesAvailable.add(getLocusName(it.name))
+            }
+        }
 
-
-
-        return allLocusesAvailable.toList()
+        return allLocusesAvailable.toList().sorted()
     }
+
+    /**
+     * Extracts the locus name from the filename.
+     *
+     * @params the file.
+     * @return its locus name.
+     */
+    fun getLocusName(fileName: String) = fileName.split("_")[0]
 
 }

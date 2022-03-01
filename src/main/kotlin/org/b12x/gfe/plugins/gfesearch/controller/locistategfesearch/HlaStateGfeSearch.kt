@@ -3,7 +3,7 @@ package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.locus.LocusList
-import org.b12x.gfe.core.controller.version.CreateNewVersionObject
+import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
@@ -23,7 +23,7 @@ object HlaStateGfeSearch : LociStateGfeSearch {
     }
 
     override var versionObject: Version by Delegates.observable(
-        CreateNewVersionObject.createVersionObject("HLA", version)
+        CreateNewHlaVersionObject.createVersionObject("HLA", version)
     ) { _, _, _, -> }
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {

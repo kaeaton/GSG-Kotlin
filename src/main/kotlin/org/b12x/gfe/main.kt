@@ -4,6 +4,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.controller.PrefsCore
+import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchInformationTextBox
 import org.b12x.gfe.utilities.InternetAccess

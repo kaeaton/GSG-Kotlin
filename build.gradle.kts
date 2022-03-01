@@ -3,7 +3,7 @@ plugins {
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
     kotlin("plugin.serialization") version "1.5.0"
-    id("org.jetbrains.dokka") version "1.6.10"
+    id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
 application { mainClassName = "org.b12x.gfe.MainKt" }
@@ -18,7 +18,7 @@ repositories {
 dependencies {
     // Kotlin standard library
     implementation(kotlin("stdlib-jdk8"))
-    implementation( "org.jetbrains.kotlin:kotlin-reflect:1.5.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 

@@ -2,7 +2,8 @@ package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
 import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
-import org.b12x.gfe.core.controller.version.CreateNewVersionObject
+import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
+import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
@@ -20,15 +21,15 @@ object KirStateGfeSearch : LociStateGfeSearch {
     }
 
     override var versionObject: Version by Delegates.observable(
-        CreateNewVersionObject.createVersionObject("KIR", HlaStateGfeSearch.version)
+        CreateNewKirVersionObject.createVersionObject()
     ) { _, _, _ -> }
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
-        var versionList = VersionList("KIR")
-        var versions = versionList.allVersionNames
+//        var versionList = VersionList("KIR")
+//        var versions = versionList.allVersionNames
 
         GfeSearchChoiceBoxVersion.versionsList.clear()
-        GfeSearchChoiceBoxVersion.versionsList.addAll(versions)
+        GfeSearchChoiceBoxVersion.versionsList.add("2.7.0")
 
         GfeSearchChoiceBoxVersion.currentVersion = version
     }

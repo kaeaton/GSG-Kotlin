@@ -1,6 +1,6 @@
-package org.b12x.gfe.core.controller
+package org.b12x.gfe.core.controller.version
 
-import org.b12x.gfe.core.controller.version.CreateNewVersionObject
+import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.Version
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.assertThrows
 import java.io.File
 
 
-class CreateNewVersionObjectTest {
+class CreateNewHlaVersionObjectTest {
 
     @Test
     fun createVersionObject_returnsVersionObject() {
@@ -21,7 +21,7 @@ class CreateNewVersionObjectTest {
             locusAvailable = listOf("HLA-A", "HLA-B", "HLA-C", "HLA-DRB5")
         )
 
-        val testVersion = CreateNewVersionObject.createVersionObject("TEST", "2.0.1")
+        val testVersion = CreateNewHlaVersionObject.createVersionObject("TEST", "2.0.1")
 
         assertEquals(resultVersion.folder, testVersion.folder)
         assertEquals(resultVersion.name, testVersion.name)
@@ -31,16 +31,16 @@ class CreateNewVersionObjectTest {
     @Test
     fun getFolderLocation_returnCorrectFolder() {
         val userDirectory = System.getProperty("user.home")
-        val tempVersionFolderString = "${userDirectory}/Documents/GSG/GSGData/TEST/2.0.1"
+        val tempVersionFolderString = "${userDirectory}/Documents/GSG/GSGData/TEST/2.0.1/"
 
-        assertEquals(tempVersionFolderString, CreateNewVersionObject.getFolderLocation("TEST", "2.0.1"))
+        assertEquals(tempVersionFolderString, CreateNewHlaVersionObject.getFolderLocation("TEST", "2.0.1"))
     }
 
     @Test
     fun getFolderLocation_throwsExceptionOnInvalidData() {
-        assertThrows<IllegalArgumentException> { CreateNewVersionObject.getFolderLocation("TEST", "2.0.2") }
-        assertThrows<IllegalArgumentException> { CreateNewVersionObject.getFolderLocation("TEST4", "2.0.1") }
-        assertThrows<IllegalArgumentException> { CreateNewVersionObject.getFolderLocation("TEST5", "2.0.5") }
+        assertThrows<IllegalArgumentException> { CreateNewHlaVersionObject.getFolderLocation("TEST", "2.0.2") }
+        assertThrows<IllegalArgumentException> { CreateNewHlaVersionObject.getFolderLocation("TEST4", "2.0.1") }
+        assertThrows<IllegalArgumentException> { CreateNewHlaVersionObject.getFolderLocation("TEST5", "2.0.5") }
     }
 
     @Test
@@ -49,8 +49,8 @@ class CreateNewVersionObjectTest {
         val validFolderString = "${userDirectory}/Documents/GSG/GSGData/TEST/2.0.1/"
         val invalidFolderString = "${userDirectory}/Documents/GSG/GSGData/TEST4/2.0.4/"
 
-        assertTrue {CreateNewVersionObject.validFolder(validFolderString)}
-        assertFalse {CreateNewVersionObject.validFolder(invalidFolderString)}
+        assertTrue {CreateNewHlaVersionObject.validFolder(validFolderString)}
+        assertFalse {CreateNewHlaVersionObject.validFolder(invalidFolderString)}
     }
 
     @Test
@@ -59,8 +59,8 @@ class CreateNewVersionObjectTest {
         val validFileString = "${userDirectory}/Documents/GSG/GSGData/TEST/2.0.1/HLA-A_2.0.1_GFE.csv"
         val invalidFileString = "${userDirectory}/Documents/GSG/GSGData/TEST4/2.0.4/HLA-Q_2.0.1_GFE.csv"
 
-        assertTrue {CreateNewVersionObject.validFile(validFileString)}
-        assertFalse {CreateNewVersionObject.validFile(invalidFileString)}
+        assertTrue {CreateNewHlaVersionObject.validFile(validFileString)}
+        assertFalse {CreateNewHlaVersionObject.validFile(invalidFileString)}
     }
 
     @Test
@@ -69,8 +69,8 @@ class CreateNewVersionObjectTest {
         val validFileString = "${userDirectory}/Documents/GSG/GSGData/TEST/2.0.1/HLA-A_2.0.1_GFE.csv"
         val invalidFileString = "${userDirectory}/Documents/GSG/GSGData/TEST4/2.0.4/HLA-DRB3_2.0.1_GFE.csv"
 
-        assertTrue {CreateNewVersionObject.fileContainsData(File(validFileString))}
-        assertFalse {CreateNewVersionObject.fileContainsData(File(invalidFileString))}
+        assertTrue {CreateNewHlaVersionObject.fileContainsData(File(validFileString))}
+        assertFalse {CreateNewHlaVersionObject.fileContainsData(File(invalidFileString))}
     }
 
     @Test
@@ -80,6 +80,11 @@ class CreateNewVersionObjectTest {
         val userDirectory = System.getProperty("user.home")
         val folderLocation = "${userDirectory}/Documents/GSG/GSGData/TEST/2.0.1/"
 
-        assertEquals(locusAvailable, CreateNewVersionObject.getLocuses(folderLocation))
+        assertEquals(locusAvailable, CreateNewHlaVersionObject.getLocuses(folderLocation))
+    }
+
+    @Test
+    fun getLocusName_returnLocusName() {
+        assertEquals("HLA-A", CreateNewHlaVersionObject.getLocusName("HLA-A_2.0.1_GFE.csv"))
     }
 }
