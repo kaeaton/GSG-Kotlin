@@ -5,17 +5,17 @@ import tornadofx.*
 class GfeSearchViewChoiceBoxes : View() {
 
     private val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-    private var locusChoiceBox = gfeSearchChoiceBoxLocus.root
+//    private var locusChoiceBox = GfeSearchChoiceBoxLocus.root
 
-//    private var gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
+    private var gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
 //    private var versionChoiceBox = gfeSearchChoiceBoxVersion.root
 
-    private val gfeSearchChoiceBoxLoci = GfeSearchChoiceBoxLoci
-    private val lociChoiceBox = gfeSearchChoiceBoxLoci.root
+    private val gfeSearchChoiceBoxLoci = find(GfeSearchChoiceBoxLoci::class)
+//    private val lociChoiceBox = gfeSearchChoiceBoxLoci.root
 
-    override val root = borderpane {
-        left = hbox { add(GfeSearchChoiceBoxLoci.root) }
-        center = hbox { add(GfeSearchChoiceBoxVersion.root) }
-        right = hbox { add(locusChoiceBox) }
+    override val root = hbox {
+        add(gfeSearchChoiceBoxLoci.root)
+        add(gfeSearchChoiceBoxVersion.choiceBoxVersion)
+        add(gfeSearchChoiceBoxLocus.choiceBoxLocus)
     }
 }

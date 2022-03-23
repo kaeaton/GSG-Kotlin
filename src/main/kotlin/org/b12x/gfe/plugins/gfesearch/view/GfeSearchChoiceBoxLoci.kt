@@ -1,17 +1,24 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
+import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
+import javafx.collections.ObservableList
 import org.b12x.gfe.core.controller.loci.AvailableLoci
 import org.b12x.gfe.core.view.ComboBoxLoci
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
+import tornadofx.getValue
+import tornadofx.setValue
 
-object GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
+class GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
 
     private val stateContext = LociStateContextGfeSearch
 
-    /* list of Loci */
-    private val lociList = observableListOf(AvailableLoci.AVAILABLE_LOCI)
+//    val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
+    val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
+    var lociList: ObservableList<String> by lociListProperty
+//    fun lociList() = getProperty(GfeSearchChoiceBoxLoci::lociListProperty)
+
 
     /* selected Loci */
     private var currentLociProperty = SimpleStringProperty(stateContext.loci)
@@ -25,7 +32,8 @@ object GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
 
             stateContext.updateLocuses()
             GfeSearchLayoutData.resetArraysHard()
-            find(GfeSearchChoiceBoxLocus::class).swapSearchBoxes(stateContext.locusEnum)
+            val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
+            gfeSearchChoiceBoxLocus.swapSearchBoxes(stateContext.locusEnum)
         }
     }
 

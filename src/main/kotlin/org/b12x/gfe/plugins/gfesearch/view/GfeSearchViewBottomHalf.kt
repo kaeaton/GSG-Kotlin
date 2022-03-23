@@ -26,7 +26,8 @@ class GfeSearchViewBottomHalf : View() {
         }
 
         right = vbox {
-            add(GfeSearchInformationTextBox.root)
+            val gfeSearchInformationTextBox = find(GfeSearchInformationTextBox::class)
+            add(gfeSearchInformationTextBox.root)
         }
 
         bottom = hbox {

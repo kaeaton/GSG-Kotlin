@@ -20,14 +20,16 @@ class InternetAccess {
         // necessary to initialize JavaFX
 //        val jfxPanel = JFXPanel()
 
+        val gfeSearchInformationTextBox = find(GfeSearchInformationTextBox::class)
+
         return runBlocking {
             try {
                 ktorHttpClient.head<String>("https://google.com")
-                GfeSearchInformationTextBox.infoTextArea.appendText(YES_INTERNET_MSG)
+                gfeSearchInformationTextBox.infoTextArea.appendText(YES_INTERNET_MSG)
                 true
             } catch (e: Exception) {
                 println(e.message)
-                GfeSearchInformationTextBox.infoTextArea.appendText(NO_INTERNET_MSG)
+                gfeSearchInformationTextBox.infoTextArea.appendText(NO_INTERNET_MSG)
 
                 false
             }

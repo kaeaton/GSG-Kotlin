@@ -16,17 +16,17 @@ object LociStateContextGfeSearch {
 
     init {
         currentState = when (loci) {
-            "HLA" -> HlaStateGfeSearch
-            "KIR" -> KirStateGfeSearch
-            else -> HlaStateGfeSearch
+            "HLA" -> HlaStateGfeSearch()
+            "KIR" -> KirStateGfeSearch()
+            else -> HlaStateGfeSearch()
         }
     }
 
     fun setState(loci: String) {
         currentState = when (loci) {
-            "HLA" -> HlaStateGfeSearch
-            "KIR" -> KirStateGfeSearch
-            else -> HlaStateGfeSearch
+            "HLA" -> HlaStateGfeSearch()
+            "KIR" -> KirStateGfeSearch()
+            else -> HlaStateGfeSearch()
         }
     }
 
@@ -38,7 +38,7 @@ object LociStateContextGfeSearch {
 
     var versionObject: Version by Delegates.observable(currentState?.versionObject as Version) { _, _, _ -> }
 
-    fun updateVersions() = currentState?.updateVersions(this) ?: HlaStateGfeSearch.updateVersions(this)
+    fun updateVersions() = currentState?.updateVersions(this) ?: HlaStateGfeSearch().updateVersions(this)
 
     /* Locus */
 
@@ -50,8 +50,8 @@ object LociStateContextGfeSearch {
 
     }
 
-    fun updateLocuses() = currentState?.updateLocuses(this) ?: HlaStateGfeSearch.updateLocuses(this)
+    fun updateLocuses() = currentState?.updateLocuses(this) ?: HlaStateGfeSearch().updateLocuses(this)
 
     fun createNewSearchBoxes() =
-        currentState?.createNewSearchBoxes(this) ?: HlaStateGfeSearch.createNewSearchBoxes(this)
+        currentState?.createNewSearchBoxes(this) ?: HlaStateGfeSearch().createNewSearchBoxes(this)
 }

@@ -4,7 +4,7 @@ import javafx.geometry.HPos
 import javafx.geometry.Pos
 import tornadofx.*
 
-object GfeSearchInformationTextBox : View("My View") {
+class GfeSearchInformationTextBox : View("My View") {
 
     var infoTextArea = textarea {
         style {

@@ -6,19 +6,22 @@ import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
+import org.b12x.gfe.core.controller.loci.HlaLoci
+import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import tornadofx.*
 
-class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes") {
+class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), GfeSearchViewSearchBoxes {
 
     private val stateContext = LociStateContextGfeSearch
 
     val gfeSearchBoxShared = GfeSearchBoxShared()
     val selectAllCheckBox: CheckBox = gfeSearchBoxShared.selectAllCheckBox
 
-    val completedSearchBox = completedSearchBoxGenerator(stateContext.locusEnum.exons)
+    val currentHlaLocus = stateContext.locusEnum as HlaLoci
+    val completedSearchBox = completedSearchBoxGenerator(currentHlaLocus.exons)
 
     override val root = vbox {
         label {
@@ -34,7 +37,7 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes") {
         }
     }
 
-    private fun completedSearchBoxGenerator(numberOfBoxes: Int): HBox {
+    override fun completedSearchBoxGenerator(numberOfBoxes: Int): HBox {
         val completedSearchBox = hbox {
             style {
                 padding = box(0.px, 0.px, 0.px, 0.px)

@@ -12,10 +12,10 @@ import java.io.File
 object GfeSearchLayoutData {
 
     /* State Context */
-    var stateContext = LociStateContextGfeSearch
+//    var stateContext = LociStateContextGfeSearch
 
     /* Loci */
-    var currentLoci: String = stateContext.loci.toString()
+//    var currentLoci: String = stateContext.loci.toString()
 //    fun updateLoci(loci: String) {
 //        currentLoci = loci
 //        stateContext.setState(loci)

@@ -6,17 +6,17 @@ import org.b12x.gfe.core.view.ComboBoxVersion
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 
-object GfeSearchChoiceBoxVersion : View(), ComboBoxVersion {
+class GfeSearchChoiceBoxVersion : View(), ComboBoxVersion {
 
     private val stateContext = LociStateContextGfeSearch
 
     /* list of Versions */
     override var versionList: VersionList = VersionList(stateContext.loci)
-    private var versions: List<String> = versionList.allVersionNames
+    var versions: List<String> = versionList.allVersionNames
     override var versionsList = observableListOf(versions)
 
     /* selected Version */
-    private val currentVersionProperty = SimpleStringProperty(stateContext.version)
+    val currentVersionProperty = SimpleStringProperty(stateContext.version)
     override var currentVersion: String by currentVersionProperty
 
     /* choiceBox */
@@ -27,7 +27,8 @@ object GfeSearchChoiceBoxVersion : View(), ComboBoxVersion {
 
                 stateContext.updateLocuses()
                 GfeSearchLayoutData.resetArraysHard()
-                find(GfeSearchChoiceBoxLocus::class).swapSearchBoxes(stateContext.locusEnum)
+                val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
+                gfeSearchChoiceBoxLocus.swapSearchBoxes(stateContext.locusEnum)
             }
         }
     }
