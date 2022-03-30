@@ -1,7 +1,5 @@
-package org.b12x.gfe.core.controller
+package org.b12x.gfe.core.controller.version
 
-import org.b12x.gfe.core.controller.version.LocalVersions
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.io.File
 import kotlin.io.walk

@@ -10,7 +10,7 @@ import tornadofx.*
 
 
 class GfeSearchLayoutDataTest : View("Test") {
-
+    // necessary to initialize JavaFX
     val jfxPanel = JFXPanel()
 
     lateinit var checkArray: ArrayList<CheckBox>

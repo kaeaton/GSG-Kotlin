@@ -1,68 +1,65 @@
 package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
+import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.KirLoci
+import org.b12x.gfe.core.controller.loci.LociEnum
+import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
+import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
+import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
+import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
 import tornadofx.*
+import kotlin.properties.Delegates
 
-class KirStateGfeSearch: LociStateGfeSearch {
-
-    /* Loci */
-    override fun getLoci(ctx: LociStateContextGfeSearch) = "KIR"
+class KirStateGfeSearch : LociStateGfeSearch {
 
     /* Version */
-    override fun getCurrentVersion(ctx: LociStateContextGfeSearch) =
-        PrefsGfeSearch.currentGfeSearchVersionKir
 
-    override fun setCurrentVersion(ctx: LociStateContextGfeSearch, newVersion: String) {
-        PrefsGfeSearch.currentGfeSearchVersionKir = newVersion
-    }
+    override var version: String by Delegates.observable(
+        PrefsGfeSearch.currentGfeSearchVersionKir
+    ) { _, _, newValue -> PrefsGfeSearch.currentGfeSearchVersionKir = newValue }
+
+    override var versionObject: Version by Delegates.observable(
+        CreateNewKirVersionObject.createVersionObject()
+    ) { _, _, _ ->  CreateNewKirVersionObject.createVersionObject()}
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
-        var versionList = VersionList("KIR")
-        var versions = versionList.allVersionNames
+        val gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
 
-        val gfeSearchComboBoxVersion = find(GfeSearchChoiceBoxVersion::class)
-        val verObList1 = gfeSearchComboBoxVersion.versionsObservableList
-        verObList1.clear()
-        verObList1.addAll(versions)
+        gfeSearchChoiceBoxVersion.versionsList.clear()
+        gfeSearchChoiceBoxVersion.versionsList.add("2.7.0")
 
-        gfeSearchComboBoxVersion.currentVersion = PrefsGfeSearch.currentGfeSearchVersionKir
+        gfeSearchChoiceBoxVersion.currentVersion = version
     }
 
     /* Locus */
 
-    override fun getCurrentLocus(ctx: LociStateContextGfeSearch): KirLoci =
-        KirLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusKir } ?: KirLoci.KIR2DL1
-
-    override fun setCurrentLocus(ctx: LociStateContextGfeSearch, newLocus: String) {
-        PrefsGfeSearch.currentGfeSearchLocusKir = newLocus
+    override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusKir) { _, _, newValue ->
+        PrefsGfeSearch.currentGfeSearchLocusKir = newValue
     }
 
-    fun getKirLocusNames(): List<String> {
-        val locusNames = ArrayList<String>()
-        KirLoci.values().forEach {
-            locusNames.add(it.toString())
-        }
-        return locusNames
-    }
+    override var locusEnum: LociEnum by Delegates.observable(
+        (KirLoci.values().find { it.fullName == locus }) as LociEnum
+    ) { _, _, _ -> (KirLoci.values().find { it.fullName == locus }) as LociEnum }
 
     // I know it's not spelled locuses, but loci is already used.
     override fun updateLocuses(ctx: LociStateContextGfeSearch) {
-        val locusNames = getKirLocusNames()
+        val locusNames = versionObject.locusAvailable
 
         val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-        val locObservableList = gfeSearchChoiceBoxLocus.locusObservableList
+        val locObservableList = gfeSearchChoiceBoxLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)
 
-        gfeSearchChoiceBoxLocus.currentLocus = PrefsGfeSearch.currentGfeSearchLocusKir
+        gfeSearchChoiceBoxLocus.currentLocus = locus
     }
 
-    override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): View {
-        val currentLocus = KirLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusKir } ?: KirLoci.KIR2DL1
-        return GfeSearchViewSearchBoxesKir(currentLocus)
+    override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchViewSearchBoxes {
+//        val currentLocus = locusEnum
+            // KirLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusKir } ?: KirLoci.KIR2DL1
+        return GfeSearchViewSearchBoxesKir(locusEnum) as GfeSearchViewSearchBoxes
     }
 }

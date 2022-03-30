@@ -1,12 +1,14 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
+import org.b12x.gfe.plugins.gfesearch.controller.CreateNewGfeSearchData
 import tornadofx.*
 
-class GfeSearchButtonSubmit : View("Submit") {
+object GfeSearchButtonSubmit : View("Submit") {
 
     override val root = vbox {
         button("Submit") {
             action {
+                val searchData = CreateNewGfeSearchData.generateSearchData()
                 GfeSearchLayoutData.resetArraysSoft()
                 println("You pressed the GFE Search submit button.")
 //                resultsTextField.text = "Data submitted"

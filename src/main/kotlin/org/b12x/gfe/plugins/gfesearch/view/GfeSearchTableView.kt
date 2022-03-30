@@ -1,14 +1,10 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
-import javafx.beans.property.ReadOnlyStringWrapper
 import javafx.geometry.HPos
 import javafx.geometry.Pos
-import javafx.geometry.VPos
-import javafx.scene.control.TreeItem
 import tornadofx.*
-import tornadofx.column
 
-class GfeSearchTableView(dataFormat: String): View() {
+object GfeSearchTableView : View() {
 
     val data = listOf(
         GfeSearchResult("HLA-A*01:01:01:01", "HLA-Aw2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-4"),
@@ -43,8 +39,8 @@ class GfeSearchTableView(dataFormat: String): View() {
 
             style {
                 fontSize = Dimension(1.2, Dimension.LinearUnits.em)
-                prefWidth = Dimension(900.0, Dimension.LinearUnits.px)
-                prefHeight = Dimension(300.0, Dimension.LinearUnits.px)
+                prefWidth = Dimension(650.0, Dimension.LinearUnits.px)
+                prefHeight = Dimension(350.0, Dimension.LinearUnits.px)
             }
         }
         style {

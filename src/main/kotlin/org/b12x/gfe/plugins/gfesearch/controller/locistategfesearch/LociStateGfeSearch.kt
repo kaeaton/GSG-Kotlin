@@ -1,20 +1,21 @@
 package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
+import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.LociEnum
+import org.b12x.gfe.core.controller.version.Version
+import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
 import tornadofx.View
 
 interface LociStateGfeSearch {
-    /* Loci */
-    fun getLoci(ctx: LociStateContextGfeSearch): String
 
     /* Version */
-    fun getCurrentVersion(ctx: LociStateContextGfeSearch): String
-    fun setCurrentVersion(ctx: LociStateContextGfeSearch, currentVersion: String)
+    var version: String
+    var versionObject: Version
     fun updateVersions(ctx: LociStateContextGfeSearch)
 
     /* Locus*/
-    fun getCurrentLocus(ctx: LociStateContextGfeSearch): LociEnum
-    fun setCurrentLocus(ctx: LociStateContextGfeSearch, currentLocus: String)
+    var locus: String
+    var locusEnum: LociEnum
     fun updateLocuses(ctx: LociStateContextGfeSearch)
-    fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): View
+    fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchViewSearchBoxes
 }

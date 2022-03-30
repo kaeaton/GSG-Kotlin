@@ -7,64 +7,74 @@ import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
-
-//import org.b12x.gfe.utilities.getLocusType
+import java.io.File
 
 object GfeSearchLayoutData {
 
     /* State Context */
-    var lociStateContextGfeSearch = LociStateContextGfeSearch()
+//    var stateContext = LociStateContextGfeSearch
 
     /* Loci */
-    var currentLoci: String = lociStateContextGfeSearch.getLoci()
-    fun updateLoci(loci: String) {
-        currentLoci = loci
-        lociStateContextGfeSearch.setState(loci)
-        PrefsGfeSearch.currentGfeSearchLociGroup = loci
-    }
+//    var currentLoci: String = stateContext.loci.toString()
+//    fun updateLoci(loci: String) {
+//        currentLoci = loci
+//        stateContext.setState(loci)
+//        PrefsGfeSearch.currentGfeSearchLociGroup = loci
+//    }
 
     /* Version */
-    var currentVersion: String = lociStateContextGfeSearch.getCurrentVersion()
-
-    var currentVersionList: ArrayList<Version>
-
-    init {
-        var localVersions = LocalVersions(currentLoci)
-        currentVersionList = localVersions.createVersions()
-
-    }
-
-    var currentVersionObject: Version = findCurrentVersionObject(currentVersion)
-
-    fun findCurrentVersionObject(version: String): Version {
-        lateinit var versionObject: Version
-        currentVersionList.forEach {
-            if (it.name == currentVersion) {
-                versionObject = it
-            }
-        }
-        return versionObject
-    }
-
-    fun updateVersions(version: String) {
-        currentVersion = version
-        lociStateContextGfeSearch.setCurrentVersion(currentVersion)
-        lociStateContextGfeSearch.updateVersions()
-        val localVersions = LocalVersions(currentLoci)
-        currentVersionList = localVersions.createVersions()
-        currentVersionObject = findCurrentVersionObject(currentVersion)
-    }
+//    var currentVersion: String = stateContext.version
+//
+//    var currentVersionList: ArrayList<Version>
+//
+//    init {
+//        var localVersions = LocalVersions(currentLoci)
+//        currentVersionList = localVersions.createVersions()
+//    }
+//
+//    var currentVersionObject: Version = findCurrentVersionObject(currentVersion)
+//
+//    fun findCurrentVersionObject(version: String): Version {
+////        lateinit var versionObject: Version
+//
+//        val userDirectory = System.getProperty("user.home")
+//        return Version(
+//            File("${userDirectory}/Documents/GSG/GSGData/HLA/2.0.0/"),
+//            "2.0.0",
+//            locusAvailable = listOf("HLA-A", "HLA-C", "HLA-DQB1")
+//        )
+//
+////        currentVersionList.forEach {
+////            if (it.name == currentVersion) {
+////                versionObject = it
+////            }
+////        }
+//
+////        return versionObject
+//    }
+//
+//    fun updateVersions(version: String) {
+//        currentVersion = version
+//        stateContext.version = currentVersion
+//        stateContext.updateVersions()
+//        val localVersions = LocalVersions(currentLoci)
+//        currentVersionList = localVersions.createVersions()
+//        currentVersionObject = findCurrentVersionObject(currentVersion)
+//    }
 
     /* Locus */
-    var currentLocusEnum: LociEnum = lociStateContextGfeSearch.getCurrentLocus()
-    var currentLocus: String = currentLocusEnum.toString()
-    var currentLocusList: List<String> = currentVersionObject.locusAvailable
+//    var currentLocusEnum: LociEnum = stateContext.locusEnum
+//    var currentLocus: String = stateContext.locus
+////    var currentLocusList: List<String> = currentVersionObject.locusAvailable
+//
+//    fun updateLocus(incomingCurrentLocus: String) {
+//        stateContext.locus = incomingCurrentLocus
+//        currentLocus = stateContext.locus
+//    }
 
-    fun updateLocus(incomingCurrentLocus: String) {
-        lociStateContextGfeSearch.setCurrentLocus(incomingCurrentLocus)
-        currentLocusEnum = lociStateContextGfeSearch.getCurrentLocus()
-        currentLocus = currentLocusEnum.toString()
-    }
+    /* Output Files*/
+    var textFormat = "CVS" // Add to state
+    var writeToFile = false // Add to state
 
     /* Search Array Data */
     var checkList: MutableList<CheckBox> = ArrayList()

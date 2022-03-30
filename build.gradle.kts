@@ -3,6 +3,7 @@ plugins {
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
     kotlin("plugin.serialization") version "1.5.0"
+    id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
 application { mainClassName = "org.b12x.gfe.MainKt" }
@@ -17,7 +18,7 @@ repositories {
 dependencies {
     // Kotlin standard library
     implementation(kotlin("stdlib-jdk8"))
-    implementation( "org.jetbrains.kotlin:kotlin-reflect:1.5.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
@@ -36,6 +37,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
     implementation("com.beust:klaxon:5.5")
 
+    // CSV parsing
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.2.0")
+
     // Text comparison
     // https://mvnrepository.com/artifact/io.github.java-diff-utils/java-diff-utils
     implementation("io.github.java-diff-utils:java-diff-utils:4.11")
@@ -49,7 +53,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
 
     // Mockito
-    testImplementation("org.mockito:mockito-core:3.8.0")
+    testImplementation("org.mockito:mockito-inline:3.8.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
 }
 

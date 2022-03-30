@@ -1,26 +1,39 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
+import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
+import org.b12x.gfe.core.controller.loci.AvailableLoci
 import org.b12x.gfe.core.view.ComboBoxLoci
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
+import tornadofx.getValue
+import tornadofx.setValue
 
-class GfeSearchChoiceBoxLoci(whichTab: String) : View("Available Loci"), ComboBoxLoci {
+class GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
 
-    val loci: ObservableList<String> = observableListOf("HLA", "KIR")
-    var stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    private val stateContext = LociStateContextGfeSearch
 
-    private val currentLociProperty = SimpleStringProperty(stateContext.getLoci())
+//    val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
+    val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
+    var lociList: ObservableList<String> by lociListProperty
+//    fun lociList() = getProperty(GfeSearchChoiceBoxLoci::lociListProperty)
+
+
+    /* selected Loci */
+    private var currentLociProperty = SimpleStringProperty(stateContext.loci)
     override var currentLoci: String by currentLociProperty
 
-    override val choiceBoxLoci = choicebox<String>(currentLociProperty, loci) {
+    /* choiceBox */
+    override val choiceBoxLoci = choicebox<String>(currentLociProperty, lociList) {
         action {
-            GfeSearchLayoutData.updateLoci(this.value)
+            stateContext.loci = this.value
             stateContext.updateVersions()
+
             stateContext.updateLocuses()
             GfeSearchLayoutData.resetArraysHard()
-            find(GfeSearchChoiceBoxLocus::class).swapSearchBoxes(stateContext.getCurrentLocus())
+            val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
+            gfeSearchChoiceBoxLocus.swapSearchBoxes(stateContext.locusEnum)
         }
     }
 

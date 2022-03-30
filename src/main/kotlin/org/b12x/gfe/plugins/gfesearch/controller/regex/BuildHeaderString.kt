@@ -26,7 +26,7 @@ object BuildHeaderString {
                 numberProvided(gfeSearchData.textFieldList[i])
             }
         }
-        gfeSearchData.regex = closeHeaderString(headerString)
+        gfeSearchData.header = closeHeaderString(headerString)
     }
 
     /**

@@ -8,17 +8,18 @@ import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import tornadofx.*
 
-class GfeSearchViewSearchBoxesKir(loci: LociEnum): View("KIR GFE Search Boxes"), GfeSearchViewSearchBoxes {
+class GfeSearchViewSearchBoxesKir(loci: LociEnum) : View("KIR GFE Search Boxes"), GfeSearchViewSearchBoxes {
 
-    private val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    private val stateContext = LociStateContextGfeSearch
 
     val gfeSearchBoxShared = GfeSearchBoxShared()
     val selectAllCheckBox: CheckBox = gfeSearchBoxShared.selectAllCheckBox
-    val currentKirLocus = stateContext.getCurrentLocus() as KirLoci
 
+    val currentKirLocus = stateContext.locusEnum as KirLoci
     val completedSearchBox = completedSearchBoxGenerator(currentKirLocus.exons)
 
     override val root = vbox {

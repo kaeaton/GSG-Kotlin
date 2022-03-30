@@ -5,13 +5,11 @@ import org.b12x.gfe.core.view.ChoiceBoxLocus
 
 class LocusList(version: Version, choiceBoxLocus: ChoiceBoxLocus) {
 
-    var newLocusObservableList = choiceBoxLocus.locusObservableList
+    var newLocusObservableList = choiceBoxLocus.locusList
     var newLocusList = version.locusAvailable
 
     fun updateLocusList() {
         newLocusObservableList.clear()
         newLocusObservableList.addAll(newLocusList)
     }
-
-
 }

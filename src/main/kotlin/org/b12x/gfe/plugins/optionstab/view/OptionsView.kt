@@ -20,8 +20,9 @@ class OptionsView : View("My View") {
 
         button ("Check for internet") {
             action {
-                InternetAccess.internetAccess = InternetAccess.isInternetAvailable()
-                println("Options check: internet access? " + InternetAccess.internetAccess)
+                val internetAccess = InternetAccess()
+                internetAccess.internetAccess = internetAccess.isInternetAvailable()
+                println("Options check: internet access? " + internetAccess.internetAccess)
             }
         }
 
