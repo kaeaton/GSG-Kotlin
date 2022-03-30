@@ -26,8 +26,8 @@ class DataDownload(lociGroup: String) {
      * @param dataType What kind of raw data (version or data)
      */
     fun makeRequest(request: String = "", dataUrl: String, dataType: String) {
-        val internetAccess = InternetAccess()
-        if (internetAccess.isInternetAvailable()) {
+//        val internetAccess = InternetAccess.isInternetAvailable()
+        if (InternetAccess.isInternetAvailable()) {
             val okHttpClient = OkHttpClient()
             parseResponse(okHttpClient.newCall(createRequest(dataUrl, request)).execute(), dataType)
         }

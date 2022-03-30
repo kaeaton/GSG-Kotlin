@@ -39,24 +39,24 @@ class MainView : View("GFE Search Generator") {
                 )
             }
         }
-        tab("Comparison Tool") {
-//            add(comparisonView::class)
-            this.setOnSelectionChanged { _ ->
-                tabStateContext.setState("COMP")
-                println(
-                    if (this.isSelected) "Comparison selected" else "Comparison unselected"
-                )
-            }
-        }
-        tab("Allele Calling Tool") {
-//            add(alleleCallView::class)
-            this.setOnSelectionChanged { _ ->
-                tabStateContext.setState("ACT")
-                println(
-                    if (this.isSelected) "Allele Calling Tool selected" else "Allele Calling Tool unselected"
-                )
-            }
-        }
+//        tab("Comparison Tool") {
+////            add(comparisonView::class)
+//            this.setOnSelectionChanged { _ ->
+//                tabStateContext.setState("COMP")
+//                println(
+//                    if (this.isSelected) "Comparison selected" else "Comparison unselected"
+//                )
+//            }
+//        }
+//        tab("Allele Calling Tool") {
+////            add(alleleCallView::class)
+//            this.setOnSelectionChanged { _ ->
+//                tabStateContext.setState("ACT")
+//                println(
+//                    if (this.isSelected) "Allele Calling Tool selected" else "Allele Calling Tool unselected"
+//                )
+//            }
+//        }
         tab("Options") {
             add(optionsView::class)
             this.setOnSelectionChanged { _ ->
@@ -72,14 +72,14 @@ class MainView : View("GFE Search Generator") {
                 button("Button 2")
             }
         }
-        tab("Information") {
-            vbox() {
-                button("Button 1")
-                button("Button 2")
-            }
-        }
-        tab("Debug") {
-            add(debugView::class)
-        }
+//        tab("Information") {
+//            vbox() {
+//                button("Button 1")
+//                button("Button 2")
+//            }
+//        }
+//        tab("Debug") {
+//            add(debugView::class)
+//        }
     }
 }

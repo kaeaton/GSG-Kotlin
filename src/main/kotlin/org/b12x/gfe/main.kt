@@ -17,11 +17,11 @@ import java.io.File
 fun main() {
 
     /* Internet Access */
-//    InternetAccess.isInternetAvailable()
+    InternetAccess.isInternetAvailable()
 
     /* Prefs Reset */
-//    PrefsCore.nuclearOption()
-//    println(PrefsGfeSearch.currentGfeSearchLocusHla)
+    PrefsCore.nuclearOption()
+    println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Program start */
     launch<GSG>()

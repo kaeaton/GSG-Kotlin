@@ -8,7 +8,7 @@ import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchInformationTextBox
 import tornadofx.find
 
-class InternetAccess {
+object InternetAccess {
 
     private val YES_INTERNET_MSG = "Internet access available.\n"
     private val NO_INTERNET_MSG = "Internet access not available, locally available data only.\n"
@@ -18,7 +18,7 @@ class InternetAccess {
     fun isInternetAvailable(): Boolean {
 
         // necessary to initialize JavaFX
-//        val jfxPanel = JFXPanel()
+        val jfxPanel = JFXPanel()
 
         val gfeSearchInformationTextBox = find(GfeSearchInformationTextBox::class)
 
