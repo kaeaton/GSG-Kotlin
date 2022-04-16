@@ -1,5 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
+import io.ktor.util.reflect.*
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
@@ -11,6 +12,7 @@ import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
 import tornadofx.*
+import kotlin.reflect.full.memberExtensionFunctions
 
 class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLocus {
 
@@ -52,7 +54,7 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
         val test = gfeSearchBoxesContainer::gfeSearchBoxes
         println(test.toString())
 
-        find(GfeSearchViewSearchBoxesKir::class).root.removeFromParent()//:class.objectInstance).removeFromParent()
+//        find(GfeSearchViewSearchBoxes::class).root.removeFromParent()//:class.objectInstance).removeFromParent()
 //        find(GfeSearchViewSearchBoxesHla::class).root.removeFromParent()//:class.objectInstance).removeFromParent()
         find(GfeSearchBoxesContainer::class).add(stateContext.createNewSearchBoxes().root)
 //        find(GfeSearchBoxesContainer::class).gfeSearchBoxes = stateContext.createNewSearchBoxes()

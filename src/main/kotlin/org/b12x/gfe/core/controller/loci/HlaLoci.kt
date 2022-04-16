@@ -1,6 +1,7 @@
 package org.b12x.gfe.core.controller.loci
 
-enum class HlaLoci(override val fullName: String, override val exons: Int) : LociEnum {
+enum class HlaLoci(override val fullName: String,
+                   override val exons: Int) : LociEnum {
     A("HLA-A", 8),
     B("HLA-B", 7),
     C("HLA-C", 8),

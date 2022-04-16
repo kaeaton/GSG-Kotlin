@@ -1,10 +1,13 @@
 package org.b12x.gfe.core.controller.loci
 
-enum class KirLoci(override val fullName: String, override val exons: Int, val skippedExons: List<Int>) : LociEnum {
+enum class KirLoci(override val fullName: String,
+                   override val exons: Int,
+                   val skippedExons: List<Int>) : LociEnum {
     KIR2DL1("KIR2DL1", 9, emptyList()),
+    KIR2DL4("KIR2DL4", 9, listOf(4)),
     KIR2DL2("KIR2DL2", 9, emptyList()),
     KIR2DL3("KIR2DL3", 9, emptyList()),
-    KIR2DL4("KIR2DL4", 9, listOf(4)),
+
     KIR2DL5A("KIR2DL5A", 9, listOf(4)),
     KIR2DL5B("KIR2DL5B", 9, listOf(4)),
     KIR2DS1("KIR2DS1", 9, emptyList()),

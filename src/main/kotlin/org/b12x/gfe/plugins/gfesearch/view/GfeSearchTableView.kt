@@ -7,6 +7,7 @@ import tornadofx.*
 object GfeSearchTableView : View() {
 
     val data = listOf(
+        // data class at the bottom of this file
         GfeSearchResult("HLA-A*01:01:01:01", "HLA-Aw2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-4"),
         GfeSearchResult("HLA-A*01:01:01:02N", "HLA-Aw3-1-1-1-2-1-1-1-1-1-1-1-1-1-1-1-3"),
         GfeSearchResult("HLA-A*01:01:01:03", "HLA-Aw2-1-2-1-1-1-1-1-1-1-1-1-1-1-1-1-4")
@@ -14,7 +15,7 @@ object GfeSearchTableView : View() {
 
     val tableData = mapOf(
         "Fruit" to arrayOf("apple", "pear", "Banana"),
-        "Veggies" to arrayOf("beans", "cauliflower", "cale"),
+        "Veggies" to arrayOf("beans", "cauliflower", "kale"),
         "Meat" to arrayOf("poultry", "pork", "beef")
     )
 
