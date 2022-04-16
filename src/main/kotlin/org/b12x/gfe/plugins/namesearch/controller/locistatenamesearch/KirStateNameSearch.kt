@@ -8,6 +8,8 @@ import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
+import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxLocus
+import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxVersion
 import tornadofx.*
 import kotlin.properties.Delegates
 
@@ -24,12 +26,12 @@ class KirStateNameSearch : LociStateNameSearch {
     ) { _, _, _ ->  CreateNewKirVersionObject.createVersionObject()}
 
     override fun updateVersions(ctx: LociStateContextNameSearch) {
-        val gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
+        val nameSearchChoiceBoxVersion = find(NameSearchChoiceBoxVersion::class)
 
-        gfeSearchChoiceBoxVersion.versionsList.clear()
-        gfeSearchChoiceBoxVersion.versionsList.add("2.7.0")
+        nameSearchChoiceBoxVersion.versionsList.clear()
+        nameSearchChoiceBoxVersion.versionsList.add("2.7.0")
 
-        gfeSearchChoiceBoxVersion.currentVersion = version
+        nameSearchChoiceBoxVersion.currentVersion = version
     }
 
     /* Locus */
@@ -46,11 +48,11 @@ class KirStateNameSearch : LociStateNameSearch {
     override fun updateLocuses(ctx: LociStateContextNameSearch) {
         val locusNames = versionObject.locusAvailable
 
-        val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-        val locObservableList = gfeSearchChoiceBoxLocus.locusList
+        val nameSearchChoiceBoxLocus = find(NameSearchChoiceBoxLocus::class)
+        val locObservableList = nameSearchChoiceBoxLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)
 
-        gfeSearchChoiceBoxLocus.currentLocus = locus
+        nameSearchChoiceBoxLocus.currentLocus = locus
     }
 }
