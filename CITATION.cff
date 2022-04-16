@@ -1,0 +1,50 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: GFE Search Generator
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Katrina
+    family-names: Eaton
+    email: katrina.eaton@ucsf.edu
+    affiliation: 'University of California, San Francisco'
+identifiers:
+  - type: url
+    value: 'https://github.com/kaeaton/GSG-Kotlin'
+    description: >-
+      The Gene Feature Enumeration (GFE) Search
+      Generator
+repository-code: 'https://github.com/kaeaton/GSG-Kotlin'
+abstract: >-
+  There are currently 24,009 known variants (alleles)
+  of the Human Leukocyte Antigen genes, which are key
+  to transplant success or failure, with new alleles
+  being discovered and “named” every day. The current
+  names give very little information about the
+  structure of the proteins encoded by these genes,
+  and, in 2015, Dr. Steven Mack proposed a new naming
+  convention called Gene Feature Enumeration (GFE),
+  designed to create machine-readable names. New
+  tools are required to use the new GFE naming
+  convention, including the ability to (1) switch
+  between the allele names and the GFE names, (2)
+  search across GFE names, and (3) assign GFE names
+  to new alleles. In this thesis, I describe the GFE
+  Search Generator, a tool designed to make allele
+  identification using GFE names easier for research
+  purposes. This will enable better matches between
+  patients and donors for transplant purposes and
+  will assist in research about autoimmune diseases.
+keywords:
+  - GFE
+  - Gene Feature Enumeration
+  - HLA
+  - Human Leukocyte Antigen
+  - KIR
+  - Killer Immunoglobulin-like Receptor
+  - Bioinformatics
+license: GPL-3.0
