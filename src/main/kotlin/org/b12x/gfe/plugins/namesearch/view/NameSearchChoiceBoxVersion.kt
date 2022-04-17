@@ -4,11 +4,12 @@ import javafx.beans.property.SimpleStringProperty
 import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.core.view.ComboBoxVersion
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
+import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 
 class NameSearchChoiceBoxVersion : View(), ComboBoxVersion {
 
-    private val stateContext = LociStateContextGfeSearch
+    private val stateContext = LociStateContextNameSearch
 
     /* list of Versions */
     override var versionList: VersionList = VersionList(stateContext.loci)
@@ -26,7 +27,6 @@ class NameSearchChoiceBoxVersion : View(), ComboBoxVersion {
                 stateContext.version = this.value
 
                 stateContext.updateLocuses()
-                NameSearchLayoutData.resetArraysHard()
             }
         }
     }

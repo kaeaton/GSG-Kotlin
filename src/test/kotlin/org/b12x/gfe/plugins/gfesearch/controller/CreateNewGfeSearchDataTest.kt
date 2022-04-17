@@ -7,7 +7,7 @@ import org.b12x.gfe.core.model.DataFiles
 import org.b12x.gfe.core.model.DataFilesTest
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.checkList
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.currentLoci
+//import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.currentLoci
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.textFormat
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.textList
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData.writeToFile
@@ -25,7 +25,7 @@ class CreateNewGfeSearchDataTest {
     fun createDataFile_validGfeSearchDataObject() {
         Mockito.mockStatic(GfeSearchLayoutData::class.java).use { mocked ->
             mocked.verify {
-                currentLoci = "KIR"
+//                currentLoci = "KIR"
 //                currentVersion = "2.7.0"
 //                currentLocus = "KIR2DL4"
                 textFormat = "TSV"
