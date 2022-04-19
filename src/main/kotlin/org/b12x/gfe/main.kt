@@ -16,10 +16,10 @@ fun main() {
     println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Program start */
-    launch<GSG>()
+//    launch<GSG>()
 
-//    val testData = CreateNewNameSearchData.generateSearchData("54")
-//    FindResults.findResults(testData)
+    val testData = CreateNewNameSearchData.generateSearchData("*52")
+    FindResults.findResults(testData)
 }
 
 
