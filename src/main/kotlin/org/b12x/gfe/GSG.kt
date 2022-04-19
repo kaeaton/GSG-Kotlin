@@ -2,6 +2,7 @@ package org.b12x.gfe
 
 import javafx.stage.Stage
 import org.b12x.gfe.core.view.MainView
+import org.b12x.gfe.utilities.InternetAccess
 import tornadofx.App
 
 class GSG : App(MainView::class, Styles::class) {
@@ -13,5 +14,9 @@ class GSG : App(MainView::class, Styles::class) {
         super.start(stage)
         stage.width = gsgWidth
         stage.height = gsgHeight
+
+        /* Internet Access */
+        var internetAccess = InternetAccess()
+        internetAccess.isInternetAvailable()
     }
 }

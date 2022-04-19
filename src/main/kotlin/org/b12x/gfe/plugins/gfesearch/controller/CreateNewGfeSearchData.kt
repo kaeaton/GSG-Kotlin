@@ -18,7 +18,7 @@ object CreateNewGfeSearchData {
             locus = stateContext.locus,
             checkBoxList = GfeSearchLayoutData.checkList,
             textFieldList = GfeSearchLayoutData.textList,
-            regex = "",
+            regex = "".toRegex(),
             header = "",
             textFormat = GfeSearchLayoutData.textFormat,
             writeToFile = GfeSearchLayoutData.writeToFile,

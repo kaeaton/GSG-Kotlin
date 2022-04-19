@@ -1,10 +1,23 @@
 package org.b12x.gfe.core.controller.searchResults
 
+import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import org.b12x.gfe.core.controller.SearchData
 
 object FindResults {
-    fun findResults(searchData: SearchData) {
 
+    /**
+     * Uses a SearchData file to find requested results.
+     *
+     * @params a searchData derived object
+     */
+    fun findResults(searchData: SearchData) {
+        csvReader().open(searchData.dataFile) {
+            readAllAsSequence().forEach { row: List<String> ->
+                if(patternMatcher(searchData.regex, row[1])) {
+                    println(row)
+                }
+            }
+        }
     }
 
     /**

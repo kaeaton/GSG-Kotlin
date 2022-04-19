@@ -1,8 +1,7 @@
 package org.b12x.gfe.plugins.namesearch.controller
 
 import org.b12x.gfe.core.model.DataFiles
-import org.b12x.gfe.plugins.gfesearch.controller.CreateNewGfeSearchData
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.namesearch.controller.BuildRegexString.assembleRegexString
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import java.io.File
 
@@ -17,9 +16,9 @@ object CreateNewNameSearchData {
             version = stateContext.version,
             locus = stateContext.locus,
             searchTerm = searchTerm,
-            regex = "",
-            textFormat = GfeSearchLayoutData.textFormat,
-            writeToFile = GfeSearchLayoutData.writeToFile,
+            regex = assembleRegexString(searchTerm),
+            textFormat = "CSV",
+            writeToFile = false,
             dataFile = File(
                 DataFiles.retrieveDataFiles(
                     stateContext.loci,

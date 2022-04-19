@@ -19,8 +19,8 @@ class FileManagementTest {
     val TEST_FILE_1 = "HLA-A_3.31.0_2019-12-19_11-28-48"
     val TEST_FILE_2 = "HLA-B_3.31.0_2018-12-19_11-28-48"
     val TEST_FILE_3 = "HLA-C_3.31.0_2017-12-19_11-28-48"
-    val TEST_DATA_FILE_1_CSV = "HLA-A-3.31.0-Download.csv"
-    val TEST_DATA_FILE_2_CSV = "HLA-DRB1-3.31.0-Download.csv"
+    val TEST_DATA_FILE_1_CSV = "HLA-A_3.31.0_Download.csv"
+    val TEST_DATA_FILE_2_CSV = "HLA-DRB1_3.31.0_Download.csv"
     val RAW_DATA_DIRECTORIES = "/Documents/GSG/GSGData/TEST3/3.31.0/"
 
     // Hard to test for. I look at the time stamps in the folder to confirm they have not been overwritten.

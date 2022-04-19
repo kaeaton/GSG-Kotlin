@@ -10,8 +10,8 @@ data class NameSearchData(
     override val version: String = "2.0.0",
     override val locus: String = "HLA-A",
     var searchTerm: String,
-    override var regex: String = "",
+    override var regex: Regex = "".toRegex(),
     val textFormat: String = "CSV",
     val writeToFile: Boolean = false,
-    val dataFile: File
+    override val dataFile: File
 ) : SearchData

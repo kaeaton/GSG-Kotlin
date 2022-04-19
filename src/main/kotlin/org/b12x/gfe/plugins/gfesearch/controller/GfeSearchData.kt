@@ -11,9 +11,9 @@ data class GfeSearchData(
     override val locus: String = "HLA-A",
     val checkBoxList: MutableList<CheckBox>,
     val textFieldList: MutableList<TextField>,
-    override var regex: String = "",
+    override var regex: Regex = "".toRegex(),
     var header: String = "",
     val textFormat: String = "CSV",
     val writeToFile: Boolean = false,
-    val dataFile: File
+    override val dataFile: File
 ) : SearchData

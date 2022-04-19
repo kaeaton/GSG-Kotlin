@@ -18,7 +18,7 @@ object DataFiles {
         if (loci == "KIR") {
             pathToFile.append("neo4j_KIR_${version}_Download.csv")
         } else {
-            pathToFile.append("neo4j_${locus}_${version}_Download.csv")
+            pathToFile.append("${locus}_${version}_Data.csv")
         }
 
         if (exists(Paths.get(pathToFile.toString()))) {

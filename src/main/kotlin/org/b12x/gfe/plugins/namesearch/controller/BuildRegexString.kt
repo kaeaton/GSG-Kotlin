@@ -8,7 +8,8 @@ object BuildRegexString {
      * @params a GfeSearchData instance
      * @return a string ready to be converted to regex
      */
-    fun assembleRegexString(nameSearchData: NameSearchData) {
-        nameSearchData.regex = nameSearchData.searchTerm
+    fun assembleRegexString(searchTerm: String): Regex {
+
+        return searchTerm.toRegex()
     }
 }

@@ -27,7 +27,7 @@ object BuildRegexString {
                 numberProvided(gfeSearchData.textFieldList[i])
             }
         }
-        gfeSearchData.regex = closeRegex(regexString)
+        gfeSearchData.regex = closeRegex(regexString).toRegex()
     }
 
     /**

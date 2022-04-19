@@ -12,6 +12,8 @@ class FindResultsTest {
         assertTrue(FindResults.patternMatcher("HLA-A".toRegex(), "HLA-A*01:01:01:01"))
         assertTrue(FindResults.patternMatcher("01".toRegex(), "HLA-A*01:01:01:01"))
         assertTrue(FindResults.patternMatcher("02".toRegex(), "HLA-A*01:01:01:02N"))
+        assertTrue(FindResults.patternMatcher("\\*01".toRegex(), "HLA-A*01:01:01:01"))
+        assertFalse(FindResults.patternMatcher("\\*02".toRegex(), "HLA-A*01:01:01:02N"))
     }
 
 }
