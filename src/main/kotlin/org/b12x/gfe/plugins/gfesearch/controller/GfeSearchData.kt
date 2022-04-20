@@ -4,6 +4,8 @@ import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import org.b12x.gfe.core.controller.SearchData
 import java.io.File
+import org.b12x.gfe.core.controller.displayText.Result
+
 
 data class GfeSearchData(
     override val loci: String = "HLA",
@@ -15,5 +17,7 @@ data class GfeSearchData(
     var header: String = "",
     val textFormat: String = "CSV",
     val writeToFile: Boolean = false,
-    override val dataFile: File
+    override val dataFile: File,
+    override val tab: String = "GFE",
+    override val results: MutableList<Result> = mutableListOf()
 ) : SearchData

@@ -8,20 +8,20 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import java.io.File
 
-class FilterDataTest {
+class FilterDownloadedDataTest {
 
     @Test
     fun importData_returnCorrectNumOfLines(){
-        val hlaFileContents = FilterData.importData(File(tempHlaDataFileString))
-        val kirFileContents = FilterData.importData(File(tempKirDataFileString))
+        val hlaFileContents = FilterDownloadedData.importData(File(tempHlaDataFileString))
+        val kirFileContents = FilterDownloadedData.importData(File(tempKirDataFileString))
         assertEquals(10, hlaFileContents.size)
         assertEquals(13, kirFileContents.size)
     }
 
     @Test
     fun scanForDuplicates_returnListOfDuplicates() {
-        val hlaFileContents = FilterData.importData(File(tempHlaDataFileString))
-        val kirFileContents = FilterData.importData(File(tempKirDataFileString))
+        val hlaFileContents = FilterDownloadedData.importData(File(tempHlaDataFileString))
+        val kirFileContents = FilterDownloadedData.importData(File(tempKirDataFileString))
 
         val hlaDuplicates = listOf(
             listOf("HLA-DRB1w0-0-0-16-0-0-0-0-0-0-0-0-0","HLA-DRB1*01:01:02"),
@@ -36,8 +36,8 @@ class FilterDataTest {
             listOf("KIR3DL3w0-4-0-7-0-44-0-18-0-48-0-0-0-3-0-5-0-1-0", "KIR3DL3*01301")
         )
 
-        assertEquals(hlaDuplicates, FilterData.scanForDuplicates(hlaFileContents))
-        assertEquals(kirDuplicates, FilterData.scanForDuplicates(kirFileContents))
+        assertEquals(hlaDuplicates, FilterDownloadedData.scanForDuplicates(hlaFileContents))
+        assertEquals(kirDuplicates, FilterDownloadedData.scanForDuplicates(kirFileContents))
     }
 
 

@@ -11,7 +11,7 @@ object NameSearchViewParent : View("Name Search") {
     private val stateContext = LociStateContextNameSearch
 
     private var nameSearchViewChoiceBoxes = NameSearchViewChoiceBoxes()
-    private val nameSearchTextFieldSearchTerm = NameSearchTextFieldSearchTerm()
+//    private val nameSearchTextFieldSearchTerm = NameSearchTextFieldSearchTerm()
     private val nameSearchTableView = NameSearchTableView()
     private val nameSearchInformationTextArea = NameSearchInformationTextArea()
     private val nameSearchViewBottomHalf = NameSearchViewBottomHalf()
@@ -29,7 +29,7 @@ object NameSearchViewParent : View("Name Search") {
 ////                    width = 800px
 //                }
 //            }
-            add (nameSearchTextFieldSearchTerm.root)
+            add (NameSearchTextFieldSearchTerm.root)
         }
 
         bottom = nameSearchViewBottomHalf.root

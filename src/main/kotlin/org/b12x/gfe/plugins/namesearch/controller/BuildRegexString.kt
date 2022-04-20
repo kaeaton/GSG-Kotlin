@@ -10,8 +10,13 @@ object BuildRegexString {
      */
     fun assembleRegexString(searchTerm: String): Regex {
 
+        // if empty search term
+        if(searchTerm.isEmpty()) {
+            return "".toRegex()
+        }
+
         // if no asterisk, add one to start
-        if(searchTerm.get(0).isDigit()) {
+        if(searchTerm[0].isDigit()) {
             val searchTermFromStart = """\*$searchTerm"""
             return searchTermFromStart.toRegex()
         }
