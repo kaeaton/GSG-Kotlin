@@ -2,24 +2,19 @@ package org.b12x.gfe.plugins.gfesearch.view
 
 import javafx.geometry.HPos
 import javafx.geometry.Pos
+import org.b12x.gfe.core.controller.displayText.Result
+import org.b12x.gfe.plugins.namesearch.view.NameSearchTableView
 import tornadofx.*
 
 object GfeSearchTableView : View() {
 
-    val data = listOf(
-        // data class at the bottom of this file
-        GfeSearchResult("HLA-A*01:01:01:01", "HLA-Aw2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-4"),
-        GfeSearchResult("HLA-A*01:01:01:02N", "HLA-Aw3-1-1-1-2-1-1-1-1-1-1-1-1-1-1-1-3"),
-        GfeSearchResult("HLA-A*01:01:01:03", "HLA-Aw2-1-2-1-1-1-1-1-1-1-1-1-1-1-1-1-4")
-    ).asObservable()
-
-    val tableData = mapOf(
-        "Fruit" to arrayOf("apple", "pear", "Banana"),
-        "Veggies" to arrayOf("beans", "cauliflower", "kale"),
-        "Meat" to arrayOf("poultry", "pork", "beef")
+    val gfeData = observableListOf(
+        Result("HLA-A*01:01:01:01", "HLA-Aw2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-4"),
+        Result("HLA-A*01:01:01:02N", "HLA-Aw3-1-1-1-2-1-1-1-1-1-1-1-1-1-1-1-3"),
+        Result("HLA-A*01:01:01:03", "HLA-Aw2-1-2-1-1-1-1-1-1-1-1-1-1-1-1-1-4")
     )
 
-    var testname = data[0].gfeName.split("-")
+    var testname = gfeData[0].gfeName.split("-")
 
 //    var prettyTableView = tableview(data) {
 //        readonlyColumn("Name", GfeSearchResult::name)
@@ -32,35 +27,23 @@ object GfeSearchTableView : View() {
 //        }
 //    }
 
+    val dataTable = tableview(gfeData) {
+        column("Allele Name", Result::alleleNameProperty)
+        column("GFE", Result::gfeProperty)
 
-        override val root = hbox {
-        tableview(data) {
-            readonlyColumn("Name", GfeSearchResult::name)
-            readonlyColumn("GFE", GfeSearchResult::gfeName)
-
-            style {
-                fontSize = Dimension(1.2, Dimension.LinearUnits.em)
-                prefWidth = Dimension(650.0, Dimension.LinearUnits.px)
-                prefHeight = Dimension(350.0, Dimension.LinearUnits.px)
-            }
+        style {
+            fontSize = Dimension(1.2, Dimension.LinearUnits.em)
+            prefWidth = Dimension(650.0, Dimension.LinearUnits.px)
+            prefHeight = Dimension(350.0, Dimension.LinearUnits.px)
         }
+    }
+
+    override val root = hbox {
+        add(dataTable)
+
         style {
             alignment = Pos.CENTER
             hAlignment = HPos.CENTER
         }
     }
-
-
-
-
-//    val example = treetableview<String>(TreeItem("Items")) {
-//        column<String, String>("Type", { it.value.valueProperty() })
-//        populate {
-//            if (it.value == "Items") tableData.keys
-//            else tableData[it.value]?.asList()
-//        }
-//    }
-
 }
-
-data class GfeSearchResult(val name: String, val gfeName: String)

@@ -12,13 +12,32 @@ object FindResults {
      *
      * @params a searchData derived object
      */
-
-    fun findResults(searchData: SearchData): List<Result> {
+    fun findResultsNameSearch(searchData: SearchData): List<Result> {
         val displayText = DisplayText(searchData.tab)
 
         csvReader().open(searchData.dataFile) {
             readAllAsSequence().forEach { row: List<String> ->
                 if(patternMatcher(searchData.regex, row[1])) {
+                    searchData.results.add(Result(row[1], row[0]))
+//                    println(row)
+                }
+            }
+        }
+
+        return searchData.results.toList()
+    }
+
+    /**
+     * Uses a SearchData file to find requested results.
+     *
+     * @params a searchData derived object
+     */
+    fun findResultsGfeSearch(searchData: SearchData): List<Result> {
+        val displayText = DisplayText(searchData.tab)
+
+        csvReader().open(searchData.dataFile) {
+            readAllAsSequence().forEach { row: List<String> ->
+                if(patternMatcher(searchData.regex, row[0])) {
                     searchData.results.add(Result(row[1], row[0]))
 //                    println(row)
                 }

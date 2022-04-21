@@ -21,5 +21,5 @@ class ResultsController : Controller() {
         }
     }
 
-    private fun processRequest(searchData: SearchData): List<Result> = FindResults.findResults(searchData)
+    private fun processRequest(searchData: SearchData): List<Result> = FindResults.findResultsNameSearch(searchData)
 }
