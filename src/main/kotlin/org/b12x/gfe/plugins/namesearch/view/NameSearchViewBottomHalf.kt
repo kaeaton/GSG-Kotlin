@@ -12,7 +12,7 @@ import kotlin.system.exitProcess
 
 class NameSearchViewBottomHalf : View("My View") {
 
-    private val nameSearchTableView = NameSearchTableView()
+//    private val nameSearchTableView = NameSearchTableView()
 
     override val root = borderpane {
         top = hbox {  }
@@ -24,7 +24,7 @@ class NameSearchViewBottomHalf : View("My View") {
         }
 
         center = vbox {
-            add(nameSearchTableView.root)
+            add(NameSearchTableView.root)
         }
 
         right = vbox {

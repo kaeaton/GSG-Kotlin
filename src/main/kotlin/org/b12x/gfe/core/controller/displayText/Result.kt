@@ -5,7 +5,7 @@ import tornadofx.*
 
 class Result (alleleName: String, gfe: String){
     val gfeProperty = SimpleStringProperty(gfe)
-    var gfe by gfeProperty
+    var gfeName by gfeProperty
 
     val alleleNameProperty = SimpleStringProperty(alleleName)
     var alleleName by alleleNameProperty

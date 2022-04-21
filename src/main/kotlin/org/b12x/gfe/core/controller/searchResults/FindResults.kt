@@ -20,7 +20,7 @@ object FindResults {
             readAllAsSequence().forEach { row: List<String> ->
                 if(patternMatcher(searchData.regex, row[1])) {
                     searchData.results.add(Result(row[1], row[0]))
-                    println(row)
+//                    println(row)
                 }
             }
         }

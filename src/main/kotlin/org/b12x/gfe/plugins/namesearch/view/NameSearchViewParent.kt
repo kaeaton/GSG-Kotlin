@@ -12,7 +12,7 @@ object NameSearchViewParent : View("Name Search") {
 
     private var nameSearchViewChoiceBoxes = NameSearchViewChoiceBoxes()
 //    private val nameSearchTextFieldSearchTerm = NameSearchTextFieldSearchTerm()
-    private val nameSearchTableView = NameSearchTableView()
+//    private val nameSearchTableView = NameSearchTableView()
     private val nameSearchInformationTextArea = NameSearchInformationTextArea()
     private val nameSearchViewBottomHalf = NameSearchViewBottomHalf()
 
