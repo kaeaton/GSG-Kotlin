@@ -4,6 +4,7 @@ import io.ktor.client.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchInformationTextArea
+import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
 import tornadofx.find
 
 class InternetAccess {
@@ -18,17 +19,18 @@ class InternetAccess {
         // necessary to initialize JavaFX
 //        val jfxPanel = JFXPanel()
 
-        val gfeSearchInformationTextArea = find(GfeSearchInformationTextArea::class)
+//        val gfeSearchInformationTextArea = find(GfeSearchInformationTextArea::class)
 
         return runBlocking {
             try {
                 ktorHttpClient.head<String>("https://google.com")
-                gfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+                GfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+                NameSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
                 true
             } catch (e: Exception) {
                 println(e.message)
-                gfeSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
-
+                GfeSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+                NameSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
                 false
             }
         }

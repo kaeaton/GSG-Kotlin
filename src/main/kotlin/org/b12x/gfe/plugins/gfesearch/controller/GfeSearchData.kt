@@ -6,7 +6,6 @@ import org.b12x.gfe.core.controller.SearchData
 import java.io.File
 import org.b12x.gfe.core.controller.displayText.Result
 
-
 data class GfeSearchData(
     override val loci: String = "HLA",
     override val version: String = "2.0.0",
@@ -19,5 +18,6 @@ data class GfeSearchData(
     val writeToFile: Boolean = false,
     override val dataFile: File,
     override val tab: String = "GFE",
-    override val results: MutableList<Result> = mutableListOf()
+    override val results: MutableList<Result> = mutableListOf(),
+    override var resultsCount: Int = 0
 ) : SearchData

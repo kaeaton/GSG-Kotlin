@@ -11,4 +11,5 @@ interface SearchData {
     val dataFile: File
     val tab: String
     val results: MutableList<Result>
+    var resultsCount: Int
 }

@@ -16,5 +16,6 @@ data class NameSearchData(
     val writeToFile: Boolean = false,
     override val dataFile: File,
     override val tab: String = "NAME",
-    override val results: MutableList<Result> = mutableListOf()
+    override val results: MutableList<Result> = mutableListOf(),
+    override var resultsCount: Int = 0
 ) : SearchData

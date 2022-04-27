@@ -18,6 +18,8 @@ object NameSearchButtonSubmit : View("My View") {
                 // fire(ResultsRequest)
                 NameSearchTableView.data.clear()
                 NameSearchTableView.data.addAll(FindResults.findResultsNameSearch(searchData))
+                NameSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+
             }
         }
     }
