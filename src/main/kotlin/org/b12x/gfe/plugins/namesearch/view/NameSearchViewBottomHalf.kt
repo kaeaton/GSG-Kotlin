@@ -1,14 +1,18 @@
-package org.b12x.gfe.plugins.gfesearch.view
+package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.geometry.HPos
 import javafx.geometry.Pos
 import javafx.scene.Group
 import javafx.scene.layout.Priority
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchButtonSubmit
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchInformationTextArea
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchTableView
 import tornadofx.*
 import kotlin.system.exitProcess
 
-class GfeSearchViewBottomHalf : View() {
+class NameSearchViewBottomHalf : View("My View") {
 
+//    private val nameSearchTableView = NameSearchTableView()
 
     override val root = borderpane {
         top = hbox {  }
@@ -20,22 +24,19 @@ class GfeSearchViewBottomHalf : View() {
         }
 
         center = vbox {
-            add(GfeSearchTableView.root)
+            add(NameSearchTableView.root)
         }
 
         right = vbox {
-//            val gfeSearchInformationTextBox = find(GfeSearchInformationTextArea::class)
-            add(GfeSearchInformationTextArea.root)
+//            val nameSearchInformationTextBox = find(NameSearchInformationTextArea::class)
+            add(NameSearchInformationTextArea.root)
         }
 
         bottom = hbox {
-            add(Group(GfeSearchButtonSubmit.root))
+            add(Group(NameSearchButtonSubmit.root))
 
             add(Group(button("Exit") {
                 action {
-//                    var stateContext = LociStateContextGfeSearch
-//                    stateContext.loci = GfeSearchChoiceBoxLoci.choiceBoxLoci.value
-
                     exitProcess(0)
                 }
                 style {
@@ -54,6 +55,5 @@ class GfeSearchViewBottomHalf : View() {
                 hGrow = Priority.ALWAYS
             }
         }
-
     }
 }

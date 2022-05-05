@@ -19,7 +19,7 @@ object BuildRegexString {
             throw IllegalArgumentException("The lists are not the same size.")
         }
 
-        var regexString = "^${gfeSearchData.locus}w-"
+        var regexString = "^${gfeSearchData.locus}w"
         for (i in 1 until gfeSearchData.checkBoxList.size) {
             regexString += if(gfeSearchData.textFieldList[i].text.isEmpty()) {
                 checkBoxChecked(gfeSearchData.checkBoxList[i])
@@ -27,7 +27,7 @@ object BuildRegexString {
                 numberProvided(gfeSearchData.textFieldList[i])
             }
         }
-        gfeSearchData.regex = closeRegex(regexString)
+        gfeSearchData.regex = closeRegex(regexString).toRegex()
     }
 
     /**
@@ -109,6 +109,7 @@ object BuildRegexString {
         }
 
         finalRegex = "$finalRegex$"
+        println("Final Regex: $finalRegex")
         return finalRegex
     }
 

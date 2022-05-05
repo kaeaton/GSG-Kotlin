@@ -76,7 +76,7 @@ class LocalVersions (loci: String) {
     private fun fileContainsData(file: File) = file.length() > headerLength
 
     // get the locus name out of the file name
-    private fun locusName(file: File) = file.toString().split("_")[1]
+    private fun locusName(file: File) = file.name.toString().split("_")[0]
 
     fun returnOnlineVersionFile(): File {
         val onlineVersionsFile = gsgDataLocation + "onlineVersions.txt"

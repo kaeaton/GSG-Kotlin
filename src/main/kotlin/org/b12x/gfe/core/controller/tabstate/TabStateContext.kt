@@ -1,7 +1,5 @@
 package org.b12x.gfe.core.controller.tabstate
 
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.HlaStateGfeSearch
-
 class TabStateContext {
     private var currentState: TabState? = null
 

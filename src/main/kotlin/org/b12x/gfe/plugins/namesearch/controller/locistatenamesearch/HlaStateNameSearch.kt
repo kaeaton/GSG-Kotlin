@@ -1,6 +1,5 @@
-package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
+package org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch
 
-import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.locus.LocusList
@@ -12,38 +11,40 @@ import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
+import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxLocus
+import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxVersion
 import tornadofx.*
 import kotlin.properties.Delegates
 
 
-class HlaStateGfeSearch : LociStateGfeSearch {
+class HlaStateNameSearch : LociStateNameSearch {
 
     /* Version */
 
-    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionHla) { _, oldValue, newValue ->
-        PrefsGfeSearch.currentGfeSearchVersionHla = newValue
+    override var version: String by Delegates.observable(PrefsNameSearch.currentNameSearchVersionHla) { _, oldValue, newValue ->
+        PrefsNameSearch.currentNameSearchVersionHla = newValue
     }
 
     override var versionObject: Version by Delegates.observable(
         CreateNewHlaVersionObject.createVersionObject("HLA", version)
     ) { _, _, _ -> CreateNewHlaVersionObject.createVersionObject("HLA", version) }
 
-    override fun updateVersions(ctx: LociStateContextGfeSearch) {
+    override fun updateVersions(ctx: LociStateContextNameSearch) {
         var versionList = VersionList("HLA")
         var versions = versionList.allVersionNames
 
-        val gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
+        val nameSearchChoiceBoxVersion = find(NameSearchChoiceBoxVersion::class)
 
-        gfeSearchChoiceBoxVersion.versionsList.clear()
-        gfeSearchChoiceBoxVersion.versionsList.addAll(versions)
+        nameSearchChoiceBoxVersion.versionsList.clear()
+        nameSearchChoiceBoxVersion.versionsList.addAll(versions)
 
-        gfeSearchChoiceBoxVersion.currentVersion = version
+        nameSearchChoiceBoxVersion.currentVersion = version
     }
 
     /* Locus */
 
-    override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusHla) { _, _, newValue ->
-        PrefsGfeSearch.currentGfeSearchLocusHla = newValue
+    override var locus: String by Delegates.observable(PrefsNameSearch.currentNameSearchLocusHla) { _, _, newValue ->
+        PrefsNameSearch.currentNameSearchLocusHla = newValue
     }
 
     override var locusEnum: LociEnum by Delegates.observable(
@@ -62,30 +63,23 @@ class HlaStateGfeSearch : LociStateGfeSearch {
             }
         }
 
-        val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-        val locusList = LocusList(currentVersionObject, gfeSearchChoiceBoxLocus)
+        val nameSearchChoiceBoxLocus = find(NameSearchChoiceBoxLocus::class)
+        val locusList = LocusList(currentVersionObject, nameSearchChoiceBoxLocus)
         locusList.updateLocusList()
 
         return locusList.newLocusList
     }
 
     // I know it's not spelled locuses, but loci is already used.
-    override fun updateLocuses(ctx: LociStateContextGfeSearch) {
+    override fun updateLocuses(ctx: LociStateContextNameSearch) {
         val currentVersion = version
         var locusNames = getHlaLocusNames(currentVersion)
 
-        val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-        val locObservableList = gfeSearchChoiceBoxLocus.locusList
+        val nameSearchChoiceBoxLocus = find(NameSearchChoiceBoxLocus::class)
+        val locObservableList = nameSearchChoiceBoxLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)
 
-        gfeSearchChoiceBoxLocus.currentLocus = locus //PrefsGfeSearch.currentGfeSearchLocusHla
-    }
-
-    override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchViewSearchBoxes {
-//        val currentLocus = locusEnum
-             HlaLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusHla } ?: HlaLoci.A
-
-        return GfeSearchViewSearchBoxesHla(locusEnum) as GfeSearchViewSearchBoxes
+        nameSearchChoiceBoxLocus.currentLocus = locus //PrefsGfeSearch.currentGfeSearchLocusHla
     }
 }

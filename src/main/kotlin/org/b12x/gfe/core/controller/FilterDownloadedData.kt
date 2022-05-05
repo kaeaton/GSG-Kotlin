@@ -2,10 +2,8 @@ package org.b12x.gfe.core.controller
 
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import java.io.File
-import java.lang.Math.floor
-import kotlin.math.truncate
 
-object FilterData {
+object FilterDownloadedData {
 
     /**
      * Scans for duplicate entries in nested lists.

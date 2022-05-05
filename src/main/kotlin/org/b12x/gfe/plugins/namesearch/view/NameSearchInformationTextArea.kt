@@ -1,10 +1,10 @@
-package org.b12x.gfe.plugins.gfesearch.view
+package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.geometry.HPos
 import javafx.geometry.Pos
 import tornadofx.*
 
-class GfeSearchInformationTextBox : View("My View") {
+object NameSearchInformationTextArea : View("My View") {
 
     var infoTextArea = textarea {
         style {

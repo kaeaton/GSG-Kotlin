@@ -1,5 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
+import org.b12x.gfe.core.controller.searchResults.FindResults
 import org.b12x.gfe.plugins.gfesearch.controller.CreateNewGfeSearchData
 import tornadofx.*
 
@@ -9,9 +10,14 @@ object GfeSearchButtonSubmit : View("Submit") {
         button("Submit") {
             action {
                 val searchData = CreateNewGfeSearchData.generateSearchData()
-                GfeSearchLayoutData.resetArraysSoft()
                 println("You pressed the GFE Search submit button.")
 //                resultsTextField.text = "Data submitted"
+                val results = FindResults.findResultsGfeSearch(searchData)
+                println(results)
+                GfeSearchTableView.gfeData.clear()
+                GfeSearchTableView.gfeData.addAll(results)
+                GfeSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+                GfeSearchLayoutData.resetArraysSoft()
             }
         }
     }
