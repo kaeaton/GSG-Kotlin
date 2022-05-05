@@ -16,7 +16,7 @@ class GSG : App(MainView::class, Styles::class) {
         stage.height = gsgHeight
 
         /* Internet Access */
-        var internetAccess = InternetAccess()
-        internetAccess.isInternetAvailable()
+//        var internetAccess = InternetAccess()
+        InternetAccess.isInternetAvailable()
     }
 }
