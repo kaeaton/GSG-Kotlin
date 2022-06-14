@@ -28,7 +28,7 @@ public class PrefsManager {
      * @return the stored integer
      */
     public static int getPrefInt(String name) {
-        return preferences.getInt(name, 0);
+        return preferences.getInt(name, 1);
     }
 
     /**
@@ -43,13 +43,13 @@ public class PrefsManager {
 
     /**
      * Gets the string value of the named preference.
-     * Returns an empty string by default.
+     * Returns the string "HLA-A" by default.
      *
      * @param name the preference to be retrieved
      * @return the stored string
      */
     public static String getPrefString(String name) {
-        return preferences.get(name, "");
+        return preferences.get(name, "HLA-A");
     }
 
     /**

@@ -1,35 +1,21 @@
 package org.b12x.gfe.plugins.gfesearch.controller
 
-import io.reactivex.rxjava3.kotlin.*
-import javafx.beans.Observable
-import org.b12x.gfe.MyApp
-import org.b12x.gfe.plugins.gfesearch.view.TestApp
-import org.b12x.gfe.plugins.gfesearch.view.TestLayout
-import org.b12x.gfe.utilities.preference.PrefsManager
 import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
-import tornadofx.*
-import kotlin.system.exitProcess
 
 
-class BuildRegexTest {
+class TestExamples {
 
-//    val testApp = TestApp()
-    val testLayout = TestLayout()
-    val textFields = testLayout.textFields
-    val checkBoxes = testLayout.checkBoxes
+//    val testLayout = TestLayout()
+//    val textFields = testLayout.textFields
+//    val checkBoxes = testLayout.checkBoxes
 
     @Test
     fun getIntDefault() {
-        assertEquals(textFields.size, checkBoxes.size)
+//        assertEquals(textFields.size, checkBoxes.size)
     }
 
     companion object ArgumentsParameters {
@@ -37,12 +23,6 @@ class BuildRegexTest {
         @BeforeAll
         @JvmStatic
         internal fun setup() {
-//            runAsync {
-                launch<TestApp>()
-//            }
-//            textFields.forEach {
-//
-//            }
 //            PrefsManager.wipePref("TESTING_INT");
 //            PrefsManager.wipePref("TESTING_STRING");
 //            PrefsManager.wipePref("TESTING_BOOLEAN");
