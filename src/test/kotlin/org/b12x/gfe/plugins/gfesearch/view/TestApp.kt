@@ -12,8 +12,16 @@ import tornadofx.*
 import java.util.Collections.list
 
 class TestApp: App(TestLayout::class, Styles::class) {
+    val parentStage = Stage()
+
+//    override fun onDock() {
+//        runAsync {
+//                Thread.sleep(100)
+//            }
+//        }
+
     override fun start(stage: Stage) {
-        super.start(stage)
+        super.start(parentStage)
         stage.width = 400.0
         stage.height = 300.0
     }

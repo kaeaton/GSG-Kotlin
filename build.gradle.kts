@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.4.0"
+    kotlin("jvm") version "1.7.0"
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
 }
@@ -49,7 +49,7 @@ javafx { modules("javafx.controls", "javafx.fxml", "javafx.graphics") }
 // Set Kotlin/JVM target versions
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
-    kotlinOptions.languageVersion = "1.4"
+    kotlinOptions.languageVersion = "1.7"
 }
 
 // Use JUnit
