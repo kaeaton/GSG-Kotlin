@@ -75,7 +75,7 @@ class DirectoryManagement {
     private val userDirectory = System.getProperty("user.home")
 
     /**
-     * Sets the specific group of genes to be read.
+     * Sets the folder location for a specific group of genes.
      *
      * @params a string representing the target loci
      * @return a string to the location of the specified data directory

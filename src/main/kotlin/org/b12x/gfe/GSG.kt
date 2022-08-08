@@ -17,6 +17,6 @@ class GSG : App(MainView::class, Styles::class) {
 
         /* Internet Access */
 //        var internetAccess = InternetAccess()
-        InternetAccess.isInternetAvailable()
+//        InternetAccess.isInternetAvailable()
     }
 }

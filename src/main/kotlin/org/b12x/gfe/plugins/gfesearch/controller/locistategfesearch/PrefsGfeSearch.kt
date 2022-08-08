@@ -2,7 +2,13 @@ package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
 import org.b12x.gfe.GSG
 import org.b12x.gfe.core.controller.PrefsCore
+import org.b12x.gfe.utilities.DirectoryManagement
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.util.prefs.Preferences
+import kotlin.io.path.exists
+import kotlin.io.path.isDirectory
 import kotlin.properties.Delegates
 
 object PrefsGfeSearch {
@@ -39,10 +45,24 @@ object PrefsGfeSearch {
     var currentGfeSearchVersionHla: String by Delegates.observable(
         prefs.get(
             "currentGfeSearchVersionHla",
-            ""
+            defaultHlaVersion()
         )
     ) { _, _, new ->
         prefs.put("currentGfeSearchVersionHla", new)
+    }
+
+    // checks for existing HLA directory, creates one if it doesn't exist
+    // This should allow it to boot on systems without data
+    private fun defaultHlaVersion() : String {
+        val directoryManagement = DirectoryManagement()
+        val gsgDataLocation = directoryManagement.setLociLocation("HLA")
+
+        if (Paths.get(gsgDataLocation).exists() and (File(gsgDataLocation).list().isNotEmpty())) {
+            return File(gsgDataLocation).listFiles()?.get(0).toString()
+        }
+
+        Files.createDirectories(Paths.get(gsgDataLocation))
+        return ""
     }
 
     var currentGfeSearchVersionKir: String by Delegates.observable(

@@ -50,7 +50,7 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
         val gfeSearchBoxesContainer = find(GfeSearchBoxesContainer::class)
         println(gfeSearchBoxesContainer.toString())
         val searchBoxes = gfeSearchBoxesContainer.gfeSearchBoxes
-        println(searchBoxes)
+        println(searchBoxes.toString())
         val test = gfeSearchBoxesContainer::gfeSearchBoxes
         println(test.toString())
 
