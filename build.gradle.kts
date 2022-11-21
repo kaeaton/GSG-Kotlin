@@ -1,12 +1,13 @@
 plugins {
-    kotlin("jvm") version "1.5.30"
+    kotlin("jvm") version "1.7.21"
+
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
     kotlin("plugin.serialization") version "1.6.0"
     id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
-application { mainClassName = "org.b12x.gfe.MainKt" }
+application { mainClass.set("org.b12x.gfe.MainKt") }
 
 repositories {
     mavenCentral()
@@ -63,12 +64,12 @@ javafx { modules("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.sw
 // Set Kotlin/JVM target versions
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
-    kotlinOptions.languageVersion = "1.6"
+    kotlinOptions.languageVersion = "1.7"
 }
 
 // Use JUnit
 tasks.test { useJUnitPlatform() }
 
 // Be sure to use latest Gradle version
-tasks.named<Wrapper>("wrapper") { gradleVersion = "6.7.1" }
+tasks.named<Wrapper>("wrapper") { gradleVersion = "7.5.1" }
 

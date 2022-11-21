@@ -23,10 +23,6 @@ class TestExamples {
         @BeforeAll
         @JvmStatic
         internal fun setup() {
-//
-//            textFields.forEach {
-//
-//            }
 //            PrefsManager.wipePref("TESTING_INT");
 //            PrefsManager.wipePref("TESTING_STRING");
 //            PrefsManager.wipePref("TESTING_BOOLEAN");
