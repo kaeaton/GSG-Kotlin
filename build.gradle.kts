@@ -1,12 +1,12 @@
 plugins {
-    kotlin("jvm") version "1.7.0"
+    kotlin("jvm") version "1.7.21"
 
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
     kotlin("plugin.serialization") version "1.5.0"
 }
 
-application { mainClassName = "org.b12x.gfe.MainKt" }
+application { mainClass.set("org.b12x.gfe.MainKt") }
 
 repositories {
     mavenCentral()
@@ -67,5 +67,5 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 tasks.test { useJUnitPlatform() }
 
 // Be sure to use latest Gradle version
-tasks.named<Wrapper>("wrapper") { gradleVersion = "6.7.1" }
+tasks.named<Wrapper>("wrapper") { gradleVersion = "7.5.1" }
 
