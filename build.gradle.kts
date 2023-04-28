@@ -10,7 +10,6 @@ application { mainClass.set("org.b12x.gfe.MainKt") }
 
 repositories {
     mavenCentral()
-    jcenter()
     maven("https://plugins.gradle.org/m2/")
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
 }
@@ -23,8 +22,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
     // Ktor
-    implementation("io.ktor:ktor-client-core:1.6.7")
-    implementation("io.ktor:ktor-client-cio:1.6.7")
+    implementation("io.ktor:ktor-client-core:2.3.0")
+    implementation("io.ktor:ktor-client-cio:2.3.0")
 
     // TornadoFX dependency
     implementation("no.tornado:tornadofx:1.7.20")
@@ -34,7 +33,7 @@ dependencies {
     implementation("com.squareup.okio:okio:2.10.0")
 
     // JSON parsing
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
     implementation("com.beust:klaxon:5.5")
 
     // CSV parsing
