@@ -21,7 +21,7 @@ fun main() {
 
     /* Prefs Reset */
     PrefsCore.nuclearOption()
-//    println(PrefsGfeSearch.currentGfeSearchLocusHla)
+    println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Event Bus Controller wakeup call */
 //    find(ResultsController::class)

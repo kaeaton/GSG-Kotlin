@@ -24,7 +24,7 @@ object InternetAccess {
 
         return runBlocking {
             try {
-                ktorHttpClient.head<String>("https://google.com")
+                ktorHttpClient.head("https://google.com")
                 GfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
                 NameSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
                 true

@@ -48,7 +48,7 @@ class OptionsView : View("My View") {
 
                 runBlocking {
                     try {
-                        ktorHttpClient.head<String>("http://gfe.b12x.org/v1/imgt-versions")
+                        ktorHttpClient.head("http://gfe.b12x.org/v1/imgt-versions")
                         infoTextArea.appendText(YES_SERVER_MSG)
                         GfeSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
                         NameSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
