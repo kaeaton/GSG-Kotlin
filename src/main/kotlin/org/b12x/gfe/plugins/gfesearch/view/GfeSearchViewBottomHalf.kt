@@ -9,7 +9,6 @@ import kotlin.system.exitProcess
 
 class GfeSearchViewBottomHalf : View() {
 
-
     override val root = borderpane {
         top = hbox {  }
 
@@ -25,7 +24,7 @@ class GfeSearchViewBottomHalf : View() {
 
         right = vbox {
 //            val gfeSearchInformationTextBox = find(GfeSearchInformationTextArea::class)
-            add(GfeSearchInformationTextArea().root)
+            add(GfeSearchInformationTextArea.root)
         }
 
         bottom = hbox {

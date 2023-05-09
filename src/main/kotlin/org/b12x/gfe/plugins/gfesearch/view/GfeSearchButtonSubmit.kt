@@ -6,6 +6,8 @@ import tornadofx.*
 
 object GfeSearchButtonSubmit : View("Submit") {
 
+
+
     override val root = vbox {
         button("Submit") {
             action {
@@ -16,8 +18,7 @@ object GfeSearchButtonSubmit : View("Submit") {
                 println(results)
                 GfeSearchTableView.gfeData.clear()
                 GfeSearchTableView.gfeData.addAll(results)
-                val gfeSearchInformationTextArea = tornadofx.find(GfeSearchInformationTextArea::class)
-                gfeSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+                GfeSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
                 GfeSearchLayoutData.resetArraysSoft()
             }
         }

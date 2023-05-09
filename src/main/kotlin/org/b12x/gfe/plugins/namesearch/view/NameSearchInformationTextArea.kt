@@ -2,11 +2,12 @@ package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.geometry.HPos
 import javafx.geometry.Pos
+import javafx.scene.control.TextArea
 import tornadofx.*
 
 object NameSearchInformationTextArea : View("My View") {
-
-    var infoTextArea = textarea {
+    
+    val infoTextArea = textarea {
         style {
             fontSize = Dimension(1.1, Dimension.LinearUnits.em)
             prefWidth = Dimension(425.0, Dimension.LinearUnits.px)

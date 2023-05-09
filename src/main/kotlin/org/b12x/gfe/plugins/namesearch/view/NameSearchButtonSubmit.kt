@@ -13,12 +13,13 @@ object NameSearchButtonSubmit : View("My View") {
         button("Submit") {
             action {
                 val searchTerm = NameSearchTextFieldSearchTerm.searchTerm
+                val nameSearchInformationTextArea = tornadofx.find(NameSearchInformationTextArea::class)
                 searchData = CreateNewNameSearchData.generateSearchData(searchTerm)
                 println("The name search submit button has been activated.")
                 // fire(ResultsRequest)
                 NameSearchTableView.data.clear()
                 NameSearchTableView.data.addAll(FindResults.findResultsNameSearch(searchData))
-                NameSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+                nameSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
 
             }
         }

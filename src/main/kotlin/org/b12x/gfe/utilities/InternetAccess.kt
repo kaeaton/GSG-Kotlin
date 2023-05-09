@@ -1,7 +1,7 @@
 package org.b12x.gfe.utilities
 
-import io.ktor.client.*
 //import io.ktor.client.request.*
+import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import javafx.embed.swing.JFXPanel
@@ -13,6 +13,7 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
+import kotlin.reflect.KParameter
 
 object InternetAccess {
 
@@ -30,6 +31,7 @@ object InternetAccess {
         val jfxPanel = JFXPanel()
 
         val gfeSearchInformationTextArea = find(GfeSearchInformationTextArea::class)
+        val nameSearchInformationTextArea = find(NameSearchInformationTextArea::class)
 
         return runBlocking {
 //            val ktorHttpClient = HttpClient(CIO){}
@@ -55,8 +57,7 @@ object InternetAccess {
                 connection.connect()
 
                 response = connection.responseCode
-                print(response)
-
+                println(response)
 
             } catch (e: Exception) {
                 // Handle exceptions
@@ -72,14 +73,14 @@ object InternetAccess {
 
             // 200 for success
             if (response == 200) {
-                gfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
-//                    NameSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
-                print("We made it online")
+                GfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+                NameSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+                println("We made it online")
                 true
             } else {
-                gfeSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
-//                    NameSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
-                print ("Nope, still no internet")
+                GfeSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+                NameSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+                println("Nope, still no internet")
                 false
             }
         }

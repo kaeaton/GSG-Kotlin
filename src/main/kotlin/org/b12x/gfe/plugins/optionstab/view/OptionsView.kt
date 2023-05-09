@@ -46,17 +46,20 @@ class OptionsView : View("My View") {
                 val YES_SERVER_MSG = "The server is available.\n"
                 val NO_SERVER_MSG = "The server is not available, locally available data only.\n"
 
+                val gfeSearchInformationTextArea = tornadofx.find(GfeSearchInformationTextArea::class)
+                val nameSearchInformationTextArea = tornadofx.find(NameSearchInformationTextArea::class)
+
                 runBlocking {
                     try {
 //                        ktorHttpClient.head("http://gfe.b12x.org/v1/imgt-versions")
                         infoTextArea.appendText(YES_SERVER_MSG)
-                        GfeSearchInformationTextArea().infoTextArea.appendText(YES_SERVER_MSG)
-                        NameSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
+                        gfeSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
+                        nameSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
                     } catch (e: Exception) {
                         println(e.message)
                         infoTextArea.appendText(NO_SERVER_MSG)
-                        GfeSearchInformationTextArea().infoTextArea.appendText(NO_SERVER_MSG)
-                        NameSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
+                        gfeSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
+                        nameSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
                     }
                 }
             }
