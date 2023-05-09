@@ -10,7 +10,7 @@ import org.b12x.gfe.core.model.parsers.ParserVersionData
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchInformationTextArea
 import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
 import org.b12x.gfe.utilities.InternetAccess
-import org.b12x.gfe.utilities.InternetAccess.ktorHttpClient
+//import org.b12x.gfe.utilities.InternetAccess.ktorHttpClient
 import tornadofx.*
 import java.util.prefs.Preferences
 
@@ -48,14 +48,14 @@ class OptionsView : View("My View") {
 
                 runBlocking {
                     try {
-                        ktorHttpClient.head("http://gfe.b12x.org/v1/imgt-versions")
+//                        ktorHttpClient.head("http://gfe.b12x.org/v1/imgt-versions")
                         infoTextArea.appendText(YES_SERVER_MSG)
-                        GfeSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
+                        GfeSearchInformationTextArea().infoTextArea.appendText(YES_SERVER_MSG)
                         NameSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
                     } catch (e: Exception) {
                         println(e.message)
                         infoTextArea.appendText(NO_SERVER_MSG)
-                        GfeSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
+                        GfeSearchInformationTextArea().infoTextArea.appendText(NO_SERVER_MSG)
                         NameSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
                     }
                 }

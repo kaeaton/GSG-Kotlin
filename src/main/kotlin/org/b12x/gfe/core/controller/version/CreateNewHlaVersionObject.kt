@@ -37,7 +37,7 @@ object CreateNewHlaVersionObject {
      */
     fun getFolderLocation(loci: String, version: String): String {
         val directoryManagement = DirectoryManagement()
-        val folderLocation = "$version/"
+        val folderLocation = "${directoryManagement.setLociLocation(loci)}$version/"
         print("I'm looking for the folder ${folderLocation}.")
 
         if (validFolder(folderLocation)) {

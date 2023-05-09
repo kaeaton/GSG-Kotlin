@@ -16,7 +16,8 @@ object GfeSearchButtonSubmit : View("Submit") {
                 println(results)
                 GfeSearchTableView.gfeData.clear()
                 GfeSearchTableView.gfeData.addAll(results)
-                GfeSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+                val gfeSearchInformationTextArea = tornadofx.find(GfeSearchInformationTextArea::class)
+                gfeSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
                 GfeSearchLayoutData.resetArraysSoft()
             }
         }

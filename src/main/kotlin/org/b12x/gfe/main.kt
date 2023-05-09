@@ -20,7 +20,7 @@ fun main() {
     val jfxPanel = JFXPanel()
 
     /* Prefs Reset */
-    PrefsCore.nuclearOption()
+//    PrefsCore.nuclearOption()
     println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Event Bus Controller wakeup call */
