@@ -10,7 +10,7 @@ class DirectoryManagement {
      * Checks for the existence of a folder.
      *
      * @param pathInQuestion the path to the folder to check
-     * @return whether or not the folder exists
+     * @return whether the folder exists or not
      */
     fun doesFolderExist(pathInQuestion: String): Boolean {
         return File(pathInQuestion).exists()

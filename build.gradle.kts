@@ -3,7 +3,7 @@ plugins {
 
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
-    kotlin("plugin.serialization") version "1.6.0"
+    kotlin("plugin.serialization") version "1.9.0"
     id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
@@ -63,7 +63,7 @@ javafx { modules("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.sw
 
 // Set Kotlin/JVM target versions
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "13"
     kotlinOptions.languageVersion = "1.7"
 }
 
