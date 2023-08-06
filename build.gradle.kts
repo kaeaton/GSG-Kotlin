@@ -64,7 +64,7 @@ javafx { modules("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.sw
 // Set Kotlin/JVM target versions
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "13"
-    kotlinOptions.languageVersion = "1.7"
+    kotlinOptions.languageVersion = "1.9"
 }
 
 // Use JUnit

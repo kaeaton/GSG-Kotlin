@@ -6,11 +6,11 @@ import tornadofx.*
 
 class GfeSearchBoxesContainer : View("My View") {
 
-    private val stateContext = LociStateContextGfeSearch
+    val stateContext = LociStateContextGfeSearch
 
     var gfeSearchBoxes = stateContext.createNewSearchBoxes()
 
-    override val root = vbox {
+    override val root = hbox {
 //        var gfeSearchBoxes = stateContext.createNewSearchBoxes()
         add(gfeSearchBoxes.root)
     }

@@ -30,7 +30,7 @@ object GfeSearchTableView : View() {
     val dataTable = tableview(gfeData) {
         column("Allele Name", Result::alleleNameProperty)
         column("GFE", Result::gfeProperty)
-
+        smartResize()
         style {
             fontSize = Dimension(1.2, Dimension.LinearUnits.em)
             prefWidth = Dimension(650.0, Dimension.LinearUnits.px)

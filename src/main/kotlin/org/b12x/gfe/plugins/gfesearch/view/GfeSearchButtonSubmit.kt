@@ -18,8 +18,11 @@ object GfeSearchButtonSubmit : View("Submit") {
                 println(results)
                 GfeSearchTableView.gfeData.clear()
                 GfeSearchTableView.gfeData.addAll(results)
+
                 GfeSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
-                GfeSearchLayoutData.resetArraysSoft()
+
+                val model = GfeSearchLayoutDataModel()
+                model.resetArraysSoft()
             }
         }
     }

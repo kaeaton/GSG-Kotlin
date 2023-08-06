@@ -31,7 +31,7 @@ class NameSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxL
             if (this.value != null) {
                 stateContext.locus = (this.value.toString())
             }
-            GfeSearchLayoutData.resetArraysHard()
+            NameSearchLayoutData.resetArraysHard()
         }
     }
 

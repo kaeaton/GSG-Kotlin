@@ -10,7 +10,7 @@ import tornadofx.*
 
 class MainView : View("GFE Search Generator") {
 
-    private val gfeSearchViewParent = GfeSearchViewParent
+    val gfeSearchViewParent = GfeSearchViewParent()
     private val nameSearchViewParent = NameSearchViewParent
     private val optionsView = find(OptionsView::class)
 //    private val debugView = find(DebugView::class)

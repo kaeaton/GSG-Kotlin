@@ -26,14 +26,15 @@ class GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
 
     /* choiceBox */
     override val choiceBoxLoci = choicebox<String>(currentLociProperty, lociList) {
+        val model = GfeSearchLayoutDataModel()
         action {
             stateContext.loci = this.value
             stateContext.updateVersions()
 
             stateContext.updateLocuses()
-            GfeSearchLayoutData.resetArraysHard()
+            model.resetArraysHard()
             val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-            gfeSearchChoiceBoxLocus.swapSearchBoxes(stateContext.locusEnum)
+            gfeSearchChoiceBoxLocus.swapSearchBoxes()
         }
     }
 

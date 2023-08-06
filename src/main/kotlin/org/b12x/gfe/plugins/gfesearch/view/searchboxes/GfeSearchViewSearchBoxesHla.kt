@@ -11,6 +11,7 @@ import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutDataModel
 import tornadofx.*
 
 class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), GfeSearchViewSearchBoxes {
@@ -23,6 +24,12 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), Gf
     val currentHlaLocus = stateContext.locusEnum as HlaLoci
     val completedSearchBox = completedSearchBoxGenerator(currentHlaLocus.exons)
 
+    val model = GfeSearchLayoutDataModel()
+//    val newCheckBoxList = observableListOf<CheckBox>()
+//    val newTextFieldList = observableListOf<TextField>()
+
+    lateinit var newSearchBoxes: View
+
     override val root = vbox {
         label {
             text = "Check all"
@@ -31,6 +38,7 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), Gf
                 fontSize = 13.px
             }
         }
+
         add(Group(completedSearchBox))
         style {
             padding = box(25.px, 0.px)
@@ -38,6 +46,11 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), Gf
     }
 
     override fun completedSearchBoxGenerator(numberOfBoxes: Int): HBox {
+//        val model = GfeSearchLayoutDataModel()
+//        model.checkList.value.clear()
+//        model.textList.value.clear()
+
+
         val completedSearchBox = hbox {
             style {
                 padding = box(0.px, 0.px, 0.px, 0.px)
@@ -56,12 +69,12 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), Gf
         completedSearchBox.add(Group(individualSearchBoxAssembler("Exon $numberOfBoxes")))
         completedSearchBox.add(Group(individualSearchBoxAssembler("3' UTR")))
 
+        model.searchBoxes.value = completedSearchBox
+
         return completedSearchBox
     }
 
     private fun individualSearchBoxAssembler(labelName: String): VBox {
-        var currentCheckBox: CheckBox by singleAssign()
-        var currentTextField: TextField by singleAssign()
 
         val rotatedLabel = label(labelName) {
             style {
@@ -71,31 +84,39 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), Gf
             }
         }
 
-        val searchBoxComponent = vbox {
-            currentCheckBox = checkbox {
-                style {
-                    padding = box(10.px)
-                }
+        val currentCheckBox = checkbox {
+            style {
+                padding = box(10.px)
             }
-            currentCheckBox.selectedProperty().addListener { _, _, _ ->
-                if(!currentCheckBox.isSelected) {
-                    selectAllCheckBox.isSelected = false
-                }
+        }
+        currentCheckBox.selectedProperty().addListener { _, _, _ ->
+            if(!currentCheckBox.isSelected) {
+                selectAllCheckBox.isSelected = false
+            }
+            model.checkList.value.add(currentCheckBox)
+        }
+
+        val currentTextField = textfield("") {
+            filterInput { it.controlNewText.isInt() }
+            style {
+                prefWidth = 40.px
+                prefHeight = 25.px
+                padding = box(0.px, 5.px, 0.px, 5.px)
+                alignment = Pos.CENTER
+            }
+        }
+
+        currentTextField.textProperty()
+            .addListener { _, oldValue, newValue ->
+                println("textfield changed from $oldValue to $newValue")
+                model.textList.value.add(currentTextField)
             }
 
-            currentTextField = textfield("") {
-                filterInput { it.controlNewText.isInt() }
-                style {
-                    prefWidth = 40.px
-                    prefHeight = 25.px
-                    padding = box(0.px, 5.px, 0.px, 5.px)
-                    alignment = Pos.CENTER
-                }
-            }
-//            currentTextField.textProperty()
-//                .addListener { _, oldValue, newValue ->
-//                    println("textfield changed from $oldValue to $newValue")
-//                }
+        val searchBoxComponent = vbox {
+            add(currentCheckBox)
+            add(currentTextField)
+
+
 
             if (labelName == "Workshop Status") {
                 currentTextField.filterInput { it.controlNewText.any() }
@@ -109,9 +130,6 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), Gf
             }
         }
         searchBoxComponent.add(Group(rotatedLabel))
-
-        GfeSearchLayoutData.checkList.add(currentCheckBox)
-        GfeSearchLayoutData.textList.add(currentTextField)
 
         return searchBoxComponent
     }

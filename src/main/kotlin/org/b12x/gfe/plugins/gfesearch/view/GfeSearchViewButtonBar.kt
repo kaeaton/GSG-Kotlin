@@ -5,11 +5,12 @@ import tornadofx.*
 class GfeSearchViewButtonBar : View("Buttons") {
 
     val resultsTextField = textfield("")
+    val model = GfeSearchLayoutDataModel()
 
     override val root = vbox {
         button("Submit") {
             action {
-                GfeSearchLayoutData.resetArraysSoft()
+                model.resetArraysSoft()
                 println("You pressed the GFE Search submit button.")
                 resultsTextField.text = "Data submitted"
             }

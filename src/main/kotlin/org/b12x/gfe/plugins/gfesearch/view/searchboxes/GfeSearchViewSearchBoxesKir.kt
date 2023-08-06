@@ -1,5 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.view.searchboxes
 
+import javafx.collections.ObservableList
 import javafx.geometry.Pos
 import javafx.scene.Group
 import javafx.scene.control.CheckBox
@@ -10,6 +11,7 @@ import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutDataModel
 import tornadofx.*
 
 class GfeSearchViewSearchBoxesKir(loci: LociEnum) : View("KIR GFE Search Boxes"), GfeSearchViewSearchBoxes {
@@ -21,6 +23,11 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : View("KIR GFE Search Boxes")
 
     val currentKirLocus = stateContext.locusEnum as KirLoci
     val completedSearchBox = completedSearchBoxGenerator(currentKirLocus.exons)
+
+    val model = GfeSearchLayoutDataModel()
+    val newCheckBoxList = observableListOf<CheckBox>()
+    val newTextFieldList = observableListOf<TextField>()
+    lateinit var newSearchBoxes: View
 
     override val root = vbox {
         label {
@@ -59,6 +66,10 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : View("KIR GFE Search Boxes")
 
         completedSearchBox.add(Group(individualSearchBoxAssembler("Exon $numberOfBoxes")))
         completedSearchBox.add(Group(individualSearchBoxAssembler("3' UTR")))
+
+        model.checkList.value = newCheckBoxList
+        model.textList.value = newTextFieldList
+        model.searchBoxes.value = completedSearchBox
 
         return completedSearchBox
     }
@@ -116,8 +127,8 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : View("KIR GFE Search Boxes")
         }
         searchBoxComponent.add(Group(rotatedLabel))
 
-        GfeSearchLayoutData.checkList.add(currentCheckBox)
-        GfeSearchLayoutData.textList.add(currentTextField)
+        newCheckBoxList.add(currentCheckBox)
+        newTextFieldList.add(currentTextField)
 
         return searchBoxComponent
     }

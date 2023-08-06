@@ -4,6 +4,7 @@ import io.ktor.util.reflect.*
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
+import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.view.ChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
@@ -19,7 +20,7 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
     val stateContext = LociStateContextGfeSearch
 
     /* list of locuses */
-    var locusNames : List<String> = stateContext.versionObject.locusAvailable
+    var locusNames: List<String> = stateContext.versionObject.locusAvailable
     override var locusList = observableListOf(locusNames)
 
     /* selected locus */
@@ -27,7 +28,7 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
     override var currentLocus: String by currentLocusProperty
 
     // compare prior version to current version, if not a matching locus,
-    // choiceBox.getSelectionModel().selectFirst(); selects the first option (Java)
+//     choiceBox.getSelectionModel().selectFirst(); //selects the first option (Java)
 
     /* choiceBox */
     override var choiceBoxLocus = choicebox<String>(currentLocusProperty, locusList) {
@@ -35,8 +36,12 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
             if (this.value != null) {
                 stateContext.locus = (this.value.toString())
             }
-            GfeSearchLayoutData.resetArraysHard()
-            swapSearchBoxes(stateContext.locusEnum)
+            val model = GfeSearchLayoutDataModel()
+            model.resetArraysHard()
+//            swapSearchBoxes() //stateContext.locusEnum)
+
+            val container = find(GfeSearchBoxesContainer::class).root
+            container.replaceWith(model.searchBoxes.value)
         }
     }
 
@@ -46,28 +51,41 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
 
     // swaps the old set of search boxes out, and puts in the new set
     // based on the locus passed to it.
-    fun swapSearchBoxes(locus: LociEnum) {
-        val gfeSearchBoxesContainer = find(GfeSearchBoxesContainer::class)
-        println(gfeSearchBoxesContainer.toString())
-        val searchBoxes = gfeSearchBoxesContainer.gfeSearchBoxes
-        println(searchBoxes.toString())
-        val test = gfeSearchBoxesContainer::gfeSearchBoxes
-        println(test.toString())
+    fun swapSearchBoxes() { //locus: LociEnum) {
+//        val gfeSearchBoxesContainer = find(GfeSearchBoxesContainer::class)
+//        println(gfeSearchBoxesContainer.toString())
+//        val searchBoxes = gfeSearchBoxesContainer.gfeSearchBoxes
+//        println(searchBoxes.toString())
+//        val test = gfeSearchBoxesContainer::gfeSearchBoxes
+//        println(test.toString())
 
 //        find(GfeSearchViewSearchBoxes::class).root.removeFromParent()//:class.objectInstance).removeFromParent()
 //        find(GfeSearchViewSearchBoxesHla::class).root.removeFromParent()//:class.objectInstance).removeFromParent()
-        find(GfeSearchBoxesContainer::class).add(stateContext.createNewSearchBoxes().root)
+//        find(GfeSearchBoxesContainer::class).add(stateContext.createNewSearchBoxes().root)
 //        find(GfeSearchBoxesContainer::class).gfeSearchBoxes = stateContext.createNewSearchBoxes()
 //        find(GfeSearchBoxesContainer::class).root.center.add(find(GfeSearchViewParent::class).gfeSearchBoxes)
 
+        val newSearchBoxes = stateContext.createNewSearchBoxes()
+        val container = find(GfeSearchBoxesContainer::class).root
+            container.replaceWith(newSearchBoxes.root)
+//        val parent = find(GfeSearchViewParent::class)
+//        parent.root.center.replaceWith(container)
+
+//        container.root.replaceWith(newSearchBoxes.root)
+//        parent.root.center.add(container)
 
 //        searchBoxes.removeFromParent()
 //        val gfeSearchBoxes = stateContext.createNewSearchBoxes()
 //        find(GfeSearchBoxesContainer::class).root.add(stateContext.createNewSearchBoxes())
 //        GfeSearchBoxesContainer.root.add(gfeSearchBoxes)
-//        GfeSearchViewParent.root.center.add(gfeSearchBoxes)
 
-//        find(GfeSearchViewParent::class).gfeSearchBoxesContainer.removeFromParent()
+//        find(GfeSearchBoxesContainer::class).root.removeFromParent()
+//        find(GfeSearchBoxesContainer::class).root.add(stateContext.createNewSearchBoxes().root)
+//        find(GfeSearchViewParent::class).root.center.add(newSearchBoxes)
+//        find(GfeSearchBoxesContainer::class).root.add(newSearchBoxes)
+//        replaceWith(replacement = stateContext.createNewSearchBoxes().root)
+
+//        find(GfeSearchViewParent::class).root.center.gfeSearchBoxes.removeFromParent()
 //        find(GfeSearchViewParent::class).gfeSearchBoxes = stateContext.createNewSearchBoxes()
 //        find(GfeSearchViewParent::class).root.center.add(find(GfeSearchViewParent::class).gfeSearchBoxes)
     }

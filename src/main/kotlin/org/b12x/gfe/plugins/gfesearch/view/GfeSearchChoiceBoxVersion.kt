@@ -21,14 +21,15 @@ class GfeSearchChoiceBoxVersion : View(), ComboBoxVersion {
 
     /* choiceBox */
     override var choiceBoxVersion = choicebox<String>(currentVersionProperty, versionsList) {
+        val model = GfeSearchLayoutDataModel()
         action {
             if (this.value != null) {
                 stateContext.version = this.value
 
                 stateContext.updateLocuses()
-                GfeSearchLayoutData.resetArraysHard()
+                model.resetArraysHard()
                 val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-                gfeSearchChoiceBoxLocus.swapSearchBoxes(stateContext.locusEnum)
+                gfeSearchChoiceBoxLocus.swapSearchBoxes()
             }
         }
     }
