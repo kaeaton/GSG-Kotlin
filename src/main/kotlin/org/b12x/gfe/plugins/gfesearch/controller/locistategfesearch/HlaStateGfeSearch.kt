@@ -20,7 +20,7 @@ class HlaStateGfeSearch : LociStateGfeSearch {
 
     /* Version */
 
-    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionHla) { _, oldValue, newValue ->
+    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionHla) { _, _, newValue ->
         PrefsGfeSearch.currentGfeSearchVersionHla = newValue
     }
 

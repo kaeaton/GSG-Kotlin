@@ -6,6 +6,7 @@ import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.view.ChoiceBoxLocus
+import org.b12x.gfe.plugins.gfesearch.controller.eventbus.*
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchBoxesContainer
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
@@ -36,7 +37,9 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
                 stateContext.locus = (this.value.toString())
             }
             GfeSearchLayoutData.resetArraysHard()
-            swapSearchBoxes(stateContext.locusEnum)
+            println("chose a new locus, should fire the SearchBoxRequest")
+            fire(SearchBoxRequest)
+//            swapSearchBoxes(stateContext.locusEnum)
         }
     }
 

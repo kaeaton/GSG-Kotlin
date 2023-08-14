@@ -34,7 +34,7 @@ object LociStateContextGfeSearch {
     /* Version */
 
     var version: String by Delegates.observable(currentState?.version.toString()) { _, _, newValue ->
-        print("LociStateGfeSearch: version: ${newValue}")
+        println("LociStateGfeSearch: version: ${newValue}")
         currentState?.version = newValue
     }
 

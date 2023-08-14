@@ -1,7 +1,6 @@
 package org.b12x.gfe.plugins.namesearch.view
 
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchViewParent
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchViewParent.add
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 import java.awt.TextArea
