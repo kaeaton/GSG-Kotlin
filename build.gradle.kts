@@ -14,6 +14,9 @@ repositories {
     jcenter()
     maven("https://plugins.gradle.org/m2/")
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    maven {
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+    }
 }
 
 dependencies {
@@ -28,7 +31,8 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:2.3.0")
 
     // TornadoFX dependency
-    implementation("no.tornado:tornadofx:1.7.20")
+    implementation("no.tornado:tornadofx:2.0.0-SNAPSHOT")
+//    implementation("no.tornado:tornadofx:1.7.20")
 
     // API tools
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
@@ -59,11 +63,14 @@ dependencies {
 }
 
 // JavaFX module to include
-javafx { modules("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.swing") }
+javafx {
+    version = "20"
+    modules = mutableListOf("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.swing")
+}
 
 // Set Kotlin/JVM target versions
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "17"
     kotlinOptions.languageVersion = "1.7"
 }
 

@@ -17,7 +17,7 @@ import tornadofx.*
 fun main() {
 
     // necessary to initialize JavaFX
-    val jfxPanel = JFXPanel()
+//    val jfxPanel = JFXPanel()
 
     /* Prefs Reset */
     PrefsCore.nuclearOption()
