@@ -27,8 +27,7 @@ class GfeSearchChoiceBoxVersion : View(), ComboBoxVersion {
 
                 stateContext.updateLocuses()
                 GfeSearchLayoutData.resetArraysHard()
-                val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-                gfeSearchChoiceBoxLocus.swapSearchBoxes(stateContext.locusEnum)
+                find(GfeViewParent::class).swapSearchBoxes()
             }
         }
     }

@@ -1,12 +1,8 @@
 package org.b12x.gfe.plugins.namesearch.view
 
-import io.ktor.util.reflect.*
 import javafx.beans.property.SimpleStringProperty
-import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.view.ChoiceBoxLocus
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchBoxesContainer
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 

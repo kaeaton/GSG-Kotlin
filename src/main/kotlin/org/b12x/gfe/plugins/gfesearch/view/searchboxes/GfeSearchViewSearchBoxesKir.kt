@@ -12,7 +12,7 @@ import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateCon
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import tornadofx.*
 
-class GfeSearchViewSearchBoxesKir(loci: LociEnum) : View("KIR GFE Search Boxes"), GfeSearchViewSearchBoxes {
+class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Boxes"), GfeSearchViewSearchBoxes {
 
     private val stateContext = LociStateContextGfeSearch
 

@@ -4,7 +4,7 @@ import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateCon
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import tornadofx.*
 
-class GfeSearchBoxShared() : View(){
+class GfeSearchBoxShared() : Fragment(){
 
     val stateContext = LociStateContextGfeSearch
 

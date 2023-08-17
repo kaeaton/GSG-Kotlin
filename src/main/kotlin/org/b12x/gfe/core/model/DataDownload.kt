@@ -27,10 +27,10 @@ class DataDownload(lociGroup: String) {
      */
     fun makeRequest(request: String = "", dataUrl: String, dataType: String) {
 //        val internetAccess = InternetAccess.isInternetAvailable()
-        if (InternetAccess.isInternetAvailable()) {
-            val okHttpClient = OkHttpClient()
-            parseResponse(okHttpClient.newCall(createRequest(dataUrl, request)).execute(), dataType)
-        }
+//        if (InternetAccess().internetAccess.onComplete()) {
+//            val okHttpClient = OkHttpClient()
+//            parseResponse(okHttpClient.newCall(createRequest(dataUrl, request)).execute(), dataType)
+//        }
     }
 
     private fun createRequest(url: String, request: String): Request {

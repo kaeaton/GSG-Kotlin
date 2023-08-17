@@ -20,3 +20,4 @@ class GSG : App(MainView::class, Styles::class) {
 //        InternetAccess.isInternetAvailable()
     }
 }
+

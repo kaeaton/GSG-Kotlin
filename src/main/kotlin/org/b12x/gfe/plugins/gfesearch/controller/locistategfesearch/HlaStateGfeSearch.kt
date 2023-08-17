@@ -44,11 +44,13 @@ class HlaStateGfeSearch : LociStateGfeSearch {
 
     override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusHla) { _, _, newValue ->
         PrefsGfeSearch.currentGfeSearchLocusHla = newValue
+        locusEnum = (HlaLoci.values().find { it.fullName == newValue }) as LociEnum
+
     }
 
     override var locusEnum: LociEnum by Delegates.observable(
         (HlaLoci.values().find { it.fullName == locus }) as LociEnum
-    ) { _, _, _ -> (HlaLoci.values().find { it.fullName == locus }) as LociEnum }
+    ) { _, _, newValue -> (HlaLoci.values().find { newValue.fullName == locus }) as LociEnum }
 
     fun getHlaLocusNames(currentVersion: String): List<String> {
         val localVersions = LocalVersions("HLA")

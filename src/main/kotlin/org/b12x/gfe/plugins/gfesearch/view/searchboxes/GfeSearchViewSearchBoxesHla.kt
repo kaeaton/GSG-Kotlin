@@ -13,7 +13,7 @@ import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateCon
 import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import tornadofx.*
 
-class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), GfeSearchViewSearchBoxes {
+class GfeSearchViewSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearchViewSearchBoxes {
 
     private val stateContext = LociStateContextGfeSearch
 
@@ -92,10 +92,6 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : View("Gfe Search Boxes"), Gf
                     alignment = Pos.CENTER
                 }
             }
-//            currentTextField.textProperty()
-//                .addListener { _, oldValue, newValue ->
-//                    println("textfield changed from $oldValue to $newValue")
-//                }
 
             if (labelName == "Workshop Status") {
                 currentTextField.filterInput { it.controlNewText.any() }
