@@ -6,7 +6,7 @@ import org.b12x.gfe.core.view.ComboBoxVersion
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 
-class GfeSearchChoiceBoxVersion : View(), ComboBoxVersion {
+class GfeMenuVersion : View(), ComboBoxVersion {
 
     private val stateContext = LociStateContextGfeSearch
 
@@ -26,7 +26,7 @@ class GfeSearchChoiceBoxVersion : View(), ComboBoxVersion {
                 stateContext.version = this.value
 
                 stateContext.updateLocuses()
-                GfeSearchLayoutData.resetArraysHard()
+                GfeViewData.resetArraysHard()
                 find(GfeViewParent::class).swapSearchBoxes()
             }
         }

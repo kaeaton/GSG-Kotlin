@@ -4,7 +4,7 @@ import javafx.geometry.HPos
 import javafx.geometry.Pos
 import tornadofx.*
 
-object GfeSearchInformationTextArea : View("My View") {
+object GfeTextAreaInfo : View("My View") {
 
     @JvmStatic val infoTextArea = textarea {
         style {

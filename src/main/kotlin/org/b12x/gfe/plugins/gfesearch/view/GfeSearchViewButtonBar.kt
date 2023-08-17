@@ -9,7 +9,7 @@ class GfeSearchViewButtonBar : View("Buttons") {
     override val root = vbox {
         button("Submit") {
             action {
-                GfeSearchLayoutData.resetArraysSoft()
+                GfeViewData.resetArraysSoft()
                 println("You pressed the GFE Search submit button.")
                 resultsTextField.text = "Data submitted"
             }

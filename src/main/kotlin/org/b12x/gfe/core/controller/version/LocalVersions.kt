@@ -4,7 +4,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.model.DataDownload
 import org.b12x.gfe.core.model.parsers.ParserVersionData
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.utilities.DirectoryManagement
 import org.b12x.gfe.utilities.FileManagement
 import java.io.File

@@ -1,7 +1,7 @@
 package org.b12x.gfe.plugins.gfesearch.view.searchboxes
 import javafx.geometry.Pos
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import tornadofx.*
 
 class GfeSearchBoxShared() : Fragment(){
@@ -12,9 +12,9 @@ class GfeSearchBoxShared() : Fragment(){
         style { padding = box(10.px, 10.px, 0.px, 10.px) }
         action {
             if (isSelected) {
-                GfeSearchLayoutData.checkList.forEach { it.isSelected = true }
+                GfeViewData.checkList.forEach { it.isSelected = true }
             } else {
-                GfeSearchLayoutData.checkList.forEach { it.isSelected = false }
+                GfeViewData.checkList.forEach { it.isSelected = false }
             }
         }
     }

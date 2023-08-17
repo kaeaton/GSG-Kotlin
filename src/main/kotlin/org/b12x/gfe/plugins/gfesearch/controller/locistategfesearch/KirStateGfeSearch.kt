@@ -1,14 +1,11 @@
 package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
-import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
-import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
 import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.core.controller.version.VersionList
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
+import org.b12x.gfe.plugins.gfesearch.view.GfeMenuLocus
+import org.b12x.gfe.plugins.gfesearch.view.GfeMenuVersion
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
 import tornadofx.*
@@ -27,12 +24,12 @@ class KirStateGfeSearch : LociStateGfeSearch {
     ) { _, _, _ ->  CreateNewKirVersionObject.createVersionObject()}
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
-        val gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
+        val gfeMenuVersion = find(GfeMenuVersion::class)
 
-        gfeSearchChoiceBoxVersion.versionsList.clear()
-        gfeSearchChoiceBoxVersion.versionsList.add("2.7.0")
+        gfeMenuVersion.versionsList.clear()
+        gfeMenuVersion.versionsList.add("2.7.0")
 
-        gfeSearchChoiceBoxVersion.currentVersion = version
+        gfeMenuVersion.currentVersion = version
     }
 
     /* Locus */
@@ -49,12 +46,12 @@ class KirStateGfeSearch : LociStateGfeSearch {
     override fun updateLocuses(ctx: LociStateContextGfeSearch) {
         val locusNames = versionObject.locusAvailable
 
-        val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-        val locObservableList = gfeSearchChoiceBoxLocus.locusList
+        val gfeMenuLocus = find(GfeMenuLocus::class)
+        val locObservableList = gfeMenuLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)
 
-        gfeSearchChoiceBoxLocus.currentLocus = locus
+        gfeMenuLocus.currentLocus = locus
     }
 
     override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchViewSearchBoxes {

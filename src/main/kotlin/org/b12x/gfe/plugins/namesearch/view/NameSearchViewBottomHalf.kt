@@ -4,9 +4,6 @@ import javafx.geometry.HPos
 import javafx.geometry.Pos
 import javafx.scene.Group
 import javafx.scene.layout.Priority
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchButtonSubmit
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchInformationTextArea
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchTableView
 import tornadofx.*
 import kotlin.system.exitProcess
 

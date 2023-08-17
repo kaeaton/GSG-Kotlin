@@ -3,10 +3,9 @@ package org.b12x.gfe.plugins.gfesearch.view
 import javafx.geometry.HPos
 import javafx.geometry.Pos
 import org.b12x.gfe.core.controller.displayText.Result
-import org.b12x.gfe.plugins.namesearch.view.NameSearchTableView
 import tornadofx.*
 
-object GfeSearchTableView : View() {
+object GfeTableViewData : View() {
 
     val gfeData = observableListOf(
         Result("HLA-A*01:01:01:01", "HLA-Aw2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-4"),

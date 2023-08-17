@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import tornadofx.*
 
 class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Boxes"), GfeSearchViewSearchBoxes {
@@ -116,8 +116,8 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Box
         }
         searchBoxComponent.add(Group(rotatedLabel))
 
-        GfeSearchLayoutData.checkList.add(currentCheckBox)
-        GfeSearchLayoutData.textList.add(currentTextField)
+        GfeViewData.checkList.add(currentCheckBox)
+        GfeViewData.textList.add(currentTextField)
 
         return searchBoxComponent
     }

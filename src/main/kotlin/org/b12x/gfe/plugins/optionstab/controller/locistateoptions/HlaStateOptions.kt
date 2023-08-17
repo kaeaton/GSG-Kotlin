@@ -7,10 +7,8 @@ import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
+import org.b12x.gfe.plugins.gfesearch.view.GfeMenuLocus
+import org.b12x.gfe.plugins.gfesearch.view.GfeMenuVersion
 import tornadofx.*
 import kotlin.properties.Delegates
 
@@ -31,12 +29,12 @@ class HlaStateOptions : LociStateOptions {
         var versionList = VersionList("HLA")
         var versions = versionList.allVersionNames
 
-        val gfeSearchChoiceBoxVersion = find(GfeSearchChoiceBoxVersion::class)
+        val gfeMenuVersion = find(GfeMenuVersion::class)
 
-        gfeSearchChoiceBoxVersion.versionsList.clear()
-        gfeSearchChoiceBoxVersion.versionsList.addAll(versions)
+        gfeMenuVersion.versionsList.clear()
+        gfeMenuVersion.versionsList.addAll(versions)
 
-        gfeSearchChoiceBoxVersion.currentVersion = version
+        gfeMenuVersion.currentVersion = version
     }
 
     /* Locus */
@@ -52,7 +50,7 @@ class HlaStateOptions : LociStateOptions {
     fun getHlaLocusNames(currentVersion: String): List<String> {
         val localVersions = LocalVersions("HLA")
         val versionList = localVersions.versionsList
-//        val currentVersion = find(GfeSearchChoiceBoxVersion::class).currentVersion
+//        val currentVersion = find(GfeMenuVersion::class).currentVersion
         lateinit var currentVersionObject: Version
 
         versionList.forEach {
@@ -61,8 +59,8 @@ class HlaStateOptions : LociStateOptions {
             }
         }
 
-        val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-        val locusList = LocusList(currentVersionObject, gfeSearchChoiceBoxLocus)
+        val gfeMenuLocus = find(GfeMenuLocus::class)
+        val locusList = LocusList(currentVersionObject, gfeMenuLocus)
         locusList.updateLocusList()
 
         return locusList.newLocusList
@@ -73,11 +71,11 @@ class HlaStateOptions : LociStateOptions {
         val currentVersion = version
         var locusNames = getHlaLocusNames(currentVersion)
 
-        val gfeSearchChoiceBoxLocus = find(GfeSearchChoiceBoxLocus::class)
-        val locObservableList = gfeSearchChoiceBoxLocus.locusList
+        val gfeMenuLocus = find(GfeMenuLocus::class)
+        val locObservableList = gfeMenuLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)
 
-        gfeSearchChoiceBoxLocus.currentLocus = locus //PrefsGfeSearch.currentGfeSearchLocusHla
+        gfeMenuLocus.currentLocus = locus //PrefsGfeSearch.currentGfeSearchLocusHla
     }
 }

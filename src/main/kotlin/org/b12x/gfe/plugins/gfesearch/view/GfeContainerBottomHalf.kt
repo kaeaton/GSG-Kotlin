@@ -7,7 +7,7 @@ import javafx.scene.layout.Priority
 import tornadofx.*
 import kotlin.system.exitProcess
 
-class GfeSearchViewBottomHalf : View() {
+class GfeContainerBottomHalf : View() {
 
     override val root = borderpane {
         top = hbox {  }
@@ -19,21 +19,21 @@ class GfeSearchViewBottomHalf : View() {
         }
 
         center = vbox {
-            add(GfeSearchTableView.root)
+            add(GfeTableViewData.root)
         }
 
         right = vbox {
-//            val gfeSearchInformationTextBox = find(GfeSearchInformationTextArea::class)
-            add(GfeSearchInformationTextArea.root)
+//            val gfeSearchInformationTextBox = find(GfeTextAreaInfo::class)
+            add(GfeTextAreaInfo.root)
         }
 
         bottom = hbox {
-            add(Group(GfeSearchButtonSubmit.root))
+            add(Group(GfeButtonSubmit.root))
 
             add(Group(button("Exit") {
                 action {
 //                    var stateContext = LociStateContextGfeSearch
-//                    stateContext.loci = GfeSearchChoiceBoxLoci.choiceBoxLoci.value
+//                    stateContext.loci = GfeMenuLoci.choiceBoxLoci.value
 
                     exitProcess(0)
                 }

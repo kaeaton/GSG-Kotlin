@@ -4,10 +4,6 @@ import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
 import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
 import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxVersion
 import tornadofx.*

@@ -4,7 +4,7 @@ import org.b12x.gfe.core.controller.searchResults.FindResults
 import org.b12x.gfe.plugins.gfesearch.controller.CreateNewGfeSearchData
 import tornadofx.*
 
-object GfeSearchButtonSubmit : View("Submit") {
+object GfeButtonSubmit : View("Submit") {
 
 
 
@@ -16,10 +16,10 @@ object GfeSearchButtonSubmit : View("Submit") {
 //                resultsTextField.text = "Data submitted"
                 val results = FindResults.findResultsGfeSearch(searchData)
                 println(results)
-                GfeSearchTableView.gfeData.clear()
-                GfeSearchTableView.gfeData.addAll(results)
-                GfeSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
-                GfeSearchLayoutData.resetArraysSoft()
+                GfeTableViewData.gfeData.clear()
+                GfeTableViewData.gfeData.addAll(results)
+                GfeTextAreaInfo.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+                GfeViewData.resetArraysSoft()
             }
         }
     }

@@ -7,21 +7,21 @@ class GfeViewParent : View("GFE Search") {
 
     private val stateContext = LociStateContextGfeSearch
 
-    private var gfeSearchViewChoiceBoxes = GfeSearchViewChoiceBoxes()
+    private var gfeContainerMenu = GfeContainerMenu()
 
     var gfeSearchBoxes = stateContext.createNewSearchBoxes()
-    private val gfeSearchViewBottomHalf = GfeSearchViewBottomHalf()
+    private val gfeContainerBottomHalf = GfeContainerBottomHalf()
 
 //    fun swapSearchBoxes() {
 //        root.center.replaceWith(stateContext.createNewSearchBoxes().root)
 //    }
 
     override val root = borderpane {
-        top { add(gfeSearchViewChoiceBoxes.root) }
+        top { add(gfeContainerMenu.root) }
 
         center = vbox { add(gfeSearchBoxes.root) }
 
-        bottom { add(gfeSearchViewBottomHalf.root) }
+        bottom { add(gfeContainerBottomHalf.root) }
 
         style {
             padding = box(25.px)

@@ -7,10 +7,9 @@ import javafx.scene.control.TextField
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.HlaLoci
-import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import tornadofx.*
 
 class GfeSearchViewSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearchViewSearchBoxes {
@@ -106,8 +105,8 @@ class GfeSearchViewSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes")
         }
         searchBoxComponent.add(Group(rotatedLabel))
 
-        GfeSearchLayoutData.checkList.add(currentCheckBox)
-        GfeSearchLayoutData.textList.add(currentTextField)
+        GfeViewData.checkList.add(currentCheckBox)
+        GfeViewData.textList.add(currentTextField)
 
         return searchBoxComponent
     }

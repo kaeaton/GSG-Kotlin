@@ -5,7 +5,7 @@ import org.b12x.gfe.core.view.ChoiceBoxLocus
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 
-class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLocus {
+class GfeMenuLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLocus {
 
     val stateContext = LociStateContextGfeSearch
 
@@ -26,7 +26,7 @@ class GfeSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLo
             if (this.value != null) {
                 stateContext.locus = (this.value.toString())
             }
-            GfeSearchLayoutData.resetArraysHard()
+            GfeViewData.resetArraysHard()
             find(GfeViewParent::class).swapSearchBoxes()
         }
     }

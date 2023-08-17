@@ -7,10 +7,6 @@ import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxLocus
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchChoiceBoxVersion
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
 import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxLocus
 import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxVersion
 import tornadofx.*
@@ -54,7 +50,7 @@ class HlaStateNameSearch : LociStateNameSearch {
     fun getHlaLocusNames(currentVersion: String): List<String> {
         val localVersions = LocalVersions("HLA")
         val versionList = localVersions.versionsList
-//        val currentVersion = find(GfeSearchChoiceBoxVersion::class).currentVersion
+//        val currentVersion = find(GfeMenuVersion::class).currentVersion
         lateinit var currentVersionObject: Version
 
         versionList.forEach {

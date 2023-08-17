@@ -1,25 +1,17 @@
 package org.b12x.gfe.utilities
 
 //import io.ktor.client.request.*
-import io.ktor.client.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.request.*
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.Disposable
-import javafx.embed.swing.JFXPanel
 import kotlinx.coroutines.runBlocking
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchInformationTextArea
+import org.b12x.gfe.plugins.gfesearch.view.GfeTextAreaInfo
 import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
 import tornadofx.find
-import tornadofx.runAsync
 import java.io.IOException
-import java.lang.invoke.ConstantBootstraps.invoke
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
-import java.util.*
-import kotlin.reflect.KParameter
 
 class InternetAccess() {
 
@@ -35,7 +27,7 @@ class InternetAccess() {
     var internetAccess: Observer<Boolean> = object : Observer<Boolean> {
         override fun onComplete() {
             println("onComplete: " + YES_INTERNET_MSG)
-            GfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+            GfeTextAreaInfo.infoTextArea.appendText(YES_INTERNET_MSG)
         }
 
         override fun onNext(t: Boolean) {
@@ -44,7 +36,7 @@ class InternetAccess() {
 
         override fun onError(e: Throwable) {
             println("onError: " + NO_INTERNET_MSG)
-            GfeSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+            GfeTextAreaInfo.infoTextArea.appendText(NO_INTERNET_MSG)
         }
 
         override fun onSubscribe(d: Disposable) {
@@ -64,19 +56,19 @@ class InternetAccess() {
         // necessary to initialize JavaFX
 //        val jfxPanel = JFXPanel()
 
-        val gfeSearchInformationTextArea = find(GfeSearchInformationTextArea::class)
+        val gfeSearchInformationTextArea = find(GfeTextAreaInfo::class)
         val nameSearchInformationTextArea = find(NameSearchInformationTextArea::class)
 
         runBlocking {
 //            val ktorHttpClient = HttpClient(CIO){}
 //            try {
 ////                ktorHttpClient.get("https://google.com")
-//                GfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+//                GfeTextAreaInfo.infoTextArea.appendText(YES_INTERNET_MSG)
 //                NameSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
 //                true
 //            } catch (e: Exception) {
 //                println(e.message)
-//                GfeSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+//                GfeTextAreaInfo.infoTextArea.appendText(NO_INTERNET_MSG)
 //                NameSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
 //                false
 //            }
@@ -109,12 +101,12 @@ class InternetAccess() {
 
             // 200 for success
 //            if (response == 200) {
-//                GfeSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+//                GfeTextAreaInfo.infoTextArea.appendText(YES_INTERNET_MSG)
 //                NameSearchInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
 //                println("We made it online")
 //                true
 //            } else {
-//                GfeSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+//                GfeTextAreaInfo.infoTextArea.appendText(NO_INTERNET_MSG)
 //                NameSearchInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
 //                println("Nope, still no internet")
 //                false

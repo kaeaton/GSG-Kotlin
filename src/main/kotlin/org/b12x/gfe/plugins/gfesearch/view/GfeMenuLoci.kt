@@ -10,14 +10,14 @@ import tornadofx.*
 import tornadofx.getValue
 import tornadofx.setValue
 
-class GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
+class GfeMenuLoci : View(), ComboBoxLoci {
 
     private val stateContext = LociStateContextGfeSearch
 
 //    val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
     val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
     var lociList: ObservableList<String> by lociListProperty
-//    fun lociList() = getProperty(GfeSearchChoiceBoxLoci::lociListProperty)
+//    fun lociList() = getProperty(GfeMenuLoci::lociListProperty)
 
 
     /* selected Loci */
@@ -31,7 +31,7 @@ class GfeSearchChoiceBoxLoci : View(), ComboBoxLoci {
             stateContext.updateVersions()
 
             stateContext.updateLocuses()
-            GfeSearchLayoutData.resetArraysHard()
+            GfeViewData.resetArraysHard()
             find(GfeViewParent::class).swapSearchBoxes()
         }
     }
