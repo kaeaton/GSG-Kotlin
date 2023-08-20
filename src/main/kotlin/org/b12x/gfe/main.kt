@@ -1,5 +1,6 @@
 package org.b12x.gfe
 
+import org.b12x.gfe.core.controller.PrefsCore
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
 import tornadofx.*
 
@@ -10,7 +11,7 @@ fun main() {
 //    val jfxPanel = JFXPanel()
 
     /* Prefs Reset */
-//    PrefsCore.nuclearOption()
+    PrefsCore.nuclearOption()
     println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Event Bus Controller wakeup call */

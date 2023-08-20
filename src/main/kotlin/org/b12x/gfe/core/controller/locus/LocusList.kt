@@ -1,11 +1,11 @@
 package org.b12x.gfe.core.controller.locus
 
 import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.core.view.ChoiceBoxLocus
+import org.b12x.gfe.core.view.MenuLocus
 
-class LocusList(version: Version, choiceBoxLocus: ChoiceBoxLocus) {
+class LocusList(version: Version, menuLocus: MenuLocus) {
 
-    var newLocusObservableList = choiceBoxLocus.locusList
+    var newLocusObservableList = menuLocus.locusList
     var newLocusList = version.locusAvailable
 
     fun updateLocusList() {

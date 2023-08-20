@@ -15,7 +15,7 @@ class GfeContainerMenu : View() {
 
     override val root = hbox {
         add(gfeMenuLoci.root)
-        add(gfeMenuVersion.choiceBoxVersion)
-        add(gfeMenuLocus.choiceBoxLocus)
+        add(gfeMenuVersion.menuVersion)
+        add(gfeMenuLocus.menuLocus)
     }
 }

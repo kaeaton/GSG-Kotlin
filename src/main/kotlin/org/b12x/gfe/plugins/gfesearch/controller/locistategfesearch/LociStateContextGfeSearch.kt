@@ -8,7 +8,7 @@ object LociStateContextGfeSearch {
 
     /* Loci */
     var loci: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLociGroup) { _, _, newValue ->
-        print("LociStateGfeSearch: loci: ${newValue}")
+        println("LociStateGfeSearch: loci: ${newValue}")
         PrefsGfeSearch.currentGfeSearchLociGroup = newValue
     }
 
@@ -34,7 +34,7 @@ object LociStateContextGfeSearch {
     /* Version */
 
     var version: String by Delegates.observable(currentState?.version.toString()) { _, _, newValue ->
-        print("LociStateGfeSearch: version: ${newValue}")
+        println("LociStateGfeSearch: version: ${newValue}")
         currentState?.version = newValue
     }
 

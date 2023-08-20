@@ -1,14 +1,6 @@
 package org.b12x.gfe.core.controller.locus
 
-import javafx.beans.property.SimpleStringProperty
-import javafx.collections.ObservableList
 import javafx.embed.swing.JFXPanel
-import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.core.view.ChoiceBoxLocus
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
-import tornadofx.*
-import java.io.File
 
 class LocusListTest {
 
@@ -28,7 +20,7 @@ class LocusListTest {
 //    }
 
     companion object {
-//        class TestChoiceBoxLocus : View(), ChoiceBoxLocus {
+//        class TestChoiceBoxLocus : View(), MenuLocus {
 //            override var locusObservableList: ObservableList<String> = observableListOf("HLA", "KIR")
 //            val currentLocusProperty = SimpleStringProperty("HLA")
 //            override var currentLocus: String by currentLocusProperty

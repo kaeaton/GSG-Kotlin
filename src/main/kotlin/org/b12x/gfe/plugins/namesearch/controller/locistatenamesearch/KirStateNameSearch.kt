@@ -4,7 +4,7 @@ import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
 import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxLocus
+import org.b12x.gfe.plugins.namesearch.view.NameSearchMenuLocus
 import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxVersion
 import tornadofx.*
 import kotlin.properties.Delegates
@@ -44,7 +44,7 @@ class KirStateNameSearch : LociStateNameSearch {
     override fun updateLocuses(ctx: LociStateContextNameSearch) {
         val locusNames = versionObject.locusAvailable
 
-        val nameSearchChoiceBoxLocus = find(NameSearchChoiceBoxLocus::class)
+        val nameSearchChoiceBoxLocus = find(NameSearchMenuLocus::class)
         val locObservableList = nameSearchChoiceBoxLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)

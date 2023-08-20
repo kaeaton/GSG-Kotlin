@@ -1,12 +1,12 @@
 package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.beans.property.SimpleStringProperty
-import org.b12x.gfe.core.view.ChoiceBoxLocus
+import org.b12x.gfe.core.view.MenuLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 
-class NameSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxLocus {
+class NameSearchMenuLocus : View("GFE Search Locus Choice Box"), MenuLocus {
 
     val stateContext = LociStateContextNameSearch
 
@@ -22,7 +22,7 @@ class NameSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxL
     // choiceBox.getSelectionModel().selectFirst(); selects the first option (Java)
 
     /* choiceBox */
-    override var choiceBoxLocus = choicebox<String>(currentLocusProperty, locusList) {
+    override var menuLocus = choicebox<String>(currentLocusProperty, locusList) {
         action {
             if (this.value != null) {
                 stateContext.locus = (this.value.toString())
@@ -32,6 +32,6 @@ class NameSearchChoiceBoxLocus : View("GFE Search Locus Choice Box"), ChoiceBoxL
     }
 
     override val root = hbox {
-        add(choiceBoxLocus)
+        add(menuLocus)
     }
 }

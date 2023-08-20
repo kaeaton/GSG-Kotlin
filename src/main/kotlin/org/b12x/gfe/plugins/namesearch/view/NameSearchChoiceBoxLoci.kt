@@ -4,14 +4,13 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
 import org.b12x.gfe.core.controller.loci.AvailableLoci
-import org.b12x.gfe.core.view.ComboBoxLoci
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
+import org.b12x.gfe.core.view.MenuLoci
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 import tornadofx.getValue
 import tornadofx.setValue
 
-class NameSearchChoiceBoxLoci : View(), ComboBoxLoci {
+class NameSearchChoiceBoxLoci : View(), MenuLoci {
 
     private val stateContext = LociStateContextNameSearch
 
@@ -23,7 +22,7 @@ class NameSearchChoiceBoxLoci : View(), ComboBoxLoci {
     override var currentLoci: String by currentLociProperty
 
     /* choiceBox */
-    override val choiceBoxLoci = choicebox<String>(currentLociProperty, lociList) {
+    override val menuLoci = choicebox<String>(currentLociProperty, lociList) {
         action {
             stateContext.loci = this.value
             stateContext.updateVersions()
@@ -34,6 +33,6 @@ class NameSearchChoiceBoxLoci : View(), ComboBoxLoci {
     }
 
     override val root = hbox {
-        add(choiceBoxLoci)
+        add(menuLoci)
     }
 }

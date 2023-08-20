@@ -4,7 +4,7 @@ import tornadofx.*
 
 class NameSearchViewChoiceBoxes : View("My View") {
 
-    private val nameSearchChoiceBoxLocus = find(NameSearchChoiceBoxLocus::class)
+    private val nameSearchChoiceBoxLocus = find(NameSearchMenuLocus::class)
 
     private var nameSearchChoiceBoxVersion = find(NameSearchChoiceBoxVersion::class)
 
@@ -12,7 +12,7 @@ class NameSearchViewChoiceBoxes : View("My View") {
 
     override val root = hbox {
         add(nameSearchChoiceBoxLoci.root)
-        add(nameSearchChoiceBoxVersion.choiceBoxVersion)
-        add(nameSearchChoiceBoxLocus.choiceBoxLocus)
+        add(nameSearchChoiceBoxVersion.menuVersion)
+        add(nameSearchChoiceBoxLocus.menuLocus)
     }
 }

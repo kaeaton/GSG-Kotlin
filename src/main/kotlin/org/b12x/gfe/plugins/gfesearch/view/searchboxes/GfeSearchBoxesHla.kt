@@ -6,21 +6,21 @@ import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
-import org.b12x.gfe.core.controller.loci.KirLoci
+import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import tornadofx.*
 
-class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Boxes"), GfeSearchViewSearchBoxes {
+class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearchBoxes {
 
     private val stateContext = LociStateContextGfeSearch
 
     val gfeSearchBoxShared = GfeSearchBoxShared()
     val selectAllCheckBox: CheckBox = gfeSearchBoxShared.selectAllCheckBox
 
-    val currentKirLocus = stateContext.locusEnum as KirLoci
-    val completedSearchBox = completedSearchBoxGenerator(currentKirLocus.exons)
+    val currentHlaLocus = stateContext.locusEnum as HlaLoci
+    val completedSearchBox = completedSearchBoxGenerator(currentHlaLocus.exons)
 
     override val root = vbox {
         label {
@@ -48,11 +48,6 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Box
         completedSearchBox.add(Group(individualSearchBoxAssembler("5' UTR")))
 
         for (i in 1 until numberOfBoxes) {
-            if (currentKirLocus.skippedExons.any{it == i} ) {
-                completedSearchBox.add(Group(individualSearchBoxAssembler("Exon $i", true)))
-                completedSearchBox.add(Group(individualSearchBoxAssembler("Intron $i", true)))
-                continue
-            }
             completedSearchBox.add(Group(individualSearchBoxAssembler("Exon $i")))
             completedSearchBox.add(Group(individualSearchBoxAssembler("Intron $i")))
         }
@@ -63,8 +58,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Box
         return completedSearchBox
     }
 
-
-    private fun individualSearchBoxAssembler(labelName: String, skipped: Boolean = false): VBox {
+    private fun individualSearchBoxAssembler(labelName: String): VBox {
         var currentCheckBox: CheckBox by singleAssign()
         var currentTextField: TextField by singleAssign()
 
@@ -82,7 +76,7 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Box
                     padding = box(10.px)
                 }
             }
-            currentCheckBox.selectedProperty().addListener { observable, oldValue, newValue ->
+            currentCheckBox.selectedProperty().addListener { _, _, _ ->
                 if(!currentCheckBox.isSelected) {
                     selectAllCheckBox.isSelected = false
                 }
@@ -97,21 +91,16 @@ class GfeSearchViewSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Box
                     alignment = Pos.CENTER
                 }
             }
-//            currentTextField.textProperty()
-//                .addListener { observable, oldValue, newValue ->
-//                    println("textfield changed from $oldValue to $newValue")
-//                }
 
             if (labelName == "Workshop Status") {
                 currentTextField.filterInput { it.controlNewText.any() }
-                currentTextField.setText("w")
+                currentTextField.text = "w"
             }
 
             style {
                 maxWidth = 60.px
                 alignment = Pos.CENTER
                 padding = box(0.px, 5.px, 0.px, 5.px)
-                isDisable = skipped
             }
         }
         searchBoxComponent.add(Group(rotatedLabel))

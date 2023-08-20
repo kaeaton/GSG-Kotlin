@@ -3,18 +3,17 @@ package org.b12x.gfe.plugins.gfesearch.view
 import javafx.embed.swing.JFXPanel
 import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.*
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class GfeSearchViewSearchBoxesHlaTest {
+class GfeSearchBoxesHlaTest {
     // necessary to initialize JavaFX
     val jfxPanel = JFXPanel()
 
-    val gfeSearchViewSearchBoxesHla = GfeSearchViewSearchBoxesHla(HlaLoci.DQA1)
+    val gfeSearchViewSearchBoxesHla = GfeSearchBoxesHla(HlaLoci.DQA1)
 //    val dataClass = gfeSearchBoxes.currentSearchData
     val numberOfSearchBoxes = 10
 

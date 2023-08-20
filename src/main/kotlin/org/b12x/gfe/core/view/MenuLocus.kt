@@ -1,14 +1,11 @@
 package org.b12x.gfe.core.view
 
-import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
 import javafx.scene.control.ChoiceBox
-import javafx.scene.control.Control
-import tornadofx.Controller
 
-interface ChoiceBoxLocus {
+interface MenuLocus {
 
     var locusList : ObservableList<String>
     var currentLocus: String
-    var choiceBoxLocus : ChoiceBox<String>
+    var menuLocus : ChoiceBox<String>
 }

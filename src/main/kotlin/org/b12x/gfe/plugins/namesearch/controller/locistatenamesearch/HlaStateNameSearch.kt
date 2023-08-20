@@ -7,7 +7,7 @@ import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.LocalVersions
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
-import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxLocus
+import org.b12x.gfe.plugins.namesearch.view.NameSearchMenuLocus
 import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxVersion
 import tornadofx.*
 import kotlin.properties.Delegates
@@ -59,7 +59,7 @@ class HlaStateNameSearch : LociStateNameSearch {
             }
         }
 
-        val nameSearchChoiceBoxLocus = find(NameSearchChoiceBoxLocus::class)
+        val nameSearchChoiceBoxLocus = find(NameSearchMenuLocus::class)
         val locusList = LocusList(currentVersionObject, nameSearchChoiceBoxLocus)
         locusList.updateLocusList()
 
@@ -71,7 +71,7 @@ class HlaStateNameSearch : LociStateNameSearch {
         val currentVersion = version
         var locusNames = getHlaLocusNames(currentVersion)
 
-        val nameSearchChoiceBoxLocus = find(NameSearchChoiceBoxLocus::class)
+        val nameSearchChoiceBoxLocus = find(NameSearchMenuLocus::class)
         val locObservableList = nameSearchChoiceBoxLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)

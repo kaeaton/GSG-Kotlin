@@ -6,8 +6,8 @@ import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.plugins.gfesearch.view.GfeMenuLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeMenuVersion
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesKir
+import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchBoxes
+import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchBoxesKir
 import tornadofx.*
 import kotlin.properties.Delegates
 
@@ -54,9 +54,9 @@ class KirStateGfeSearch : LociStateGfeSearch {
         gfeMenuLocus.currentLocus = locus
     }
 
-    override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchViewSearchBoxes {
+    override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchBoxes {
 //        val currentLocus = locusEnum
             // KirLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusKir } ?: KirLoci.KIR2DL1
-        return GfeSearchViewSearchBoxesKir(locusEnum) as GfeSearchViewSearchBoxes
+        return GfeSearchBoxesKir(locusEnum) as GfeSearchBoxes
     }
 }

@@ -9,10 +9,12 @@ import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.plugins.gfesearch.view.GfeMenuLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeMenuVersion
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxes
-import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchViewSearchBoxesHla
+import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchBoxes
+import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchBoxesHla
 import tornadofx.*
 import kotlin.properties.Delegates
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.kotlin.toObservable
 
 
 class HlaStateGfeSearch : LociStateGfeSearch {
@@ -41,15 +43,19 @@ class HlaStateGfeSearch : LociStateGfeSearch {
 
     /* Locus */
 
-    override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusHla) { _, _, newValue ->
-        PrefsGfeSearch.currentGfeSearchLocusHla = newValue
+    override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusHla)
+    { _, _, newValue ->
         locusEnum = (HlaLoci.values().find { it.fullName == newValue }) as LociEnum
-
+        PrefsGfeSearch.currentGfeSearchLocusHla = newValue
     }
 
-    override var locusEnum: LociEnum by Delegates.observable(
-        (HlaLoci.values().find { it.fullName == locus }) as LociEnum
-    ) { _, _, newValue -> (HlaLoci.values().find { newValue.fullName == locus }) as LociEnum }
+//    private val connectableLocusObservable: Observable<String> = locus.toObservable()
+
+    override var locusEnum: LociEnum by Delegates.observable((HlaLoci.values().find { it.fullName == locus }) as LociEnum)
+    { _, _, _ -> }
+    //= (HlaLoci.values().find { it.fullName == locus }) as LociEnum
+//        HlaLoci.values().find { newValue.fullName == locus } as LociEnum }
+
 
     fun getHlaLocusNames(currentVersion: String): List<String> {
         val localVersions = LocalVersions("HLA")
@@ -83,10 +89,10 @@ class HlaStateGfeSearch : LociStateGfeSearch {
         gfeMenuLocus.currentLocus = locus //PrefsGfeSearch.currentGfeSearchLocusHla
     }
 
-    override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchViewSearchBoxes {
+    override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchBoxes {
 //        val currentLocus = locusEnum
              HlaLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusHla } ?: HlaLoci.A
 
-        return GfeSearchViewSearchBoxesHla(locusEnum) as GfeSearchViewSearchBoxes
+        return GfeSearchBoxesHla(locusEnum) as GfeSearchBoxes
     }
 }

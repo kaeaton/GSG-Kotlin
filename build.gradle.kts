@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.daemon.client.KotlinCompilerClient.compile
+
 plugins {
     kotlin("jvm") version "1.7.21"
 

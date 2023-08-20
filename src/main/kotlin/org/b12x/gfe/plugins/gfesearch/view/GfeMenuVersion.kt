@@ -2,11 +2,11 @@ package org.b12x.gfe.plugins.gfesearch.view
 
 import javafx.beans.property.SimpleStringProperty
 import org.b12x.gfe.core.controller.version.VersionList
-import org.b12x.gfe.core.view.ComboBoxVersion
+import org.b12x.gfe.core.view.MenuVersion
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 
-class GfeMenuVersion : View(), ComboBoxVersion {
+class GfeMenuVersion : View(), MenuVersion {
 
     private val stateContext = LociStateContextGfeSearch
 
@@ -20,11 +20,10 @@ class GfeMenuVersion : View(), ComboBoxVersion {
     override var currentVersion: String by currentVersionProperty
 
     /* choiceBox */
-    override var choiceBoxVersion = choicebox<String>(currentVersionProperty, versionsList) {
+    override var menuVersion = choicebox<String>(currentVersionProperty, versionsList) {
         action {
             if (this.value != null) {
                 stateContext.version = this.value
-
                 stateContext.updateLocuses()
                 GfeViewData.resetArraysHard()
                 find(GfeViewParent::class).swapSearchBoxes()
@@ -33,6 +32,6 @@ class GfeMenuVersion : View(), ComboBoxVersion {
     }
 
     override var root = hbox {
-        add(choiceBoxVersion)
+        add(menuVersion)
     }
 }
