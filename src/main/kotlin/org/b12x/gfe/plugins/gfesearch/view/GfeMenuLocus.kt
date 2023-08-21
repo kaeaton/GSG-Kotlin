@@ -4,6 +4,8 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.toObservable
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
+import org.b12x.gfe.core.controller.loci.HlaLoci
+import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.view.MenuLocus
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
@@ -32,6 +34,7 @@ class GfeMenuLocus : View("GFE Search Locus Choice Box"), MenuLocus {
         action {
             if (this.value != null) {
                 stateContext.locus = (this.value.toString())
+                stateContext.locusEnum = (HlaLoci.values().find { it.fullName == this.value.toString() }) as LociEnum
             }
             GfeViewData.resetArraysHard()
             find(GfeViewParent::class).swapSearchBoxes()

@@ -1,5 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
+import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.version.Version
 import kotlin.properties.Delegates
@@ -48,8 +49,8 @@ object LociStateContextGfeSearch {
         currentState?.locus = newValue
     }
 
-    var locusEnum: LociEnum by Delegates.observable((currentState?.locusEnum) as LociEnum) { _, _, _ ->
-
+    var locusEnum: LociEnum by Delegates.observable((currentState?.locusEnum) as LociEnum) { _, _, newValue ->
+        currentState?.locusEnum = newValue
     }
 
     fun updateLocuses() = currentState?.updateLocuses(this) ?: HlaStateGfeSearch().updateLocuses(this)

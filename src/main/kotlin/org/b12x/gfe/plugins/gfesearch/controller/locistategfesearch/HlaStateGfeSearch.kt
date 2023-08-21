@@ -49,13 +49,8 @@ class HlaStateGfeSearch : LociStateGfeSearch {
         PrefsGfeSearch.currentGfeSearchLocusHla = newValue
     }
 
-//    private val connectableLocusObservable: Observable<String> = locus.toObservable()
-
     override var locusEnum: LociEnum by Delegates.observable((HlaLoci.values().find { it.fullName == locus }) as LociEnum)
     { _, _, _ -> }
-    //= (HlaLoci.values().find { it.fullName == locus }) as LociEnum
-//        HlaLoci.values().find { newValue.fullName == locus } as LociEnum }
-
 
     fun getHlaLocusNames(currentVersion: String): List<String> {
         val localVersions = LocalVersions("HLA")
@@ -91,7 +86,7 @@ class HlaStateGfeSearch : LociStateGfeSearch {
 
     override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchBoxes {
 //        val currentLocus = locusEnum
-             HlaLoci.values().find { it.fullName == PrefsGfeSearch.currentGfeSearchLocusHla } ?: HlaLoci.A
+        HlaLoci.values().find { it.fullName == locus } ?: HlaLoci.A
 
         return GfeSearchBoxesHla(locusEnum) as GfeSearchBoxes
     }

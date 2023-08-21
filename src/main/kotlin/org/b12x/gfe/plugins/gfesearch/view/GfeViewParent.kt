@@ -54,6 +54,7 @@ class GfeViewParent : View("GFE Search") {
 
     fun swapSearchBoxes() {
         println("What locus we think we're loading: ${stateContext.locus}")
+        println("What locusEnum we think we're loading: ${stateContext.locusEnum.fullName}")
         gfeSearchBoxes.root.removeFromParent()
         gfeSearchBoxes = stateContext.createNewSearchBoxes()
         this.root.center.add(gfeSearchBoxes.root)
