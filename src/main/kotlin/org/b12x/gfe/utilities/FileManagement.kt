@@ -57,7 +57,7 @@ object FileManagement {
      */
     fun createDataFile(loci: String, locus: String, version: String) {
         val pathToFile = directoryManagement.createDataFolder(loci, version)
-        val fileName = "$locus-$version-Download"
+        val fileName = "${locus}_${version}_Data"
 
         createFile(pathToFile, fileName, "csv")
     }

@@ -18,7 +18,7 @@ object BuildHeaderString {
             throw IllegalArgumentException("The lists are not the same size.")
         }
 
-        var headerString = "${gfeSearchData.locus}w-"
+        var headerString = "${gfeSearchData.locus}w"
         for (i in 1 until gfeSearchData.checkBoxList.size) {
             headerString += if(gfeSearchData.textFieldList[i].text.isEmpty()) {
                 checkBoxChecked(gfeSearchData.checkBoxList[i])
@@ -26,7 +26,7 @@ object BuildHeaderString {
                 numberProvided(gfeSearchData.textFieldList[i])
             }
         }
-        gfeSearchData.regex = closeHeaderString(headerString)
+        gfeSearchData.header = closeHeaderString(headerString)
     }
 
     /**

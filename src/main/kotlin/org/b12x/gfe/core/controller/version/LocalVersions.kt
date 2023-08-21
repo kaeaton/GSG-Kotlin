@@ -4,7 +4,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.model.DataDownload
 import org.b12x.gfe.core.model.parsers.ParserVersionData
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
 import org.b12x.gfe.utilities.DirectoryManagement
 import org.b12x.gfe.utilities.FileManagement
 import java.io.File
@@ -22,11 +21,12 @@ class LocalVersions (loci: String) {
     /**
      * Gets all versions for a specific set of genes in the user's GSG data directory.
      *
-     * @return a list of versions available locally
+     * @return a list of version objects representing versions available locally
      */
     fun createVersions(): ArrayList<Version> {
 
         val versions = ArrayList<Version>()
+
         // if the folder doesn't exist, there's nothing to add.
         if (Paths.get(gsgDataLocation).exists() and File(gsgDataLocation).isDirectory) {
             File(gsgDataLocation).listFiles().forEach {
@@ -75,7 +75,7 @@ class LocalVersions (loci: String) {
     private fun fileContainsData(file: File) = file.length() > headerLength
 
     // get the locus name out of the file name
-    private fun locusName(file: File) = file.toString().split("_")[1]
+    private fun locusName(file: File) = file.name.toString().split("_")[0]
 
     fun returnOnlineVersionFile(): File {
         val onlineVersionsFile = gsgDataLocation + "onlineVersions.txt"

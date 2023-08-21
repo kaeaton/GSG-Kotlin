@@ -1,19 +1,20 @@
 package org.b12x.gfe.plugins.gfesearch.view.searchboxes
 import javafx.geometry.Pos
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchLayoutData
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import tornadofx.*
 
-class GfeSearchBoxShared() : View(){
+class GfeSearchBoxShared() : Fragment(){
 
-    val stateContext = GfeSearchLayoutData.lociStateContextGfeSearch
+    val stateContext = LociStateContextGfeSearch
 
     val selectAllCheckBox = checkbox {
         style { padding = box(10.px, 10.px, 0.px, 10.px) }
         action {
             if (isSelected) {
-                GfeSearchLayoutData.checkList.forEach { it.isSelected = true }
+                GfeViewData.checkList.forEach { it.isSelected = true }
             } else {
-                GfeSearchLayoutData.checkList.forEach { it.isSelected = false }
+                GfeViewData.checkList.forEach { it.isSelected = false }
             }
         }
     }
@@ -26,7 +27,7 @@ class GfeSearchBoxShared() : View(){
             }
         }
         selectAllBox.add(selectAllCheckBox)
-        selectAllBox.add(label(stateContext.getCurrentLocus().toString()) {
+        selectAllBox.add(label(stateContext.locus) {
             style {
                 padding = box(15.px, 0.px)
                 fontSize = 15.px

@@ -2,16 +2,17 @@ package org.b12x.gfe.core.view
 
 import javafx.scene.control.TabPane
 import org.b12x.gfe.core.controller.tabstate.TabStateContext
-import org.b12x.gfe.core.view.debugtab.DebugView
-import org.b12x.gfe.plugins.gfesearch.view.GfeSearchViewParent
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewParent
+import org.b12x.gfe.plugins.namesearch.view.NameSearchViewParent
 import org.b12x.gfe.plugins.optionstab.view.OptionsView
 import tornadofx.*
 
 class MainView : View("GFE Search Generator") {
 
-    private val gfeSearchViewParent = find(GfeSearchViewParent::class)
+    private val gfeViewParent = find(GfeViewParent::class)
+    private val nameSearchViewParent = find(NameSearchViewParent::class)
     private val optionsView = find(OptionsView::class)
-    private val debugView = find(DebugView::class)
+//    private val debugView = find(DebugView::class)
     private val tabStateContext = TabStateContext()
 
     override val root = tabpane {
@@ -21,7 +22,7 @@ class MainView : View("GFE Search Generator") {
 //            addClass(Styles.heading)
 //        }
         tab("GFE Search") {
-            add(gfeSearchViewParent)
+            add(gfeViewParent)
             this.setOnSelectionChanged { _ ->
                 tabStateContext.setState("GFE")
                 // set which tab in parent prefs?
@@ -31,7 +32,7 @@ class MainView : View("GFE Search Generator") {
             }
         }
         tab("Allele Name Search") {
-//            add(alleleSearchView::class)
+            add(nameSearchViewParent)
             this.setOnSelectionChanged { _ ->
                 tabStateContext.setState("NAME")
                 println(
@@ -39,24 +40,24 @@ class MainView : View("GFE Search Generator") {
                 )
             }
         }
-        tab("Comparison Tool") {
-//            add(comparisonView::class)
-            this.setOnSelectionChanged { _ ->
-                tabStateContext.setState("COMP")
-                println(
-                    if (this.isSelected) "Comparison selected" else "Comparison unselected"
-                )
-            }
-        }
-        tab("Allele Calling Tool") {
-//            add(alleleCallView::class)
-            this.setOnSelectionChanged { _ ->
-                tabStateContext.setState("ACT")
-                println(
-                    if (this.isSelected) "Allele Calling Tool selected" else "Allele Calling Tool unselected"
-                )
-            }
-        }
+//        tab("Comparison Tool") {
+////            add(comparisonView::class)
+//            this.setOnSelectionChanged { _ ->
+//                tabStateContext.setState("COMP")
+//                println(
+//                    if (this.isSelected) "Comparison selected" else "Comparison unselected"
+//                )
+//            }
+//        }
+//        tab("Allele Calling Tool") {
+////            add(alleleCallView::class)
+//            this.setOnSelectionChanged { _ ->
+//                tabStateContext.setState("ACT")
+//                println(
+//                    if (this.isSelected) "Allele Calling Tool selected" else "Allele Calling Tool unselected"
+//                )
+//            }
+//        }
         tab("Options") {
             add(optionsView::class)
             this.setOnSelectionChanged { _ ->
@@ -66,20 +67,21 @@ class MainView : View("GFE Search Generator") {
                 )
             }
         }
-        tab("Help") {
+
+        tab("Instructions") {
             vbox() {
                 button("Button 1")
                 button("Button 2")
             }
         }
-        tab("Information") {
-            vbox() {
-                button("Button 1")
-                button("Button 2")
-            }
-        }
-        tab("Debug") {
-            add(debugView::class)
-        }
+//        tab("Information") {
+//            vbox() {
+//                button("Button 1")
+//                button("Button 2")
+//            }
+//        }
+//        tab("Debug") {
+//            add(debugView::class)
+//        }
     }
 }
