@@ -82,7 +82,7 @@ class HlaStateGfeSearch : LociStateGfeSearch {
         locObservableList.clear()
         locObservableList.addAll(locusNames)
 
-        gfeMenuLocus.currentLocus = locus //PrefsGfeSearch.currentGfeSearchLocusHla
+        gfeMenuLocus.currentLocus = locObservableList.first()
     }
 
     override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchBoxes {
