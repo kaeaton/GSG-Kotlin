@@ -28,6 +28,7 @@ class GfeMenuLoci : View(), MenuLoci {
     override val menuLoci = choicebox<String>(currentLociProperty, lociList) {
         action {
             stateContext.loci = this.value
+            stateContext.setState(this.value)
             stateContext.updateVersions()
 
             stateContext.updateLocuses()

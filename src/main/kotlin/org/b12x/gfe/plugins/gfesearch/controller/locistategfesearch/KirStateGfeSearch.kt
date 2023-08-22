@@ -15,13 +15,14 @@ class KirStateGfeSearch : LociStateGfeSearch {
 
     /* Version */
 
-    override var version: String by Delegates.observable(
-        PrefsGfeSearch.currentGfeSearchVersionKir
-    ) { _, _, newValue -> PrefsGfeSearch.currentGfeSearchVersionKir = newValue }
+    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionKir)
+    { _, _, newValue ->
+        PrefsGfeSearch.currentGfeSearchVersionKir = newValue
+    }
 
     override var versionObject: Version by Delegates.observable(
         CreateNewKirVersionObject.createVersionObject()
-    ) { _, _, _ ->  CreateNewKirVersionObject.createVersionObject()}
+    ) { _, _, _ ->  }
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
         val gfeMenuVersion = find(GfeMenuVersion::class)
@@ -34,13 +35,14 @@ class KirStateGfeSearch : LociStateGfeSearch {
 
     /* Locus */
 
-    override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusKir) { _, _, newValue ->
+    override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusKir)
+    { _, _, newValue ->
         PrefsGfeSearch.currentGfeSearchLocusKir = newValue
     }
 
     override var locusEnum: LociEnum by Delegates.observable(
-        (KirLoci.values().find { it.fullName == locus }) as LociEnum
-    ) { _, _, _ -> (KirLoci.values().find { it.fullName == locus }) as LociEnum }
+        (KirLoci.values().find { it.fullName == locus }) as LociEnum)
+    { _, _, _ -> }
 
     // I know it's not spelled locuses, but loci is already used.
     override fun updateLocuses(ctx: LociStateContextGfeSearch) {

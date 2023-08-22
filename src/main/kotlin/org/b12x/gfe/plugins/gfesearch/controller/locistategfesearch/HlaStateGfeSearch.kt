@@ -21,13 +21,14 @@ class HlaStateGfeSearch : LociStateGfeSearch {
 
     /* Version */
 
-    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionHla) { _, oldValue, newValue ->
+    override var version: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchVersionHla)
+    { _, _, newValue ->
         PrefsGfeSearch.currentGfeSearchVersionHla = newValue
     }
 
     override var versionObject: Version by Delegates.observable(
         CreateNewHlaVersionObject.createVersionObject("HLA", version)
-    ) { _, _, _ -> CreateNewHlaVersionObject.createVersionObject("HLA", version) }
+    ) { _, _, _ ->  }
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
         var versionList = VersionList("HLA")
@@ -45,11 +46,11 @@ class HlaStateGfeSearch : LociStateGfeSearch {
 
     override var locus: String by Delegates.observable(PrefsGfeSearch.currentGfeSearchLocusHla)
     { _, _, newValue ->
-        locusEnum = (HlaLoci.values().find { it.fullName == newValue }) as LociEnum
         PrefsGfeSearch.currentGfeSearchLocusHla = newValue
     }
 
-    override var locusEnum: LociEnum by Delegates.observable((HlaLoci.values().find { it.fullName == locus }) as LociEnum)
+    override var locusEnum: LociEnum by Delegates.observable(
+        (HlaLoci.values().find { it.fullName == locus }) as LociEnum)
     { _, _, _ -> }
 
     fun getHlaLocusNames(currentVersion: String): List<String> {

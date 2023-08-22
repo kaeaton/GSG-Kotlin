@@ -13,8 +13,6 @@ import java.io.File
 import java.lang.IllegalArgumentException
 
 class BuildHeaderStringTest {
-    // necessary to initialize JavaFX
-    val jfxPanel = JFXPanel()
 
     @Test
     fun numberProvided_returnHeaderString() {
