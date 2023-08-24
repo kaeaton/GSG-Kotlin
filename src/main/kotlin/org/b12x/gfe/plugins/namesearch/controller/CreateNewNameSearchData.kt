@@ -1,6 +1,6 @@
 package org.b12x.gfe.plugins.namesearch.controller
 
-import org.b12x.gfe.core.model.DataFiles
+import org.b12x.gfe.core.model.GetDataFiles
 import org.b12x.gfe.plugins.namesearch.controller.BuildRegexString.assembleRegexString
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import java.io.File
@@ -20,7 +20,7 @@ object CreateNewNameSearchData {
             textFormat = "CSV",
             writeToFile = false,
             dataFile = File(
-                DataFiles.retrieveDataFiles(
+                GetDataFiles.retrieveDataFiles(
                     stateContext.loci,
                     stateContext.version,
                     stateContext.locus

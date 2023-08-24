@@ -3,7 +3,7 @@ package org.b12x.gfe.core.model.parsers
 import com.beust.klaxon.JsonArray
 import com.beust.klaxon.Parser
 import okhttp3.Response
-import org.b12x.gfe.core.model.DataDownload
+import org.b12x.gfe.core.model.datadownload.DataDownload
 
 object ParserHlaData {
 

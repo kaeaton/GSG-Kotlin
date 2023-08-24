@@ -2,7 +2,7 @@ package org.b12x.gfe.plugins.optionstab.view
 
 import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.controller.PrefsCore
-import org.b12x.gfe.core.model.DataDownload
+import org.b12x.gfe.core.model.datadownload.DataDownload
 import org.b12x.gfe.core.model.parsers.ParserVersionData
 import org.b12x.gfe.plugins.gfesearch.view.GfeTextAreaInfo
 import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea

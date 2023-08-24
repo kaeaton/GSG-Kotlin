@@ -1,6 +1,6 @@
 package org.b12x.gfe.plugins.gfesearch.controller.searchdata
 
-import org.b12x.gfe.core.model.DataFiles
+import org.b12x.gfe.core.model.GetDataFiles
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.controller.regex.BuildHeaderString
 import org.b12x.gfe.plugins.gfesearch.controller.regex.BuildRegexString
@@ -23,7 +23,7 @@ object CreateNewGfeSearchData {
             textFormat = GfeViewData.textFormat,
             writeToFile = GfeViewData.writeToFile,
             dataFile = File(
-                DataFiles.retrieveDataFiles(
+                GetDataFiles.retrieveDataFiles(
                     stateContext.loci,
                     stateContext.version,
                     stateContext.locus

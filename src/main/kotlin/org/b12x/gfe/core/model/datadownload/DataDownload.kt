@@ -1,4 +1,4 @@
-package org.b12x.gfe.core.model
+package org.b12x.gfe.core.model.datadownload
 
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
