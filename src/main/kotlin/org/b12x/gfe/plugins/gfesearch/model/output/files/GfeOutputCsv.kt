@@ -10,5 +10,5 @@ class GfeOutputCsv(searchData: GfeSearchData) : outputFile {
     override val headerLine3 = super.buildHeaderLine3(searchData.header)
     override val headerLine4 = super.buildHeaderLine4(searchData.loci, searchData.version)
     override val headerLine5 = super.buildHeaderLine5(searchData.resultsCount)
-    override val fileSuffix = "tsv"
+    override val fileSuffix = "csv"
 }
