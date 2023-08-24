@@ -2,8 +2,8 @@ package org.b12x.gfe.plugins.gfesearch.controller.searchdata
 
 import org.b12x.gfe.core.model.GetDataFiles
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
-import org.b12x.gfe.plugins.gfesearch.controller.regex.BuildHeaderString
-import org.b12x.gfe.plugins.gfesearch.controller.regex.BuildRegexString
+import org.b12x.gfe.plugins.gfesearch.model.regex.BuildHeaderString
+import org.b12x.gfe.plugins.gfesearch.model.regex.BuildRegexString
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import java.io.File
 

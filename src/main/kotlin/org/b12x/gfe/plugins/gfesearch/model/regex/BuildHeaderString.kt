@@ -1,4 +1,4 @@
-package org.b12x.gfe.plugins.gfesearch.controller.regex
+package org.b12x.gfe.plugins.gfesearch.model.regex
 
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
