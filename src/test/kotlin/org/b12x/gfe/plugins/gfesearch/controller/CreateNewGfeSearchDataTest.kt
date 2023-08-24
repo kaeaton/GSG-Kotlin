@@ -3,6 +3,7 @@ package org.b12x.gfe.plugins.gfesearch.controller
 import javafx.embed.swing.JFXPanel
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
+import org.b12x.gfe.plugins.gfesearch.controller.searchdata.CreateNewGfeSearchData
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewData.checkList
 //import org.b12x.gfe.plugins.gfesearch.view.GfeViewData.currentLoci

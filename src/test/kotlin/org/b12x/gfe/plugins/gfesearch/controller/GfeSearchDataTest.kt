@@ -3,6 +3,7 @@ package org.b12x.gfe.plugins.gfesearch.controller
 import javafx.embed.swing.JFXPanel
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
+import org.b12x.gfe.plugins.gfesearch.controller.searchdata.GfeSearchData
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import java.io.File

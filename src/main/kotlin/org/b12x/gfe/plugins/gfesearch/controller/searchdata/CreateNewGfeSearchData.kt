@@ -1,4 +1,4 @@
-package org.b12x.gfe.plugins.gfesearch.controller
+package org.b12x.gfe.plugins.gfesearch.controller.searchdata
 
 import org.b12x.gfe.core.model.DataFiles
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch

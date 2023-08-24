@@ -2,8 +2,7 @@ package org.b12x.gfe.plugins.gfesearch.controller.regex
 
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
-import org.b12x.gfe.plugins.gfesearch.controller.GfeSearchData
-import tornadofx.Component
+import org.b12x.gfe.plugins.gfesearch.controller.searchdata.GfeSearchData
 import kotlin.IllegalArgumentException
 
 object BuildRegexString {

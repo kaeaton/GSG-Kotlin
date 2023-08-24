@@ -2,7 +2,7 @@ package org.b12x.gfe.plugins.gfesearch.controller.regex
 
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
-import org.b12x.gfe.plugins.gfesearch.controller.GfeSearchData
+import org.b12x.gfe.plugins.gfesearch.controller.searchdata.GfeSearchData
 
 object BuildHeaderString {
     // refactor for StringBuilder

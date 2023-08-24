@@ -58,7 +58,6 @@ class GfeViewParent : View("GFE Search") {
         gfeSearchBoxes.root.removeFromParent()
         gfeSearchBoxes = stateContext.createNewSearchBoxes()
         this.root.center.add(gfeSearchBoxes.root)
-        println("GfeSearchView.swapSearchBoxes triggered")
     }
 
     val observer: Observer<Any> = object: Observer<Any> {

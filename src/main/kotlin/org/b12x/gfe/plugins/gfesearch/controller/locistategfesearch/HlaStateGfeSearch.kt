@@ -72,7 +72,7 @@ class HlaStateGfeSearch : LociStateGfeSearch {
         return locusList.newLocusList
     }
 
-    // I know it's not spelled locuses, but loci is already used.
+    // I know it's not spelled locuses, but loci is already in use.
     override fun updateLocuses(ctx: LociStateContextGfeSearch) {
         val currentVersion = version
         var locusNames = getHlaLocusNames(currentVersion)
@@ -86,7 +86,6 @@ class HlaStateGfeSearch : LociStateGfeSearch {
     }
 
     override fun createNewSearchBoxes(ctx: LociStateContextGfeSearch): GfeSearchBoxes {
-//        val currentLocus = locusEnum
         HlaLoci.values().find { it.fullName == locus } ?: HlaLoci.A
 
         return GfeSearchBoxesHla(locusEnum) as GfeSearchBoxes

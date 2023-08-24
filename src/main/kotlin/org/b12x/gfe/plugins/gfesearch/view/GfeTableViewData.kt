@@ -28,7 +28,8 @@ object GfeTableViewData : View() {
 
     val dataTable = tableview(gfeData) {
         column("Allele Name", Result::alleleNameProperty)
-        column("GFE", Result::gfeProperty)
+        column("GFE", Result::gfeProperty) //.remainingWidth()
+
 
         style {
             fontSize = Dimension(1.2, Dimension.LinearUnits.em)

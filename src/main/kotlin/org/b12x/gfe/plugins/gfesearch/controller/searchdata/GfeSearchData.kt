@@ -1,4 +1,4 @@
-package org.b12x.gfe.plugins.gfesearch.controller
+package org.b12x.gfe.plugins.gfesearch.controller.searchdata
 
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
