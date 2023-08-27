@@ -4,11 +4,14 @@ import javafx.geometry.Pos
 import javafx.scene.Group
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
+import javafx.scene.input.KeyCode
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
+import org.b12x.gfe.plugins.gfesearch.controller.searchdata.GfeSearchData
+import org.b12x.gfe.plugins.gfesearch.view.GfeButtonSubmit
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
 import tornadofx.*
 
@@ -80,6 +83,7 @@ class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearc
                 if(!currentCheckBox.isSelected) {
                     selectAllCheckBox.isSelected = false
                 }
+                setOnKeyPressed { if (it.code == KeyCode.ENTER) GfeButtonSubmit.submitGfeSearchData() }
             }
 
             currentTextField = textfield("") {
@@ -89,6 +93,9 @@ class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearc
                     prefHeight = 25.px
                     padding = box(0.px, 5.px, 0.px, 5.px)
                     alignment = Pos.CENTER
+                }
+                action {
+                    GfeButtonSubmit.submitGfeSearchData()
                 }
             }
 

@@ -24,17 +24,17 @@ object GfeButtonSubmit : View("Submit") {
             }
         }
     }
+
+    fun submitGfeSearchData() {
+        val searchData = CreateNewGfeSearchData.generateSearchData()
+        println("You pressed enter on a GFE Search textfield.")
+        val results = FindResults.findResultsGfeSearch(searchData)
+
+        GfeTableViewData.gfeData.clear()
+        GfeTableViewData.gfeData.addAll(results)
+        GfeTextAreaInfo.infoTextArea.appendText("Search terms: ${searchData.header}\n")
+        GfeTextAreaInfo.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+//        GfeViewData.resetArraysSoft()
+    }
 }
 
-//action {
-//    GfeLayoutData.resetArraysSoft()
-//    runAsync {
-//        myController.loadText()
-//        setOnAction {
-//            GfeLayoutData.resetArraysSoft()
-//            println("You pressed the GFE Search submit button.")
-//        }
-//     } ui {
-//          resultsTextField.text = "Data submitted"
-//     }
-//}
