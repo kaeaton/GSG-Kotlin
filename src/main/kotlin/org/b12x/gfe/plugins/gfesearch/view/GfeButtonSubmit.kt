@@ -20,7 +20,7 @@ object GfeButtonSubmit : View("Submit") {
                 GfeTableViewData.gfeData.addAll(results)
                 GfeTextAreaInfo.infoTextArea.appendText("Search terms: ${searchData.header}\n")
                 GfeTextAreaInfo.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
-                GfeViewData.resetArraysSoft()
+//                GfeViewData.resetArraysSoft()
             }
         }
     }
