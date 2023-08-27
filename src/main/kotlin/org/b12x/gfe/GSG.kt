@@ -14,6 +14,7 @@ class GSG : App(MainView::class, Styles::class) {
         super.start(stage)
         stage.width = gsgWidth
         stage.height = gsgHeight
+        stage.setOnHiding { stop() }
 
         /* Internet Access */
 //        var internetAccess = InternetAccess()

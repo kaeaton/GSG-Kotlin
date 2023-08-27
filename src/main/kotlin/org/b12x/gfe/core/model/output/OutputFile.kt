@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.text.StringBuilder
 
-interface outputFile {
+interface OutputFile {
     val headerLine1: String
     val headerLine2: String
     val headerLine3: String
@@ -39,7 +39,7 @@ interface outputFile {
         return stringInProcess.append("$numOfResults\n").toString()
     }
 
-    fun whichLocusLoc(loci: String) = when (loci) {
+    private fun whichLocusLoc(loci: String) = when (loci) {
         "HLA" -> "https://dev-gfedb.b12x.org:7473/browser/"
         "KIR" -> "https://dash13-gfedb.b12x.org"
         "TEST" -> "Test Data Location Version"
@@ -48,7 +48,7 @@ interface outputFile {
         }
     }
 
-    fun whichLocusDB(loci: String) = when (loci) {
+    private fun whichLocusDB(loci: String) = when (loci) {
         "HLA" -> "IMGT/HLA Database Version: "
         "KIR" -> "IPD-KIR Database Version: "
         "TEST" -> "Test Database Version: "
