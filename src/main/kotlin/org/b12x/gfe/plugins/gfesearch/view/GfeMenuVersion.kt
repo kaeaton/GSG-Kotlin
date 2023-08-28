@@ -25,7 +25,7 @@ class GfeMenuVersion : View(), MenuVersion {
             if (this.value != null) {
                 stateContext.version = this.value
                 stateContext.updateLocuses()
-                GfeViewData.resetArraysHard()
+                GfeViewMethods.resetArraysHard()
                 find(GfeViewParent::class).swapSearchBoxes()
             }
         }

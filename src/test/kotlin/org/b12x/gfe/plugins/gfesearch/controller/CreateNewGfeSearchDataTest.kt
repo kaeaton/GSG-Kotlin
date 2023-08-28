@@ -4,12 +4,12 @@ import javafx.embed.swing.JFXPanel
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import org.b12x.gfe.plugins.gfesearch.controller.searchdata.CreateNewGfeSearchData
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData.checkList
-//import org.b12x.gfe.plugins.gfesearch.view.GfeViewData.currentLoci
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData.textFormat
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData.textList
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData.writeToFile
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods.checkList
+//import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods.currentLoci
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods.textFormat
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods.textList
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods.writeToFile
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -22,7 +22,7 @@ class CreateNewGfeSearchDataTest {
 
     @Test
     fun createDataFile_validGfeSearchDataObject() {
-        Mockito.mockStatic(GfeViewData::class.java).use { mocked ->
+        Mockito.mockStatic(GfeViewMethods::class.java).use { mocked ->
             mocked.verify {
 //                currentLoci = "KIR"
 //                currentVersion = "2.7.0"

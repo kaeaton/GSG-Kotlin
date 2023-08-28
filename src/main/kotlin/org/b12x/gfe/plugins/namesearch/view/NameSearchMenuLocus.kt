@@ -2,7 +2,7 @@ package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.beans.property.SimpleStringProperty
 import org.b12x.gfe.core.view.MenuLocus
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 
@@ -27,7 +27,7 @@ class NameSearchMenuLocus : View("GFE Search Locus Choice Box"), MenuLocus {
             if (this.value != null) {
                 stateContext.locus = (this.value.toString())
             }
-            GfeViewData.resetArraysHard()
+            GfeViewMethods.resetArraysHard()
         }
     }
 

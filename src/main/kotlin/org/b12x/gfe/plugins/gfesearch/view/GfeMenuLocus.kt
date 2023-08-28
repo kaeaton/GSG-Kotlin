@@ -36,7 +36,7 @@ class GfeMenuLocus : View("GFE Search Locus Choice Box"), MenuLocus {
                 stateContext.locus = (this.value.toString())
                 stateContext.locusEnum = (HlaLoci.values().find { it.fullName == this.value.toString() }) as LociEnum
             }
-            GfeViewData.resetArraysHard()
+            GfeViewMethods.resetArraysHard()
             find(GfeViewParent::class).swapSearchBoxes()
         }
     }

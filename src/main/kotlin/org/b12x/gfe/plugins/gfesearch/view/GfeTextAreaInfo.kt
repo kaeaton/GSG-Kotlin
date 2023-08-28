@@ -9,8 +9,9 @@ object GfeTextAreaInfo : View("My View") {
     @JvmStatic val infoTextArea = textarea {
         style {
             fontSize = Dimension(1.1, Dimension.LinearUnits.em)
-            prefWidth = Dimension(425.0, Dimension.LinearUnits.px)
-            prefHeight = Dimension(350.0, Dimension.LinearUnits.px)
+            prefWidth = Dimension(400.0, Dimension.LinearUnits.px)
+            prefHeight = Dimension(330.0, Dimension.LinearUnits.px)
+            padding = box(0.px)
         }
     }
 

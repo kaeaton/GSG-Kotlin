@@ -10,6 +10,7 @@ class GfeViewParent : View("GFE Search") {
 
     private val stateContext = LociStateContextGfeSearch
     private var gfeContainerMenu = GfeContainerMenu()
+//    private var gfeContainerReset = find(GfeContainerReset::class)
 
     var gfeSearchBoxes = stateContext.createNewSearchBoxes()
     private val gfeContainerBottomHalf = GfeContainerBottomHalf()
@@ -26,30 +27,9 @@ class GfeViewParent : View("GFE Search") {
         bottom { add(gfeContainerBottomHalf.root) }
 
         style {
-            padding = box(25.px)
+            padding = box(10.px, 0.px, 0.px, 10.px)
         }
     }
-
-    //    center = vbox {
-//        add(gfeSearchBoxes.root)
-////            add( hbox {
-////                add(button("Add") { setOnAction { println("You pressed button \"Add\"") } })
-////                add(button("Multiply") { setOnAction { println("You pressed button \"Multiply\"") } })
-////                add(button("Equals") { setOnAction { println("You pressed button \"Equals\"") } })
-////            })
-//    }
-//
-//    bottom = vbox {
-//        add(gfeSearchSubmitButton.root)
-//        add(button("Exit") {
-//            setOnAction { exitProcess(0) }
-//        })
-//    }
-//    style {
-//        padding = box(25.px)
-//    }
-//}
-//
 
 
     fun swapSearchBoxes() {
@@ -58,30 +38,5 @@ class GfeViewParent : View("GFE Search") {
         gfeSearchBoxes.root.removeFromParent()
         gfeSearchBoxes = stateContext.createNewSearchBoxes()
         this.root.center.add(gfeSearchBoxes.root)
-    }
-
-    val observer: Observer<Any> = object: Observer<Any> {
-        override fun onSubscribe(d: Disposable) {
-            println("onSubscribe: Subscribed to the Locus Menu value")
-        }
-
-        override fun onComplete() {
-            println("onComplete: calling swapSearchBoxes")
-            swapSearchBoxes()
-        }
-
-        override fun onNext(t: Any) {
-            println("onNext: I dunno what that would be")
-        }
-
-        override fun onError(e: Throwable) {
-            println("onError: Something went wrong")
-            e.printStackTrace()
-        }
-    }
-
-    init {
-        val locusMenu = find(GfeMenuLocus::class)
-        locusMenu.observable.subscribe(observer)
     }
 }

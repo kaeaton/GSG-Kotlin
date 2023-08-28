@@ -32,7 +32,7 @@ class GfeMenuLoci : View(), MenuLoci {
             stateContext.updateVersions()
 
             stateContext.updateLocuses()
-            GfeViewData.resetArraysHard()
+            GfeViewMethods.resetArraysHard()
             find(GfeViewParent::class).swapSearchBoxes()
         }
     }

@@ -10,8 +10,7 @@ import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
-import org.b12x.gfe.plugins.gfesearch.view.GfeButtonSubmit
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods
 import tornadofx.*
 
 class GfeSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Boxes"), GfeSearchBoxes {
@@ -88,7 +87,7 @@ class GfeSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Boxes"), GfeS
                 if(!currentCheckBox.isSelected) {
                     selectAllCheckBox.isSelected = false
                 }
-                setOnKeyPressed { if (it.code == KeyCode.ENTER) GfeButtonSubmit.submitGfeSearchData() }
+                setOnKeyPressed { if (it.code == KeyCode.ENTER) GfeViewMethods.submitData() }
             }
 
             currentTextField = textfield("") {
@@ -100,7 +99,7 @@ class GfeSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Boxes"), GfeS
                     alignment = Pos.CENTER
                 }
                 action {
-                    GfeButtonSubmit.submitGfeSearchData()
+                    GfeViewMethods.submitData()
                 }
             }
 //            currentTextField.textProperty()
@@ -122,8 +121,8 @@ class GfeSearchBoxesKir(loci: LociEnum) : Fragment("KIR GFE Search Boxes"), GfeS
         }
         searchBoxComponent.add(Group(rotatedLabel))
 
-        GfeViewData.checkList.add(currentCheckBox)
-        GfeViewData.textList.add(currentTextField)
+        GfeViewMethods.checkList.add(currentCheckBox)
+        GfeViewMethods.textList.add(currentTextField)
 
         return searchBoxComponent
     }

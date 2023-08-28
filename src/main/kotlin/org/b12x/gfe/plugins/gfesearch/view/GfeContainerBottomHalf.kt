@@ -28,6 +28,7 @@ class GfeContainerBottomHalf : View() {
         }
 
         bottom = hbox {
+
             add(Group(GfeButtonSubmit.root))
 
             add(Group(button("Exit") {
@@ -38,6 +39,7 @@ class GfeContainerBottomHalf : View() {
                     exitProcess(0)
                 }
                 style {
+                    padding = box(5.px, 17.px) // button internal padding
                     startMargin = Dimension(10.0, Dimension.LinearUnits.px)
                 }
             }))
@@ -45,11 +47,11 @@ class GfeContainerBottomHalf : View() {
             style {
                 alignment = Pos.CENTER
                 hAlignment = HPos.CENTER
-                padding = box(25.px, 10.px, 0.px, 10.px)
+                padding = box(10.px, 0.px, 5.px, 0.px) // padding around individual elements?
             }
 
             hboxConstraints {
-                marginRight = 20.0
+                marginRight = 10.0
                 hGrow = Priority.ALWAYS
             }
         }

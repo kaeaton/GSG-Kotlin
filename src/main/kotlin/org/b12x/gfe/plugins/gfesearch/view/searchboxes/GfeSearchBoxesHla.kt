@@ -10,9 +10,7 @@ import javafx.scene.layout.VBox
 import org.b12x.gfe.core.controller.loci.HlaLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
-import org.b12x.gfe.plugins.gfesearch.controller.searchdata.GfeSearchData
-import org.b12x.gfe.plugins.gfesearch.view.GfeButtonSubmit
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods
 import tornadofx.*
 
 class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearchBoxes {
@@ -35,7 +33,7 @@ class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearc
         }
         add(Group(completedSearchBox))
         style {
-            padding = box(25.px, 0.px)
+            padding = box(15.px, 0.px, 0.px, 0.px)
         }
     }
 
@@ -83,7 +81,7 @@ class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearc
                 if(!currentCheckBox.isSelected) {
                     selectAllCheckBox.isSelected = false
                 }
-                setOnKeyPressed { if (it.code == KeyCode.ENTER) GfeButtonSubmit.submitGfeSearchData() }
+                setOnKeyPressed { if (it.code == KeyCode.ENTER) GfeViewMethods.submitData() }
             }
 
             currentTextField = textfield("") {
@@ -95,7 +93,7 @@ class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearc
                     alignment = Pos.CENTER
                 }
                 action {
-                    GfeButtonSubmit.submitGfeSearchData()
+                    GfeViewMethods.submitData()
                 }
             }
 
@@ -112,8 +110,8 @@ class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearc
         }
         searchBoxComponent.add(Group(rotatedLabel))
 
-        GfeViewData.checkList.add(currentCheckBox)
-        GfeViewData.textList.add(currentTextField)
+        GfeViewMethods.checkList.add(currentCheckBox)
+        GfeViewMethods.textList.add(currentTextField)
 
         return searchBoxComponent
     }

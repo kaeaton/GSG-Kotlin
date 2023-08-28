@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 import tornadofx.*
 
 
-class GfeViewDataTest : View("Test") {
+class GfeViewMethodsTest : View("Test") {
     // necessary to initialize JavaFX
     val jfxPanel = JFXPanel()
 

@@ -4,7 +4,7 @@ import org.b12x.gfe.core.model.GetDataFiles
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import org.b12x.gfe.plugins.gfesearch.model.regex.BuildHeaderString
 import org.b12x.gfe.plugins.gfesearch.model.regex.BuildRegexString
-import org.b12x.gfe.plugins.gfesearch.view.GfeViewData
+import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods
 import java.io.File
 
 object CreateNewGfeSearchData {
@@ -16,12 +16,12 @@ object CreateNewGfeSearchData {
             loci = stateContext.loci,
             version = stateContext.version,
             locus = stateContext.locus,
-            checkBoxList = GfeViewData.checkList,
-            textFieldList = GfeViewData.textList,
+            checkBoxList = GfeViewMethods.checkList,
+            textFieldList = GfeViewMethods.textList,
             regex = "".toRegex(),
             header = "",
-            textFormat = GfeViewData.textFormat,
-            writeToFile = GfeViewData.writeToFile,
+            textFormat = GfeViewMethods.textFormat,
+            writeToFile = GfeViewMethods.writeToFile,
             dataFile = File(
                 GetDataFiles.retrieveDataFiles(
                     stateContext.loci,

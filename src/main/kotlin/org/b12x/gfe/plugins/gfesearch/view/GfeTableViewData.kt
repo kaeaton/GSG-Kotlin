@@ -33,8 +33,9 @@ object GfeTableViewData : View() {
 
         style {
             fontSize = Dimension(1.2, Dimension.LinearUnits.em)
-            prefWidth = Dimension(650.0, Dimension.LinearUnits.px)
-            prefHeight = Dimension(350.0, Dimension.LinearUnits.px)
+            prefWidth = Dimension(600.0, Dimension.LinearUnits.px)
+            prefHeight = Dimension(330.0, Dimension.LinearUnits.px)
+            startMargin = 0.px
         }
     }
 
