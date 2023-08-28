@@ -31,15 +31,15 @@ class MainView : View("GFE Search Generator") {
                 )
             }
         }
-        tab("Allele Name Search") {
-            add(nameSearchViewParent)
-            this.setOnSelectionChanged { _ ->
-                tabStateContext.setState("NAME")
-                println(
-                    if (this.isSelected) "NameSearch selected" else "NameSearch unselected"
-                )
-            }
-        }
+//        tab("Allele Name Search") {
+//            add(nameSearchViewParent)
+//            this.setOnSelectionChanged { _ ->
+//                tabStateContext.setState("NAME")
+//                println(
+//                    if (this.isSelected) "NameSearch selected" else "NameSearch unselected"
+//                )
+//            }
+//        }
 //        tab("Comparison Tool") {
 ////            add(comparisonView::class)
 //            this.setOnSelectionChanged { _ ->
@@ -68,12 +68,12 @@ class MainView : View("GFE Search Generator") {
             }
         }
 
-        tab("Instructions") {
-            vbox() {
-                button("Button 1")
-                button("Button 2")
-            }
-        }
+//        tab("Instructions") {
+//            vbox() {
+//                button("Button 1")
+//                button("Button 2")
+//            }
+//        }
 //        tab("Information") {
 //            vbox() {
 //                button("Button 1")
