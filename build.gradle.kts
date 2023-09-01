@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.daemon.client.KotlinCompilerClient.compile
-
 plugins {
     kotlin("jvm") version "1.7.21"
 
@@ -9,11 +7,12 @@ plugins {
     id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
+version = "v0.8.0"
+
 application { mainClass.set("org.b12x.gfe.MainKt") }
 
 repositories {
     mavenCentral()
-    jcenter()
     maven("https://plugins.gradle.org/m2/")
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
     maven {
@@ -78,6 +77,16 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 // Use JUnit
 tasks.test { useJUnitPlatform() }
+
+tasks.named<Jar>("jar") {
+    manifest {
+        attributes(
+            "Implementation-Title" to project.name,
+            "Implementation-Version" to project.version,
+            "Main-Class" to "org.b12x.gfe.MainKt"
+        )
+    }
+}
 
 // Be sure to use latest Gradle version
 tasks.named<Wrapper>("wrapper") { gradleVersion = "7.5.1" }

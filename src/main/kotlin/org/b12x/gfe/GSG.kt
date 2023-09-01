@@ -3,7 +3,7 @@ package org.b12x.gfe
 import javafx.stage.Stage
 import org.b12x.gfe.core.view.MainView
 import org.b12x.gfe.utilities.InternetAccess
-import tornadofx.App
+import tornadofx.*
 
 class GSG : App(MainView::class, Styles::class) {
 
