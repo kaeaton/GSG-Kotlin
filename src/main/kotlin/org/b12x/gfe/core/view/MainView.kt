@@ -2,6 +2,7 @@ package org.b12x.gfe.core.view
 
 import javafx.scene.control.TabPane
 import org.b12x.gfe.core.controller.tabstate.TabStateContext
+import org.b12x.gfe.core.view.debugtab.DebugView
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewParent
 import org.b12x.gfe.plugins.namesearch.view.NameSearchViewParent
 import org.b12x.gfe.plugins.optionstab.view.OptionsView
@@ -12,7 +13,7 @@ class MainView : View("GFE Search Generator") {
     private val gfeViewParent = find(GfeViewParent::class)
     private val nameSearchViewParent = find(NameSearchViewParent::class)
     private val optionsView = find(OptionsView::class)
-//    private val debugView = find(DebugView::class)
+    private val debugView = find(DebugView::class)
     private val tabStateContext = TabStateContext()
 
     override val root = tabpane {
@@ -31,15 +32,15 @@ class MainView : View("GFE Search Generator") {
                 )
             }
         }
-//        tab("Allele Name Search") {
-//            add(nameSearchViewParent)
-//            this.setOnSelectionChanged { _ ->
-//                tabStateContext.setState("NAME")
-//                println(
-//                    if (this.isSelected) "NameSearch selected" else "NameSearch unselected"
-//                )
-//            }
-//        }
+        tab("Allele Name Search") {
+            add(nameSearchViewParent)
+            this.setOnSelectionChanged { _ ->
+                tabStateContext.setState("NAME")
+                println(
+                    if (this.isSelected) "NameSearch selected" else "NameSearch unselected"
+                )
+            }
+        }
 //        tab("Comparison Tool") {
 ////            add(comparisonView::class)
 //            this.setOnSelectionChanged { _ ->
@@ -80,8 +81,8 @@ class MainView : View("GFE Search Generator") {
 //                button("Button 2")
 //            }
 //        }
-//        tab("Debug") {
-//            add(debugView::class)
-//        }
+        tab("Debug") {
+            add(debugView::class)
+        }
     }
 }

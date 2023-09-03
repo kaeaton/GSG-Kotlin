@@ -6,7 +6,9 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import org.b12x.gfe.core.model.parsers.ParserVersionData
+import org.b12x.gfe.core.view.debugtab.DebugView
 import org.b12x.gfe.utilities.InternetAccess
+import tornadofx.*
 
 /**
  * Downloads data as indicated
@@ -18,6 +20,8 @@ class DataDownload(lociGroup: String) {
     private val MEDIA_TYPE_TEXT = "application/txt; charset=utf-8".toMediaType()
     private val loci = lociGroup
 
+    private val versionApi = "https://gfe.b12x.org/ipd-imgt-hla-versions"
+
     /**
      * Requests data from the GFE database
      *
@@ -28,8 +32,8 @@ class DataDownload(lociGroup: String) {
     fun makeRequest(request: String = "", dataUrl: String, dataType: String) {
 //        val internetAccess = InternetAccess.isInternetAvailable()
 //        if (InternetAccess().internetAccess.onComplete()) {
-//            val okHttpClient = OkHttpClient()
-//            parseResponse(okHttpClient.newCall(createRequest(dataUrl, request)).execute(), dataType)
+            val okHttpClient = OkHttpClient()
+            parseResponse(okHttpClient.newCall(createRequest(dataUrl, request)).execute(), dataType)
 //        }
     }
 
@@ -43,12 +47,12 @@ class DataDownload(lociGroup: String) {
     }
 
     private fun parseResponse(response: Response, dataType: String) {
-
-        when (dataType) {
-            "version" -> ParserVersionData.parseResponse(loci, response)
-            "data" -> "/Documents/GSG/GSGData/$loci/"
-        }
-
+        val debugViewTextArea = find(DebugView::class).debuggerTextArea
+//        when (dataType) {
+//            "version" -> ParserVersionData.parseResponse(loci, response)
+//            "data" -> "/Documents/GSG/GSGData/$loci/"
+//        }
+        debugViewTextArea.appendText(response.toString())
 //        val body = response.body?.string() ?: ""
 //        val stringBuilder: StringBuilder = StringBuilder(body)
 //        val parser: Parser = Parser.default()
