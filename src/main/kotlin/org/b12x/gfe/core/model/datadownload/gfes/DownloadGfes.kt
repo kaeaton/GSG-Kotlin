@@ -12,7 +12,7 @@ import org.b12x.gfe.core.view.debugtab.DebugView
 import tornadofx.find
 
 object DownloadGfes {
-    val client = HttpClient(CIO) {
+    private val client = HttpClient(CIO) {
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
@@ -23,7 +23,6 @@ object DownloadGfes {
 
     suspend fun getGfes() {
         val debugViewTextArea = find(DebugView::class).debuggerTextArea
-//        val client = HttpClient(CIO)
         val response: HttpResponse = client.get("http://gfe.b12x.org/gfe/locus/HLA-A")
 
         debugViewTextArea.appendText(response.body())

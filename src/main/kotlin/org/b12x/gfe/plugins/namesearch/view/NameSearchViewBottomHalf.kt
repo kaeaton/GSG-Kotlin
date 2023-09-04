@@ -26,7 +26,7 @@ class NameSearchViewBottomHalf : View("My View") {
 
         right = vbox {
 //            val nameSearchInformationTextBox = find(NameSearchInformationTextArea::class)
-            add(NameSearchInformationTextArea.root)
+            add(find(NameSearchInformationTextArea::class).root)
         }
 
         bottom = hbox {

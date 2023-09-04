@@ -4,9 +4,9 @@ import javafx.geometry.HPos
 import javafx.geometry.Pos
 import tornadofx.*
 
-object GfeTextAreaInfo : View("My View") {
+class GfeTextAreaInfo : View("My View") {
 
-    @JvmStatic val infoTextArea = textarea {
+    val infoTextArea = textarea {
         style {
             fontSize = Dimension(1.1, Dimension.LinearUnits.em)
             prefWidth = Dimension(400.0, Dimension.LinearUnits.px)

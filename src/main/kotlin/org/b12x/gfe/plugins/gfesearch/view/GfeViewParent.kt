@@ -10,14 +10,9 @@ class GfeViewParent : View("GFE Search") {
 
     private val stateContext = LociStateContextGfeSearch
     private var gfeContainerMenu = GfeContainerMenu()
-//    private var gfeContainerReset = find(GfeContainerReset::class)
 
     var gfeSearchBoxes = stateContext.createNewSearchBoxes()
     private val gfeContainerBottomHalf = GfeContainerBottomHalf()
-
-//    fun swapSearchBoxes() {
-//        root.center.replaceWith(stateContext.createNewSearchBoxes().root)
-//    }
 
     override val root = borderpane {
         top { add(gfeContainerMenu.root) }
@@ -30,7 +25,6 @@ class GfeViewParent : View("GFE Search") {
             padding = box(10.px, 0.px, 0.px, 10.px)
         }
     }
-
 
     fun swapSearchBoxes() {
         println("What locus we think we're loading: ${stateContext.locus}")

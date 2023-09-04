@@ -5,7 +5,7 @@ import javafx.geometry.Pos
 import javafx.scene.control.TextArea
 import tornadofx.*
 
-object NameSearchInformationTextArea : View("My View") {
+class NameSearchInformationTextArea : View("My View") {
     
     val infoTextArea = textarea {
         style {

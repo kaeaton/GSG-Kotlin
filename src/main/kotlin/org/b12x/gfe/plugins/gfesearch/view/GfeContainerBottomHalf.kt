@@ -9,52 +9,74 @@ import kotlin.system.exitProcess
 
 class GfeContainerBottomHalf : View() {
 
-    override val root = borderpane {
-        top = hbox {  }
+        override val root = vbox {
 
-        left = vbox {
-            style {
-                prefWidth = Dimension(0.0, Dimension.LinearUnits.px)
+            hbox {
+                add(GfeTableViewData.root)
+                add(find(GfeTextAreaInfo::class).root)
+                style {
+                    alignment = Pos.CENTER
+                    hAlignment = HPos.CENTER
+//                padding = box(0.px, 10.px, 5.px, 0.px) // padding around individual elements?
+                }
             }
-        }
 
-        center = vbox {
-            add(GfeTableViewData.root)
-        }
+            hbox {
+                add(Group(GfeButtonSubmit.root))
 
-        right = vbox {
-//            val gfeSearchInformationTextBox = find(GfeTextAreaInfo::class)
-            add(GfeTextAreaInfo.root)
-        }
-
-        bottom = hbox {
-
-            add(Group(GfeButtonSubmit.root))
-
-            add(Group(button("Exit") {
-                action {
+                add(Group(button("Exit") {
+                    action {
 //                    var stateContext = LociStateContextGfeSearch
 //                    stateContext.loci = GfeMenuLoci.choiceBoxLoci.value
 
-                    exitProcess(0)
-                }
+                        exitProcess(0)
+                    }
+                    style {
+                        padding = box(5.px, 17.px) // button internal padding
+                        startMargin = Dimension(10.0, Dimension.LinearUnits.px)
+                    }
+                }))
+
                 style {
-                    padding = box(5.px, 17.px) // button internal padding
-                    startMargin = Dimension(10.0, Dimension.LinearUnits.px)
+                    alignment = Pos.CENTER
+                    hAlignment = HPos.CENTER
+                    padding = box(10.px, 10.px, 10.px, 0.px) // padding around individual elements?
                 }
-            }))
 
-            style {
-                alignment = Pos.CENTER
-                hAlignment = HPos.CENTER
-                padding = box(10.px, 0.px, 5.px, 0.px) // padding around individual elements?
-            }
-
-            hboxConstraints {
-                marginRight = 10.0
-                hGrow = Priority.ALWAYS
+                hboxConstraints {
+                    marginRight = 10.0
+                    hGrow = Priority.ALWAYS
+                }
             }
         }
-
-    }
+//    override val root = vbox {
+//        hbox {
+//            add( Group(
+//            GfeButtonSubmit.root
+//
+//            button("Exit") {
+//                action {
+////                    var stateContext = LociStateContextGfeSearch
+////                    stateContext.loci = GfeMenuLoci.choiceBoxLoci.value
+//
+//                    exitProcess(0)
+//                }
+//                style {
+//                    padding = box(5.px, 17.px) // button internal padding
+//                    startMargin = Dimension(10.0, Dimension.LinearUnits.px)
+//                }
+//            }))
+//
+//            style {
+//                alignment = Pos.CENTER
+//                hAlignment = HPos.CENTER
+//                padding = box(10.px, 10.px, 10.px, 0.px) // padding around individual elements?
+//            }
+//
+//            hboxConstraints {
+//                marginRight = 10.0
+//                hGrow = Priority.ALWAYS
+//            }
+//        }
+//    }
 }

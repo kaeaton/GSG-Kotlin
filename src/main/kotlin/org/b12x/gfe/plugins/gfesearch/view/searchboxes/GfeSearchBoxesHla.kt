@@ -76,6 +76,7 @@ class GfeSearchBoxesHla(loci: LociEnum) : Fragment("Gfe Search Boxes"), GfeSearc
                 style {
                     padding = box(10.px)
                 }
+                tooltip("A zero in a GFE represents no data. Checking this box will mean that there will only be results that have data for this feature.")
             }
             currentCheckBox.selectedProperty().addListener { _, _, _ ->
                 if(!currentCheckBox.isSelected) {

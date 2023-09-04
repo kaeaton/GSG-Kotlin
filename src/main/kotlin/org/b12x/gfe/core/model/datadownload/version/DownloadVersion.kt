@@ -12,7 +12,7 @@ import org.b12x.gfe.core.view.debugtab.DebugView
 import tornadofx.find
 
 object DownloadVersion {
-    val client = HttpClient(CIO) {
+    private val client = HttpClient(CIO) {
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true

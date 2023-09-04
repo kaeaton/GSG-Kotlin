@@ -9,11 +9,12 @@ import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
 import org.b12x.gfe.utilities.InternetAccess
 //import org.b12x.gfe.utilities.InternetAccess.ktorHttpClient
 import tornadofx.*
+import tornadofx.find
 
 class OptionsView : View("My View") {
 
 
-
+    val internetAccess = InternetAccess()
     val buttons = vbox {
 
         button ("Reset Preferences"){
@@ -39,25 +40,27 @@ class OptionsView : View("My View") {
 
         button ("Ping the data server"){
             action {
-                val YES_SERVER_MSG = "The server is available.\n"
-                val NO_SERVER_MSG = "The server is not available, locally available data only.\n"
 
-                val gfeSearchInformationTextArea = tornadofx.find(GfeTextAreaInfo::class)
-                val nameSearchInformationTextArea = tornadofx.find(NameSearchInformationTextArea::class)
-
-                runBlocking {
-                    try {
-//                        ktorHttpClient.head("http://gfe.b12x.org/v1/imgt-versions")
-                        infoTextArea.appendText(YES_SERVER_MSG)
-                        gfeSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
-                        nameSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
-                    } catch (e: Exception) {
-                        println(e.message)
-                        infoTextArea.appendText(NO_SERVER_MSG)
-                        gfeSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
-                        nameSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
-                    }
-                }
+                val access = internetAccess.internetAccess
+//                val YES_SERVER_MSG = "The server is available.\n"
+//                val NO_SERVER_MSG = "The server is not available, locally available data only.\n"
+//
+//                val gfeSearchInformationTextArea = tornadofx.find(GfeTextAreaInfo::class)
+//                val nameSearchInformationTextArea = tornadofx.find(NameSearchInformationTextArea::class)
+//
+//                runBlocking {
+//                    try {
+////                        ktorHttpClient.head("http://gfe.b12x.org/v1/imgt-versions")
+//                        infoTextArea.appendText(YES_SERVER_MSG)
+//                        gfeSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
+//                        nameSearchInformationTextArea.infoTextArea.appendText(YES_SERVER_MSG)
+//                    } catch (e: Exception) {
+//                        println(e.message)
+//                        infoTextArea.appendText(NO_SERVER_MSG)
+//                        gfeSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
+//                        nameSearchInformationTextArea.infoTextArea.appendText(NO_SERVER_MSG)
+//                    }
+//                }
             }
         }
     }
