@@ -21,9 +21,11 @@ object DownloadVersion {
         }
     }
 
+    /**
+     * Download available database versions.
+     */
     suspend fun getVersions() {
         val debugViewTextArea = find(DebugView::class).debuggerTextArea
-//        val client = HttpClient(CIO)
         val response: HttpResponse = client.get("http://gfe.b12x.org/ipd-imgt-hla-versions")
 
         debugViewTextArea.appendText(response.body())

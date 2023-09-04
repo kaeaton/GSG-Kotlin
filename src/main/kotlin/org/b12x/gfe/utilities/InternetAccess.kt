@@ -5,9 +5,7 @@ import org.b12x.gfe.core.view.debugtab.DebugView
 import org.b12x.gfe.plugins.gfesearch.view.GfeTextAreaInfo
 import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
 import tornadofx.find
-import java.io.IOException
 import java.net.HttpURLConnection
-import java.net.MalformedURLException
 import java.net.URL
 
 class InternetAccess {
@@ -22,6 +20,10 @@ class InternetAccess {
         checkForGoogle()
     }
 
+    /**
+     * Determines if the program can reach Google (has internet) in
+     * a separate coroutine. It prints the results to the info text areas.
+     */
     suspend fun checkForGoogle() = coroutineScope {
         launch {
 
@@ -42,22 +44,9 @@ class InternetAccess {
                     nameInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
 //                    debugViewTextArea.debuggerTextArea.appendText(YES_INTERNET_MSG)
                 }
-
             } catch (e: Exception) {
                 gfeInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
                 nameInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
-
-                // Handle exceptions
-                when (e) {
-                    is MalformedURLException -> "loadLink: Invalid URL ${e.message}"
-                    is IOException -> "loadLink: IO Exception reading data: ${e.message}"
-                    is SecurityException -> {
-                        e.printStackTrace()
-                        "loadLink: Security Exception. Needs permission? ${e.message}"
-                    }
-
-                    else -> "Unknown error: ${e.message}"
-                }
             }
         }
     }
