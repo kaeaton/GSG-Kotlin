@@ -7,19 +7,19 @@ import tornadofx.*
 
 object NameSearchButtonSubmit : View("My View") {
 
-    lateinit var searchData: SearchData
+//    lateinit var searchData: SearchData
 
     override val root = vbox {
         button("Submit") {
             action {
-                val searchTerm = NameSearchTextFieldSearchTerm.searchTerm
-                val nameSearchInformationTextArea = tornadofx.find(NameSearchInformationTextArea::class)
-                searchData = CreateNewNameSearchData.generateSearchData(searchTerm)
-                println("The name search submit button has been activated.")
-                // fire(ResultsRequest)
-                NameSearchTableView.data.clear()
-                NameSearchTableView.data.addAll(FindResults.findResultsNameSearch(searchData))
-                nameSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+//                val searchTerm = NameSearchTextFieldSearchTerm.searchTerm
+//                val nameSearchInformationTextArea = tornadofx.find(NameSearchInformationTextArea::class)
+//                searchData = CreateNewNameSearchData.generateSearchData(searchTerm)
+//                println("The name search submit button has been activated.")
+//                // fire(ResultsRequest)
+//                NameSearchTableView.data.clear()
+//                NameSearchTableView.data.addAll(FindResults.findResultsNameSearch(searchData))
+//                nameSearchInformationTextArea.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
 
             }
         }

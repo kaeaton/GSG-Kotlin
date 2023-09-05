@@ -2,6 +2,7 @@ package org.b12x.gfe.utilities
 
 import java.io.File
 import java.nio.file.Files
+import java.nio.file.Path
 import java.nio.file.Paths
 
 object FileManagement {
@@ -28,7 +29,7 @@ object FileManagement {
      * @param fileSuffix the type of file
      * @return the path to the file
      */
-    fun createFile(whereTheFileShouldGo: String, fileName: String, fileSuffix: String): String {
+    fun createFile (whereTheFileShouldGo: String, fileName: String, fileSuffix: String): String {
         var pathToFile = whereTheFileShouldGo
 
         // check the path for a slash at the end before adding file

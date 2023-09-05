@@ -4,7 +4,7 @@ import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
 import org.b12x.gfe.core.controller.searchResults.FindResults
 import org.b12x.gfe.plugins.gfesearch.controller.searchdata.CreateNewGfeSearchData
-import tornadofx.FX.Companion.find
+import org.b12x.gfe.plugins.gfesearch.model.output.files.*
 import tornadofx.find
 
 object GfeViewMethods {
@@ -33,10 +33,15 @@ object GfeViewMethods {
         println("You pressed enter on a GFE Search.")
         val gfeTextAreaInfo = find(GfeTextAreaInfo::class)
 
-        val results = FindResults.findResultsGfeSearch(searchData)
+//        val results = FindResults.findResultsGfeSearch(searchData)
+        FindResults.findResultsGfeSearch(searchData)
         GfeTableViewData.gfeData.clear()
-        GfeTableViewData.gfeData.addAll(results)
+        GfeTableViewData.gfeData.addAll(searchData.results)
         gfeTextAreaInfo.infoTextArea.appendText("Search terms: ${searchData.header}\n")
         gfeTextAreaInfo.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
+
+//        if (true) {
+            GfeOutputTsv(searchData).writeData(searchData)
+//        }
     }
 }
