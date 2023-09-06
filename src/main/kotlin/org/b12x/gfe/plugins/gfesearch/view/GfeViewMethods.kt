@@ -5,7 +5,7 @@ import javafx.scene.control.TextField
 import org.b12x.gfe.core.controller.searchResults.FindResults
 import org.b12x.gfe.plugins.gfesearch.controller.searchdata.CreateNewGfeSearchData
 import org.b12x.gfe.plugins.gfesearch.model.output.files.*
-import tornadofx.find
+import tornadofx.*
 
 object GfeViewMethods {
 
@@ -32,16 +32,20 @@ object GfeViewMethods {
         val searchData = CreateNewGfeSearchData.generateSearchData()
         println("You pressed enter on a GFE Search.")
         val gfeTextAreaInfo = find(GfeTextAreaInfo::class)
+        val gfeTableViewData = find(GfeTableViewData::class)
 
-//        val results = FindResults.findResultsGfeSearch(searchData)
         FindResults.findResultsGfeSearch(searchData)
-        GfeTableViewData.gfeData.clear()
-        GfeTableViewData.gfeData.addAll(searchData.results)
+        gfeTableViewData.gfeData.clear()
+        gfeTableViewData.gfeData.addAll(searchData.results)
+//        SmartResize.POLICY.requestResize(gfeTableViewData.dataTable)
         gfeTextAreaInfo.infoTextArea.appendText("Search terms: ${searchData.header}\n")
         gfeTextAreaInfo.infoTextArea.appendText("Total results: ${searchData.resultsCount}\n")
 
-//        if (true) {
-            GfeOutputTsv(searchData).writeData(searchData)
-//        }
+        if (searchData.writeToFile) {
+            when (searchData.textFormat) {
+                "csv" -> GfeOutputCsv(searchData).writeData(searchData)
+                "tsv" -> GfeOutputTsv(searchData).writeData(searchData)
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ import javafx.geometry.Pos
 import org.b12x.gfe.core.controller.displayText.Result
 import tornadofx.*
 
-object GfeTableViewData : View() {
+class GfeTableViewData : View() {
 
     val gfeData = observableListOf(
         Result("HLA-A*01:01:01:01", "HLA-Aw2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-4"),
@@ -27,15 +27,14 @@ object GfeTableViewData : View() {
 //    }
 
     val dataTable = tableview(gfeData) {
-        column("Allele Name", Result::alleleNameProperty)
-        column("GFE", Result::gfeProperty) //.remainingWidth()
-
+        readonlyColumn("Allele Name", Result::alleleName).contentWidth(useAsMin = true, useAsMax = true)
+        readonlyColumn("GFE", Result::gfeName).remainingWidth()
 
         style {
             fontSize = Dimension(1.2, Dimension.LinearUnits.em)
             prefWidth = Dimension(600.0, Dimension.LinearUnits.px)
             prefHeight = Dimension(330.0, Dimension.LinearUnits.px)
-            startMargin = 0.px
+//            startMargin = 0.px
         }
     }
 
@@ -45,6 +44,9 @@ object GfeTableViewData : View() {
         style {
             alignment = Pos.CENTER
             hAlignment = HPos.CENTER
+//            fontSize = Dimension(1.2, Dimension.LinearUnits.em)
+//            minWidth = Dimension(600.0, Dimension.LinearUnits.px)
+//            minHeight = Dimension(330.0, Dimension.LinearUnits.px)
         }
     }
 }

@@ -10,9 +10,15 @@ import kotlin.system.exitProcess
 class GfeContainerBottomHalf : View() {
 
         override val root = vbox {
-
             hbox {
-                add(GfeTableViewData.root)
+                add(find(GfeContainerPrintOptions::class).root)
+                style {
+                    alignment = Pos.BASELINE_RIGHT
+                    padding = box(0.px, 100.px, 10.px, 0.px)
+                }
+            }
+            hbox {
+                add(find(GfeTableViewData::class).root)
                 add(find(GfeTextAreaInfo::class).root)
                 style {
                     alignment = Pos.CENTER

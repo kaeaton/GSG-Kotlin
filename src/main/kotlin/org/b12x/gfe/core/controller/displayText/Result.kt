@@ -8,5 +8,5 @@ class Result (alleleName: String, gfe: String){
     var gfeName by gfeProperty
 
     val alleleNameProperty = SimpleStringProperty(alleleName)
-//    var alleleName by alleleNameProperty
+    var alleleName by alleleNameProperty
 }
