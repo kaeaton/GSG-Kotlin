@@ -27,7 +27,7 @@ class GfeTableViewData : View() {
 //    }
 
     val dataTable = tableview(gfeData) {
-        readonlyColumn("Allele Name", Result::alleleName).contentWidth(useAsMin = true, useAsMax = true)
+        readonlyColumn("Allele Name", Result::alleleName).contentWidth()
         readonlyColumn("GFE", Result::gfeName).remainingWidth()
 
         style {
@@ -40,6 +40,7 @@ class GfeTableViewData : View() {
 
     override val root = hbox {
         add(dataTable)
+
 
         style {
             alignment = Pos.CENTER
