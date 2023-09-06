@@ -14,7 +14,7 @@ import tornadofx.find
 class OptionsView : View("My View") {
 
 
-    val internetAccess = InternetAccess()
+//    val internetAccess = InternetAccess()
     val buttons = vbox {
 
         button ("Reset Preferences"){
@@ -41,7 +41,7 @@ class OptionsView : View("My View") {
         button ("Ping the data server"){
             action {
 
-                val access = internetAccess.internetAccess
+//                val access = internetAccess.internetAccess
 //                val YES_SERVER_MSG = "The server is available.\n"
 //                val NO_SERVER_MSG = "The server is not available, locally available data only.\n"
 //

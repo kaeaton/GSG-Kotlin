@@ -7,6 +7,7 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.b12x.gfe.core.view.debugtab.DebugView
 import tornadofx.find
@@ -23,11 +24,17 @@ object DownloadVersion {
 
     /**
      * Download available database versions.
+     *
+     * @return An IncomingVersions object containing a list of condensed versions.
      */
-    suspend fun getVersions() {
-        val debugViewTextArea = find(DebugView::class).debuggerTextArea
+    suspend fun getVersions(): IncomingVersions {
+//        val debugViewTextArea = find(DebugView::class).debuggerTextArea
         val response: HttpResponse = client.get("http://gfe.b12x.org/ipd-imgt-hla-versions")
 
-        debugViewTextArea.appendText(response.body())
+//        debugViewTextArea.appendText(response.body())
+        val incomingVersions = Json.decodeFromString<IncomingVersions>(response.body<String>())
+//        debugViewTextArea.appendText(incomingVersions.toString())
+
+        return incomingVersions
     }
 }

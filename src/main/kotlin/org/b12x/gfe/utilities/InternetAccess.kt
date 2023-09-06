@@ -12,10 +12,9 @@ class InternetAccess {
 
     private val YES_INTERNET_MSG = "Internet access available.\n"
     private val NO_INTERNET_MSG = "Internet access not available, locally available data only.\n"
-    val gfeInformationTextArea = find(GfeTextAreaInfo::class)
-    val nameInformationTextArea = find(NameSearchInformationTextArea::class)
-    val debugViewTextArea = find(DebugView::class).debuggerTextArea
-
+//    val gfeInformationTextArea = find(GfeTextAreaInfo::class)
+//    val nameInformationTextArea = find(NameSearchInformationTextArea::class)
+    var internetStatus = false
     val internetAccess = runBlocking {
         checkForGoogle()
     }
@@ -40,14 +39,29 @@ class InternetAccess {
                 println(response)
 
                 if (response == 200) {
-                    gfeInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
-                    nameInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
-//                    debugViewTextArea.debuggerTextArea.appendText(YES_INTERNET_MSG)
+//                    gfeInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+//                    nameInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+                    internetStatus = true
+
                 }
             } catch (e: Exception) {
-                gfeInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
-                nameInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+//                gfeInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+//                nameInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+                internetStatus = false
             }
+        }
+    }
+
+    fun printResults() {
+        val gfeInformationTextArea = find(GfeTextAreaInfo::class)
+        val nameInformationTextArea = find(NameSearchInformationTextArea::class)
+
+        if(internetStatus) {
+            gfeInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+            nameInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)
+        } else {
+            gfeInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
+            nameInformationTextArea.infoTextArea.appendText(NO_INTERNET_MSG)
         }
     }
 }

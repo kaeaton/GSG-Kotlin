@@ -12,7 +12,7 @@ class VersionList(loci: String) {
 
     private fun getOnlineVersionList(): ArrayList<String> {
         val versionList = ArrayList<String>()
-        val directoryManagement = DirectoryManagement()
+//        val directoryManagement = DirectoryManagement()
 //        val versionFileLocation = FileManagement.createFile(
 //            directoryManagement.setLociLocation(loci),
 //            "onlineVersions",

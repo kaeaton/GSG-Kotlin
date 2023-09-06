@@ -17,8 +17,8 @@ class GSG : App(MainView::class, Styles::class) {
 //        stage.setOnHiding { stop() }
 
         /* Internet Access */
-//        var internetAccess = InternetAccess()
-//        InternetAccess.isInternetAvailable()
+        val internetAccess = InternetAccess()
+        internetAccess.printResults()
     }
 }
 
