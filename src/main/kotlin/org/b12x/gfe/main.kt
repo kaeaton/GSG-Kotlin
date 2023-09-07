@@ -14,14 +14,13 @@ import tornadofx.*
 fun main() {
 
     /* Prefs Reset */
-//    PrefsCore.nuclearOption()
+    PrefsCore.nuclearOption()
     println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Internet Access */
     val internetAccess = InternetAccess()
 
     runBlocking {
-        println("We've entered Run Blocking")
         internetAndVersions(internetAccess)
     }
 
@@ -31,13 +30,10 @@ fun main() {
 
 suspend fun internetAndVersions(internetAccess: InternetAccess) = coroutineScope {
     launch {
-
         internetAccess.internetAccess
-        println(internetAccess.internetStatus)
-        if (internetAccess.internetStatus) {
 
-            DownloadVersion.getVersions()
-            println("Version download complete!")
-        }
+//        if (internetAccess.internetStatus) {
+//            DownloadVersion.getVersions("HLA")
+//        }
     }
 }

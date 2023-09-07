@@ -9,6 +9,9 @@ object CreateNewHlaVersionObject {
 
     private const val HEADER_LENGTH = 50  // bytes
 
+    // loci refers to gene groups (HLA, KIR),
+    // so the word locuses will be used instead
+
     /**
      * Creates an HLA version object.
      *

@@ -13,6 +13,10 @@ import org.b12x.gfe.core.view.debugtab.DebugView
 import tornadofx.find
 
 object DownloadVersion {
+
+    val HLA_VERSION_API = "http://gfe.b12x.org/ipd-imgt-hla-versions"
+    val KIR_VERSION_API = "http://gfe.b12x.org/ipd-imgt-hla-versions"
+
     private val client = HttpClient(CIO) {
         install(ContentNegotiation) {
             json(Json {
@@ -27,13 +31,15 @@ object DownloadVersion {
      *
      * @return An IncomingVersions object containing a list of condensed versions.
      */
-    suspend fun getVersions(): IncomingVersions {
-//        val debugViewTextArea = find(DebugView::class).debuggerTextArea
-        val response: HttpResponse = client.get("http://gfe.b12x.org/ipd-imgt-hla-versions")
+    suspend fun getVersions(loci: String): IncomingVersions {
+        val api = when(loci) {
+            "HLA" -> HLA_VERSION_API
+            "KIR" -> KIR_VERSION_API
+            else -> HLA_VERSION_API
+        }
 
-//        debugViewTextArea.appendText(response.body())
+        val response: HttpResponse = client.get(api)
         val incomingVersions = Json.decodeFromString<IncomingVersions>(response.body<String>())
-//        debugViewTextArea.appendText(incomingVersions.toString())
 
         return incomingVersions
     }

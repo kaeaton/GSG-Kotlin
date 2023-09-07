@@ -30,6 +30,10 @@ class HlaStateGfeSearch : LociStateGfeSearch {
         CreateNewHlaVersionObject.createVersionObject("HLA", version)
     ) { _, _, _ ->  }
 
+//    override var versionList: List<String> by Delegates.observable(
+//        VersionList("HLA").allVersionNames
+//    )  { _, _, _ ->  }
+
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
         var versionList = VersionList("HLA")
         var versions = versionList.allVersionNames

@@ -14,7 +14,7 @@ class MainView : View("GFE Search Generator") {
     private val nameSearchViewParent = find(NameSearchViewParent::class)
     private val optionsView = find(OptionsView::class)
     private val debugView = find(DebugView::class)
-    private val tabStateContext = TabStateContext()
+    private val tabStateContext = TabStateContext
 
     override val root = tabpane {
 

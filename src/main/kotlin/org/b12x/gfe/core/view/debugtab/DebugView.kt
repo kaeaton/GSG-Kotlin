@@ -28,7 +28,7 @@ class DebugView : View("Debug") {
                     action {
                         runBlocking {
                             launch {
-                                DownloadVersion.getVersions()
+                                DownloadVersion.getVersions("HLA")
                             }
                         }
                     }

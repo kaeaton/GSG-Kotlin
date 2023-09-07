@@ -1,5 +1,8 @@
 package org.b12x.gfe.core.controller.tabstate
 
+import org.b12x.gfe.core.controller.version.VersionList
+import kotlin.properties.Delegates
+
 class NameSearchState: TabState {
 
     /* What tab */
@@ -7,6 +10,6 @@ class NameSearchState: TabState {
 
     /* Version */
     override fun getCurrentVersion(ctx: TabStateContext): String {
-        return "value"
+        return "version"
     }
 }

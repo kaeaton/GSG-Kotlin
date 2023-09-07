@@ -43,6 +43,10 @@ object LociStateContextGfeSearch {
         currentState?.versionObject = newValue
     }
 
+//    var versionList: List<String> by Delegates.observable(currentState?.versionList as List<String>) {
+//        _, _, _ ->
+//    }
+
     fun updateVersions() = currentState?.updateVersions(this) ?: HlaStateGfeSearch().updateVersions(this)
 
     /* Locus */

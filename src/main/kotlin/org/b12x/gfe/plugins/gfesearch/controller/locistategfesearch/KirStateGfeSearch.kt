@@ -4,6 +4,7 @@ import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
 import org.b12x.gfe.core.controller.version.Version
+import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.plugins.gfesearch.view.GfeMenuLocus
 import org.b12x.gfe.plugins.gfesearch.view.GfeMenuVersion
 import org.b12x.gfe.plugins.gfesearch.view.searchboxes.GfeSearchBoxes
@@ -23,6 +24,10 @@ class KirStateGfeSearch : LociStateGfeSearch {
     override var versionObject: Version by Delegates.observable(
         CreateNewKirVersionObject.createVersionObject()
     ) { _, _, _ ->  }
+
+//    override var versionList: List<String> by Delegates.observable(
+//        VersionList("KIR").allVersionNames
+//    )  { _, _, _ ->  }
 
     override fun updateVersions(ctx: LociStateContextGfeSearch) {
         val gfeMenuVersion = find(GfeMenuVersion::class)

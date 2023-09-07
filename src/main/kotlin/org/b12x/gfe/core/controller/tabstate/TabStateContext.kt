@@ -1,6 +1,9 @@
 package org.b12x.gfe.core.controller.tabstate
 
-class TabStateContext {
+import org.b12x.gfe.core.controller.version.VersionList
+import kotlin.properties.Delegates
+
+object TabStateContext {
     private var currentState: TabState? = null
 
     init {
@@ -32,4 +35,8 @@ class TabStateContext {
     fun getCurrentVersion() =
         currentState?.getCurrentVersion(this)
             ?: GfeSearchState().getCurrentVersion(this)
+
+    var versionList: List<String> by Delegates.observable(VersionList("HLA").allVersionNames) {
+            _, _, _ ->
+    }
 }
