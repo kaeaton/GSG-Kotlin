@@ -24,7 +24,11 @@ object DownloadGfes {
     suspend fun getGfes() {
         val debugViewTextArea = find(DebugView::class).debuggerTextArea
         val response: HttpResponse = client.get("http://gfe.b12x.org/gfe/locus/HLA-A")
+        debugViewTextArea.appendText(response.bodyAsText())
+//        val incomingGfes = Json.beginStructure("GFEs")
+//            .decodeFromString<IncomingGfes>(response.body<String>())
+//        val composite = decoder.beginStructure("GFEs")
 
-        debugViewTextArea.appendText(response.body())
+
     }
 }

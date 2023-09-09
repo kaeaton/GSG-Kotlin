@@ -90,7 +90,7 @@ class VersionList(loci: String) {
 
         newVersions.forEach { onlineVersion ->
             if (!localVersionNames.contains(onlineVersion)) {
-                localVersionNames.add("$onlineVersion *")
+                localVersionNames.add(onlineVersion)
 
                 val gfeInformationTextArea = find(GfeTextAreaInfo::class)
                 val nameInformationTextArea = find(NameSearchInformationTextArea::class)
