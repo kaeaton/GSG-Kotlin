@@ -1,6 +1,8 @@
 plugins {
     kotlin("jvm") version "1.7.21"
 
+    id("dev.hydraulic.conveyor") version "1.5"
+
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
     kotlin("plugin.serialization") version "1.9.0"
@@ -9,7 +11,7 @@ plugins {
 
 version = "v0.8.0"
 
-application { mainClass.set("org.b12x.gfe.MainKt") }
+application { mainClass.set("org.b12x.gfe.GSG") }
 
 repositories {
     mavenCentral()
@@ -67,8 +69,8 @@ dependencies {
 
 // JavaFX module to include
 javafx {
-    version = "20"
-    modules = mutableListOf("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.swing")
+    version = "17"
+    modules = mutableListOf("javafx.controls")
 }
 
 // Set Kotlin/JVM target versions
@@ -85,9 +87,20 @@ tasks.named<Jar>("jar") {
         attributes(
             "Implementation-Title" to project.name,
             "Implementation-Version" to project.version,
-            "Main-Class" to "org.b12x.gfe.MainKt"
+            "Main-Class" to "org.b12x.gfe.GSG"
         )
     }
+
+    // To avoid the duplicate handling strategy error
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    // To add all of the dependencies otherwise a "NoClassDefFoundError" error
+    from(sourceSets.main.get().output)
+
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
 }
 
 // Be sure to use latest Gradle version
