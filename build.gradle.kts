@@ -70,7 +70,7 @@ dependencies {
 // JavaFX module to include
 javafx {
     version = "17"
-    modules = mutableListOf("javafx.controls")
+    modules = mutableListOf("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.swing")
 }
 
 // Set Kotlin/JVM target versions
