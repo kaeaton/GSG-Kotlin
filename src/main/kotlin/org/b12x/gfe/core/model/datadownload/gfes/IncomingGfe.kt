@@ -4,4 +4,4 @@ import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class IncomingGfes(@Contextual val GFEs: String)
+data class IncomingGfes(val GFE: String, val )

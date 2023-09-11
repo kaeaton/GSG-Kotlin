@@ -1,3 +1,5 @@
+import org.gradle.jvm.tasks.Jar
+
 plugins {
     kotlin("jvm") version "1.7.21"
 
@@ -9,9 +11,9 @@ plugins {
     id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
-version = "v1.0.0"
+version = "v0.9.0"
 
-application { mainClass.set("org.b12x.gfe.GSG") }
+application { mainClass.set("org.b12x.gfe.MainKt") }
 
 repositories {
     mavenCentral()
@@ -82,6 +84,20 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 // Use JUnit
 tasks.test { useJUnitPlatform() }
 
+// Compile to fat jar
+
+//
+//val fatJar = task("fatJar", type = Jar::class) {
+//    getArchiveBaseName()// = "${project.name}-fat"
+//    // manifest Main-Class attribute is optional.
+//    // (Used only to provide default main class for executable jar)
+//    manifest {
+//        attributes["Main-Class"] = "org.b12x.gfe.MainKt" // fully qualified class name of default main class
+//    }
+//    from(configurations.runtime.map{ if (it.isDirectory) it else zipTree(it) })
+//    with(tasks["jar"] as CopySpec)
+//}
+
 tasks.named<Jar>("jar") {
     manifest {
         attributes(
@@ -101,6 +117,23 @@ tasks.named<Jar>("jar") {
     from({
         configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
     })
+}
+
+tasks {
+    val fatJar = register<Jar>("fatJar") {
+        dependsOn.addAll(listOf("compileJava", "compileKotlin", "processResources")) // We need this for Gradle optimization to work
+        archiveClassifier.set("standalone") // Naming the jar
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        manifest { attributes(mapOf("Main-Class" to application.mainClass)) } // Provided we set it up in the application plugin configuration
+        val sourcesMain = sourceSets.main.get()
+        val contents = configurations.runtimeClasspath.get()
+            .map { if (it.isDirectory) it else zipTree(it) } +
+                sourcesMain.output
+        from(contents)
+    }
+    build {
+        dependsOn(fatJar) // Trigger fat jar creation during build
+    }
 }
 
 // Be sure to use latest Gradle version
