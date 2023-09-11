@@ -9,7 +9,7 @@ plugins {
     id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
-version = "v0.8.0"
+version = "v1.0.0"
 
 application { mainClass.set("org.b12x.gfe.GSG") }
 

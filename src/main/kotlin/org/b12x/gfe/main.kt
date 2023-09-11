@@ -12,45 +12,45 @@ import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSear
 import org.b12x.gfe.utilities.InternetAccess
 import tornadofx.*
 
-class GSG : App(MainView::class, Styles::class) {
-
-    private val gsgWidth = 1150.0
-    private val gsgHeight = 800.0
-
-    override fun start(stage: Stage) {
-        super.start(stage)
-        stage.width = gsgWidth
-        stage.height = gsgHeight
-//        stage.setOnHiding { stop() }
-
-        /* Internet Access */
-        val internetAccess = InternetAccess()
-        internetAccess.printResults()
-    }
-}
+//class GSG : App(MainView::class, Styles::class) {
+//
+//    private val gsgWidth = 1150.0
+//    private val gsgHeight = 800.0
+//
+//    override fun start(stage: Stage) {
+//        super.start(stage)
+//        stage.width = gsgWidth
+//        stage.height = gsgHeight
+////        stage.setOnHiding { stop() }
+//
+//        /* Internet Access */
+//        val internetAccess = InternetAccess()
+//        internetAccess.printResults()
+//    }
+//}
 fun main() {
 
     /* Prefs Reset */
-    PrefsCore.nuclearOption()
-    println(PrefsGfeSearch.currentGfeSearchLocusHla)
+//    PrefsCore.nuclearOption()
+//    println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Internet Access */
-    val internetAccess = InternetAccess()
+//    val internetAccess = InternetAccess()
 
-    runBlocking {
-        internetAndVersions(internetAccess)
-    }
+//    runBlocking {
+//        internetAndVersions(internetAccess)
+//    }
 
     /* Program start - nothing will be run past this point */
     launch<GSG>()
 }
 
-suspend fun internetAndVersions(internetAccess: InternetAccess) = coroutineScope {
-    launch {
-        internetAccess.internetAccess
-
-//        if (internetAccess.internetStatus) {
-//            DownloadVersion.getVersions("HLA")
-//        }
-    }
-}
+//suspend fun internetAndVersions(internetAccess: InternetAccess) = coroutineScope {
+//    launch {
+//        internetAccess.internetAccess
+//
+////        if (internetAccess.internetStatus) {
+////            DownloadVersion.getVersions("HLA")
+////        }
+//    }
+//}
