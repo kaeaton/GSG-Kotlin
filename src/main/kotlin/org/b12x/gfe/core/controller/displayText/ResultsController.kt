@@ -3,14 +3,14 @@ package org.b12x.gfe.core.controller.displayText
 import org.b12x.gfe.core.controller.SearchData
 import org.b12x.gfe.core.controller.searchResults.FindResults
 import org.b12x.gfe.plugins.namesearch.controller.CreateNewNameSearchData
-import org.b12x.gfe.plugins.namesearch.view.NameSearchTextFieldSearchTerm
+import org.b12x.gfe.plugins.namesearch.view.NameTextFieldSearch
 import tornadofx.*
 
 class ResultsController : Controller() {
     init {
         subscribe<ResultsRequest> {
 //            runAsync {
-                val searchTerm = NameSearchTextFieldSearchTerm.searchTerm
+                val searchTerm = NameTextFieldSearch.searchTerm
                 val searchData = CreateNewNameSearchData.generateSearchData(searchTerm)
                 val results = processRequest(searchData)
                 println(results)

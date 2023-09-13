@@ -35,22 +35,22 @@ fun main() {
 //    println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Internet Access */
-//    val internetAccess = InternetAccess()
+    val internetAccess = InternetAccess()
 
-//    runBlocking {
-//        internetAndVersions(internetAccess)
-//    }
+    runBlocking {
+        internetAndVersions(internetAccess)
+    }
 
     /* Program start - nothing will be run past this point */
     launch<GSG>()
 }
 
-//suspend fun internetAndVersions(internetAccess: InternetAccess) = coroutineScope {
-//    launch {
-//        internetAccess.internetAccess
-//
-////        if (internetAccess.internetStatus) {
-////            DownloadVersion.getVersions("HLA")
-////        }
-//    }
-//}
+suspend fun internetAndVersions(internetAccess: InternetAccess) = coroutineScope {
+    launch {
+        internetAccess.internetAccess
+
+//        if (internetAccess.internetStatus) {
+//            DownloadVersion.getVersions("HLA")
+//        }
+    }
+}

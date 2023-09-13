@@ -3,19 +3,19 @@ package org.b12x.gfe.plugins.namesearch.view
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 
-class NameSearchViewParent : View("Name Search") {
+class NameViewParent : View("Name Search") {
 
     private val stateContext = LociStateContextNameSearch
 
-    private var nameSearchViewChoiceBoxes = NameSearchViewChoiceBoxes()
-//    private val nameSearchTextFieldSearchTerm = NameSearchTextFieldSearchTerm()
-//    private val nameSearchTableView = NameSearchTableView()
-//    private val nameSearchInformationTextArea = NameSearchInformationTextArea()
-    private val nameSearchViewBottomHalf = NameSearchViewBottomHalf()
+    private var nameContainerMenu = NameContainerMenu()
+//    private val nameSearchTextFieldSearchTerm = NameTextFieldSearch()
+//    private val nameSearchTableView = NameTableViewData()
+//    private val nameSearchInformationTextArea = NameTextAreaInfo()
+    private val nameContainerBottomHalf = NameContainerBottomHalf()
 
     override val root = borderpane {
         top = vbox {
-            add(nameSearchViewChoiceBoxes.root)
+            add(nameContainerMenu.root)
         }
 
         center = hbox {
@@ -26,10 +26,10 @@ class NameSearchViewParent : View("Name Search") {
 ////                    width = 800px
 //                }
 //            }
-            add (NameSearchTextFieldSearchTerm.root)
+            add (NameTextFieldSearch.root)
         }
 
-        bottom = nameSearchViewBottomHalf.root
+        bottom = nameContainerBottomHalf.root
 
         style {
             padding = box(25.px)

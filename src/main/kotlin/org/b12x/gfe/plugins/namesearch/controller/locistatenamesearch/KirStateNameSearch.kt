@@ -4,8 +4,8 @@ import org.b12x.gfe.core.controller.loci.KirLoci
 import org.b12x.gfe.core.controller.loci.LociEnum
 import org.b12x.gfe.core.controller.version.CreateNewKirVersionObject
 import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.plugins.namesearch.view.NameSearchMenuLocus
-import org.b12x.gfe.plugins.namesearch.view.NameSearchChoiceBoxVersion
+import org.b12x.gfe.plugins.namesearch.view.NameMenuLocus
+import org.b12x.gfe.plugins.namesearch.view.NameMenuVersion
 import tornadofx.*
 import kotlin.properties.Delegates
 
@@ -22,12 +22,12 @@ class KirStateNameSearch : LociStateNameSearch {
     ) { _, _, _ ->  CreateNewKirVersionObject.createVersionObject()}
 
     override fun updateVersions(ctx: LociStateContextNameSearch) {
-        val nameSearchChoiceBoxVersion = find(NameSearchChoiceBoxVersion::class)
+        val nameMenuVersion = find(NameMenuVersion::class)
 
-        nameSearchChoiceBoxVersion.versionsList.clear()
-        nameSearchChoiceBoxVersion.versionsList.add("2.7.0")
+        nameMenuVersion.versionsList.clear()
+        nameMenuVersion.versionsList.add("2.7.0")
 
-        nameSearchChoiceBoxVersion.currentVersion = version
+        nameMenuVersion.currentVersion = version
     }
 
     /* Locus */
@@ -44,7 +44,7 @@ class KirStateNameSearch : LociStateNameSearch {
     override fun updateLocuses(ctx: LociStateContextNameSearch) {
         val locusNames = versionObject.locusAvailable
 
-        val nameSearchChoiceBoxLocus = find(NameSearchMenuLocus::class)
+        val nameSearchChoiceBoxLocus = find(NameMenuLocus::class)
         val locObservableList = nameSearchChoiceBoxLocus.locusList
         locObservableList.clear()
         locObservableList.addAll(locusNames)

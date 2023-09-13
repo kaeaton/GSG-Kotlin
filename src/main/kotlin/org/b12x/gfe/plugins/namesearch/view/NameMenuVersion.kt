@@ -2,12 +2,11 @@ package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.beans.property.SimpleStringProperty
 import org.b12x.gfe.core.controller.tabstate.TabStateContext
-import org.b12x.gfe.core.controller.version.VersionList
 import org.b12x.gfe.core.view.MenuVersion
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 
-class NameSearchChoiceBoxVersion : View(), MenuVersion {
+class NameMenuVersion : View(), MenuVersion {
 
     private val stateContext = LociStateContextNameSearch
     private val tabStateContext = TabStateContext

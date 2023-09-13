@@ -6,7 +6,7 @@ import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.model.datadownload.version.DownloadVersion
 import org.b12x.gfe.core.model.datadownload.version.IncomingVersions
 import org.b12x.gfe.plugins.gfesearch.view.GfeTextAreaInfo
-import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
+import org.b12x.gfe.plugins.namesearch.view.NameTextAreaInfo
 import org.b12x.gfe.utilities.InternetAccess
 import tornadofx.find
 
@@ -93,7 +93,7 @@ class VersionList(loci: String) {
                 localVersionNames.add(onlineVersion)
 
                 val gfeInformationTextArea = find(GfeTextAreaInfo::class)
-                val nameInformationTextArea = find(NameSearchInformationTextArea::class)
+                val nameInformationTextArea = find(NameTextAreaInfo::class)
 
                 gfeInformationTextArea.infoTextArea.appendText("New version available: $onlineVersion\n")
                 nameInformationTextArea.infoTextArea.appendText("New version available: $onlineVersion\n")

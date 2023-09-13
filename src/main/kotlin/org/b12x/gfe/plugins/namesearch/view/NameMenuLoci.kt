@@ -10,7 +10,7 @@ import tornadofx.*
 import tornadofx.getValue
 import tornadofx.setValue
 
-class NameSearchChoiceBoxLoci : View(), MenuLoci {
+class NameMenuLoci : View(), MenuLoci {
 
     private val stateContext = LociStateContextNameSearch
 
@@ -28,7 +28,7 @@ class NameSearchChoiceBoxLoci : View(), MenuLoci {
             stateContext.updateVersions()
 
             stateContext.updateLocuses()
-            NameSearchLayoutData.resetArraysHard()
+            NameViewMethods.resetArraysHard()
         }
     }
 

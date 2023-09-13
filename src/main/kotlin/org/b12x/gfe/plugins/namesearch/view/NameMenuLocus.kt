@@ -6,7 +6,7 @@ import org.b12x.gfe.plugins.gfesearch.view.GfeViewMethods
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
 
-class NameSearchMenuLocus : View("GFE Search Locus Choice Box"), MenuLocus {
+class NameMenuLocus : View("GFE Search Locus Choice Box"), MenuLocus {
 
     val stateContext = LociStateContextNameSearch
 
