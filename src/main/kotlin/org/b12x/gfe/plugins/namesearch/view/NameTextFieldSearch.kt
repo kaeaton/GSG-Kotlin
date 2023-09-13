@@ -1,10 +1,9 @@
 package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.beans.property.SimpleStringProperty
-import javafx.scene.control.TextField
 import tornadofx.*
 
-object NameSearchTextFieldSearchTerm : View("My View") {
+object NameTextFieldSearch : View("My View") {
 
     /* textfield contents */
 

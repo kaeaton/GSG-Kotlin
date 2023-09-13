@@ -1,9 +1,8 @@
 package org.b12x.gfe.utilities
 
 import kotlinx.coroutines.*
-import org.b12x.gfe.core.view.debugtab.DebugView
 import org.b12x.gfe.plugins.gfesearch.view.GfeTextAreaInfo
-import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
+import org.b12x.gfe.plugins.namesearch.view.NameTextAreaInfo
 import tornadofx.find
 import java.net.HttpURLConnection
 import java.net.URL
@@ -13,7 +12,7 @@ class InternetAccess {
     private val YES_INTERNET_MSG = "Internet access available.\n"
     private val NO_INTERNET_MSG = "Internet access not available, locally available data only.\n"
 //    val gfeInformationTextArea = find(GfeTextAreaInfo::class)
-//    val nameInformationTextArea = find(NameSearchInformationTextArea::class)
+//    val nameInformationTextArea = find(NameTextAreaInfo::class)
     var internetStatus = false
     val internetAccess = runBlocking {
         checkForGoogle()
@@ -54,7 +53,7 @@ class InternetAccess {
 
     fun printResults() {
         val gfeInformationTextArea = find(GfeTextAreaInfo::class)
-        val nameInformationTextArea = find(NameSearchInformationTextArea::class)
+        val nameInformationTextArea = find(NameTextAreaInfo::class)
 
         if(internetStatus) {
             gfeInformationTextArea.infoTextArea.appendText(YES_INTERNET_MSG)

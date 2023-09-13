@@ -4,14 +4,14 @@ import javafx.scene.control.TabPane
 import org.b12x.gfe.core.controller.tabstate.TabStateContext
 import org.b12x.gfe.core.view.debugtab.DebugView
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewParent
-import org.b12x.gfe.plugins.namesearch.view.NameSearchViewParent
+import org.b12x.gfe.plugins.namesearch.view.NameViewParent
 import org.b12x.gfe.plugins.optionstab.view.OptionsView
 import tornadofx.*
 
 class MainView : View("GFE Search Generator") {
 
     private val gfeViewParent = find(GfeViewParent::class)
-    private val nameSearchViewParent = find(NameSearchViewParent::class)
+    private val nameViewParent = find(NameViewParent::class)
     private val optionsView = find(OptionsView::class)
     private val debugView = find(DebugView::class)
     private val tabStateContext = TabStateContext
@@ -33,7 +33,7 @@ class MainView : View("GFE Search Generator") {
             }
         }
         tab("Allele Name Search") {
-            add(nameSearchViewParent)
+            add(nameViewParent)
             this.setOnSelectionChanged { _ ->
                 tabStateContext.setState("NAME")
                 println(

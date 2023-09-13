@@ -6,7 +6,7 @@ import org.b12x.gfe.core.controller.displayText.Result
 import org.b12x.gfe.core.controller.displayText.ResultsEvent
 import tornadofx.*
 
-object NameSearchTableView : View("My View") {
+class NameTableViewData : View("My View") {
 
     var data = observableListOf(
         Result("HLA-A*01:01:01:01", "HLA-Aw2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-4"),

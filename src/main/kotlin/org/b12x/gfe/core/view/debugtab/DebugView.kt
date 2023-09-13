@@ -38,7 +38,7 @@ class DebugView : View("Debug") {
                     action {
                         runBlocking {
                             launch {
-                                DownloadGfes.getGfes()
+                                DownloadGfes.getBulkGfes()
                             }
                         }
                     }

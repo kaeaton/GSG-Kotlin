@@ -2,14 +2,8 @@ package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.scene.control.CheckBox
 import javafx.scene.control.TextField
-import org.b12x.gfe.core.controller.loci.LociEnum
-import org.b12x.gfe.core.controller.version.LocalVersions
-import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.PrefsGfeSearch
-import java.io.File
 
-object NameSearchLayoutData {
+object NameViewMethods {
 
     /* State Context */
 //    var stateContext = LociStateContextGfeSearch

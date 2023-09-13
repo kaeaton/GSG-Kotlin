@@ -2,10 +2,9 @@ package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.geometry.HPos
 import javafx.geometry.Pos
-import javafx.scene.control.TextArea
 import tornadofx.*
 
-class NameSearchInformationTextArea : View("My View") {
+class NameTextAreaInfo : View("My View") {
     
     val infoTextArea = textarea {
         style {

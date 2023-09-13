@@ -1,15 +1,11 @@
 package org.b12x.gfe.plugins.optionstab.view
 
-import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.controller.PrefsCore
 import org.b12x.gfe.core.model.datadownload.DataDownload
 import org.b12x.gfe.core.model.parsers.ParserVersionData
-import org.b12x.gfe.plugins.gfesearch.view.GfeTextAreaInfo
-import org.b12x.gfe.plugins.namesearch.view.NameSearchInformationTextArea
 import org.b12x.gfe.utilities.InternetAccess
 //import org.b12x.gfe.utilities.InternetAccess.ktorHttpClient
 import tornadofx.*
-import tornadofx.find
 
 class OptionsView : View("My View") {
 
@@ -46,7 +42,7 @@ class OptionsView : View("My View") {
 //                val NO_SERVER_MSG = "The server is not available, locally available data only.\n"
 //
 //                val gfeSearchInformationTextArea = tornadofx.find(GfeTextAreaInfo::class)
-//                val nameSearchInformationTextArea = tornadofx.find(NameSearchInformationTextArea::class)
+//                val nameSearchInformationTextArea = tornadofx.find(NameTextAreaInfo::class)
 //
 //                runBlocking {
 //                    try {
