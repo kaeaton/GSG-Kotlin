@@ -2,13 +2,12 @@ package org.b12x.gfe.core.view.debugtab
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
+import kotlinx.coroutines.*
 import org.b12x.gfe.Styles
 import org.b12x.gfe.core.model.datadownload.DataDownload
 import org.b12x.gfe.core.model.datadownload.version.DownloadVersion
 import tornadofx.*
 import kotlin.system.exitProcess
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.b12x.gfe.core.model.datadownload.gfes.DownloadGfes
 
 class DebugView : View("Debug") {
@@ -20,6 +19,15 @@ class DebugView : View("Debug") {
 
     }
 
+    suspend fun downloadVersions() {
+        coroutineScope {
+            async(Dispatchers.Default) {
+//                            launch {
+                DownloadVersion.getVersions("HLA")
+            }
+        }
+    }
+
     override val root = stackpane {
         borderpane {
 
@@ -28,7 +36,7 @@ class DebugView : View("Debug") {
                     action {
                         runBlocking {
                             launch {
-                                DownloadVersion.getVersions("HLA")
+                                downloadVersions()
                             }
                         }
                     }
@@ -38,7 +46,7 @@ class DebugView : View("Debug") {
                     action {
                         runBlocking {
                             launch {
-                                DownloadGfes.getBulkGfes()
+                                DownloadGfes.getGfes()
                             }
                         }
                     }

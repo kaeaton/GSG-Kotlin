@@ -8,10 +8,11 @@ import java.io.File
 class GfeOutputCsv(searchData: GfeSearchData) : OutputFile {
 
     override val headerLine1 = super.buildHeaderLine1()
-    override val headerLine2 = super.buildHeaderLine2(searchData.loci, searchData.locus)
-    override val headerLine3 = super.buildHeaderLine3(searchData.header)
-    override val headerLine4 = super.buildHeaderLine4(searchData.loci, searchData.version)
-    override val headerLine5 = super.buildHeaderLine5(searchData.resultsCount)
+    override val headerLine2 = super.buildHeaderLine2(searchData.loci)
+    override val headerLine3 = super.buildHeaderLine3(searchData.locus)
+    override val headerLine4 = super.buildHeaderLine4(searchData.header)
+    override val headerLine5 = super.buildHeaderLine5(searchData.version)
+    override val headerLine6 = super.buildHeaderLine6(searchData.resultsCount)
     override val fileSuffix = "csv"
     override val fileDestination = "${System.getProperty("user.home")}/Documents/GSG"
     override val dateTime = super.formatDateTime()
@@ -33,6 +34,7 @@ class GfeOutputCsv(searchData: GfeSearchData) : OutputFile {
             out.append(headerLine3)
             out.append(headerLine4)
             out.append(headerLine5)
+            out.append(headerLine6)
 
             // Results
             searchData.results.forEach {
