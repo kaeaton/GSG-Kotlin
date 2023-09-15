@@ -1,9 +1,12 @@
 package org.b12x.gfe.core.controller.version
 
+import org.b12x.gfe.plugins.gfesearch.view.GfeTextAreaInfo
+import org.b12x.gfe.plugins.namesearch.view.NameTextAreaInfo
 import org.b12x.gfe.utilities.DirectoryManagement
 import java.io.File
 import java.nio.file.Paths
 import kotlin.io.path.exists
+import tornadofx.*
 
 object CreateNewHlaVersionObject {
 
@@ -47,7 +50,14 @@ object CreateNewHlaVersionObject {
         if (validFolder(folderLocation)) {
             return folderLocation
         } else {
-            throw IllegalArgumentException("Invalid loci or version.")
+            val gfeInformationTextArea = find(GfeTextAreaInfo::class)
+            val nameInformationTextArea = find(NameTextAreaInfo::class)
+
+            gfeInformationTextArea.infoTextArea.appendText("Selected version folder not found.\n")
+            nameInformationTextArea.infoTextArea.appendText("Selected version folder not found.\n")
+
+            return "$version Unavailable"
+//            throw IllegalArgumentException("Invalid loci or version.")
         }
     }
 
@@ -86,13 +96,19 @@ object CreateNewHlaVersionObject {
     fun getLocuses(folderLocation: String): List<String> {
         var allLocusesAvailable = ArrayList<String>()
 
-        File(folderLocation).listFiles().forEach {
-            if (validFile(it.path) and (it.extension == "csv")) {
-                allLocusesAvailable.add(getLocusName(it.name))
+        if (File(folderLocation).exists()) {
+            File(folderLocation).listFiles()!!.forEach {// !! checked in if statement
+                if (validFile(it.path) and (it.extension == "csv")) {
+                    allLocusesAvailable.add(getLocusName(it.name))
+                }
             }
         }
 
-        return allLocusesAvailable.toList().sorted()
+        if (allLocusesAvailable.isNotEmpty()) {
+            return allLocusesAvailable.toList().sorted()
+        }
+
+        return listOf("No Data")
     }
 
     /**

@@ -6,7 +6,7 @@ plugins {
     id("dev.hydraulic.conveyor") version "1.5"
 
     application
-    id("org.openjfx.javafxplugin") version "0.0.9"
+    id("org.openjfx.javafxplugin") version "0.0.13"
     kotlin("plugin.serialization") version "1.9.0"
     id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
@@ -85,19 +85,6 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 tasks.test { useJUnitPlatform() }
 
 // Compile to fat jar
-
-//
-//val fatJar = task("fatJar", type = Jar::class) {
-//    getArchiveBaseName()// = "${project.name}-fat"
-//    // manifest Main-Class attribute is optional.
-//    // (Used only to provide default main class for executable jar)
-//    manifest {
-//        attributes["Main-Class"] = "org.b12x.gfe.MainKt" // fully qualified class name of default main class
-//    }
-//    from(configurations.runtime.map{ if (it.isDirectory) it else zipTree(it) })
-//    with(tasks["jar"] as CopySpec)
-//}
-
 tasks.named<Jar>("jar") {
     manifest {
         attributes(

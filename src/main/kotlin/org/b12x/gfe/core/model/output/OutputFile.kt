@@ -1,5 +1,7 @@
 package org.b12x.gfe.core.model.output
 
+import org.b12x.gfe.core.controller.loci.HlaLoci
+import org.b12x.gfe.core.controller.loci.LociEnum
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.time.LocalDateTime
@@ -12,43 +14,66 @@ interface OutputFile {
     val headerLine3: String
     val headerLine4: String
     val headerLine5: String
+    val headerLine6: String
     val fileSuffix: String
     val fileDestination: String
     val dateTime: String
     val fileName: String
     val destinationFile: String
 
+    /**
+     * @returns formatted current date time "yyyy-MM-dd HH:mm"
+     */
     fun formatDateTime(): String {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm")
         val current = LocalDateTime.now().format(formatter)
         return current
     }
 
+    /**
+     * @returns "@ yyyy-MM-dd HH:mm"
+     */
     fun buildHeaderLine1(): String {
-        val stringInProcess = StringBuilder("File generated at: ")
+        val stringInProcess = StringBuilder("@ ")
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val current = LocalDateTime.now().format(formatter)
         return stringInProcess.append(current).append("\n").toString()
     }
 
-    fun buildHeaderLine2(loci: String, locus: String): String {
-        val stringInProcess = StringBuilder("Data Source: ")
-        stringInProcess.append(whichLocusLoc(loci))
-        stringInProcess.append(" - ")
-        return stringInProcess.append("$locus\n").toString()
-    }
-    fun buildHeaderLine3(searchTerm: String): String {
-        val stringInProcess = StringBuilder("Search parameters: ")
-        return stringInProcess.append("$searchTerm\n").toString()
-    }
-    fun buildHeaderLine4(loci: String, version: String): String {
-        val stringInProcess = StringBuilder(whichLocusDB(loci))
-        return stringInProcess.append("$version\n").toString()
+    /**
+     * @returns "@ source-database"
+     */
+    fun buildHeaderLine2(loci: String): String {
+        return "@ ${whichLocusLoc(loci)}\n"
     }
 
-    fun buildHeaderLine5(numOfResults: Int): String {
-        val stringInProcess = StringBuilder("Total Results: ")
-        return stringInProcess.append("$numOfResults\n").toString()
+    /**
+     * @returns "@ locus Search-term-key"
+     */
+    fun buildHeaderLine3(locus: String): String {
+        val stringInProcess = StringBuilder("@ $locus ")
+        return stringInProcess.append("${searchStringKey(locus)}\n").toString()
+    }
+
+    /**
+     * @returns "@ search-term"
+     */
+    fun buildHeaderLine4(searchTerm: String): String {
+        return "@ $searchTerm\n"
+    }
+
+    /**
+     * @returns "@ version"
+     */
+    fun buildHeaderLine5(version: String): String {
+        return "@ $version\n"
+    }
+
+    /**
+     * @returns "@ Total Results: #-of-results"
+     */
+    fun buildHeaderLine6(totalResults: Int): String {
+        return "@ Total Results: $totalResults\n"
     }
 
     private fun whichLocusLoc(loci: String) = when (loci) {
@@ -60,12 +85,14 @@ interface OutputFile {
         }
     }
 
-    private fun whichLocusDB(loci: String) = when (loci) {
-        "HLA" -> "IMGT/HLA Database Version: "
-        "KIR" -> "IPD-KIR Database Version: "
-        "TEST" -> "Test Database Version: "
-        else -> {
-            "IMGT/HLA Database Version: "
+    private fun searchStringKey(locus: String): String {
+        val exons = (HlaLoci.values().find { it.fullName == locus } as LociEnum).exons
+        val key = StringBuilder("U5-")
+        for (i in 1 until exons) {
+            key.append("E$i-")
+            key.append("I$i-")
         }
+        key.append("E$exons-U3")
+        return key.toString()
     }
 }

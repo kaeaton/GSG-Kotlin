@@ -23,7 +23,7 @@ class GfeMenuLocus : View("GFE Search Locus Choice Box"), MenuLocus {
     override var currentLocus: String by currentLocusProperty
 
     // attempt at KotlinRX observable must be a list. I don't think this is the way to go.
-    val observable: Observable<String> = listOf(currentLocus).toObservable()
+//    val observable: Observable<String> = listOf(currentLocus).toObservable()
 
 
     // compare prior version to current version, if not a matching locus,

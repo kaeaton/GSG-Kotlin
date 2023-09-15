@@ -8,10 +8,11 @@ import java.io.File
 class GfeOutputPretty(searchData: GfeSearchData) : OutputFile {
 
     override val headerLine1 = super.buildHeaderLine1()
-    override val headerLine2 = super.buildHeaderLine2(searchData.loci, searchData.locus)
-    override val headerLine3 = super.buildHeaderLine3(searchData.header)
-    override val headerLine4 = super.buildHeaderLine4(searchData.loci, searchData.version)
-    override val headerLine5 = super.buildHeaderLine5(searchData.resultsCount)
+    override val headerLine2 = super.buildHeaderLine2(searchData.loci)
+    override val headerLine3 = super.buildHeaderLine3(searchData.locus)
+    override val headerLine4 = super.buildHeaderLine4(searchData.header)
+    override val headerLine5 = super.buildHeaderLine5(searchData.version)
+    override val headerLine6 = super.buildHeaderLine6(searchData.resultsCount)
     override val fileSuffix = "txt"
     override val fileDestination = "${System.getProperty("user.home")}/GSG"
     override val dateTime = super.formatDateTime()
@@ -37,6 +38,8 @@ class GfeOutputPretty(searchData: GfeSearchData) : OutputFile {
             out.write(headerLine4)
             out.newLine()
             out.write(headerLine5)
+            out.newLine()
+            out.write(headerLine6)
             out.newLine()
 
             // Results
