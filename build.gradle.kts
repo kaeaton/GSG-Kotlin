@@ -71,7 +71,7 @@ dependencies {
 
 // JavaFX module to include
 javafx {
-    version = "17"
+    version = "20"
     modules = mutableListOf("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.swing")
 }
 

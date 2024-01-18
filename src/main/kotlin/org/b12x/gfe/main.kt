@@ -32,7 +32,7 @@ fun main() {
 
     /* Prefs Reset */
 //    PrefsCore.nuclearOption()
-//    println(PrefsGfeSearch.currentGfeSearchLocusHla)
+    println(PrefsGfeSearch.currentGfeSearchLocusHla)
 
     /* Internet Access */
     val internetAccess = InternetAccess()
