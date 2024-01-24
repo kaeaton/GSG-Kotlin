@@ -1,10 +1,7 @@
 package org.b12x.gfe
 
 import javafx.stage.Stage
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.b12x.gfe.core.controller.PrefsCore
 import org.b12x.gfe.core.model.datadownload.version.DownloadVersion
 import org.b12x.gfe.core.view.MainView
@@ -28,6 +25,7 @@ import tornadofx.*
 //        internetAccess.printResults()
 //    }
 //}
+@OptIn(DelicateCoroutinesApi::class)
 fun main() {
 
     /* Prefs Reset */
@@ -37,9 +35,9 @@ fun main() {
     /* Internet Access */
     val internetAccess = InternetAccess()
 
-    runBlocking {
-        internetAndVersions(internetAccess)
-    }
+//    GlobalScope.async {
+//        internetAndVersions(internetAccess)
+//    }
 
     /* Program start - nothing will be run past this point */
     launch<GSG>()

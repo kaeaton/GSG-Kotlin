@@ -1,6 +1,8 @@
 package org.b12x.gfe.core.controller.tabstate
 
+import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
+import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import kotlin.properties.Delegates
 
 object TabStateContext {
@@ -20,6 +22,7 @@ object TabStateContext {
             "GFE" -> GfeSearchState()
             "NAME" -> NameSearchState()
             "COMP" -> ComparisonState()
+            "OPT" -> OptionState()
             else -> GfeSearchState()
         }
         println("Current Tab State: ${currentState.toString()}")
@@ -31,10 +34,30 @@ object TabStateContext {
             ?: GfeSearchState().getTab(this)
     }
 
+    /* Loci */
+//    var loci: String by Delegates.observable(currentState?.loci.toString()) { _, _, newValue ->
+//        println("TabState: loci: ${newValue}")
+//        TabStateContext.currentState?.loci = newValue
+//    }
+
+    var loci: String by Delegates.observable(PrefsTabSearch.currentLociGroup)
+    { _, _, newValue ->
+        PrefsTabSearch.currentLociGroup = newValue
+    }
+
     /* Version */
-    fun getCurrentVersion() =
-        currentState?.getCurrentVersion(this)
-            ?: GfeSearchState().getCurrentVersion(this)
+    var version: String by Delegates.observable(currentState?.version.toString()) { _, _, newValue ->
+        println("TabState: version: ${newValue}")
+        currentState?.version = newValue
+    }
+
+    var versionObject: Version by Delegates.observable(currentState?.versionObject as Version) { _, _, newValue ->
+        currentState?.versionObject = newValue
+    }
+
+//    fun getCurrentVersion() =
+//        currentState?.getCurrentVersion(this)
+//            ?: GfeSearchState().getCurrentVersion(this)
 
     var versionList: List<String> by Delegates.observable(VersionList("HLA").allVersionNames) {
             _, _, _ ->

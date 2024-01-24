@@ -2,13 +2,12 @@ package org.b12x.gfe.core.controller.tabstate
 
 import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.Version
-import org.b12x.gfe.core.controller.version.VersionList
 import kotlin.properties.Delegates
 
-class NameSearchState: TabState {
+class OptionState : TabState {
 
     /* What tab */
-    override fun getTab(ctx: TabStateContext) = "NAME"
+    override fun getTab(ctx: TabStateContext) = "OPT"
 
     /* Version */
     override var version: String by Delegates.observable(PrefsTabSearch.currentVersionHla)

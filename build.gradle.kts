@@ -7,7 +7,7 @@ plugins {
 
     application
     id("org.openjfx.javafxplugin") version "0.0.13"
-    kotlin("plugin.serialization") version "1.9.0"
+    kotlin("plugin.serialization") version "1.7.21"
     id("org.jetbrains.dokka") version "1.6.10" // ./gradlew dokkaHtml
 }
 
