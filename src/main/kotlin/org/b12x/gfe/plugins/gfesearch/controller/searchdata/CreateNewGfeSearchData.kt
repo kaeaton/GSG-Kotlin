@@ -44,6 +44,8 @@ object CreateNewGfeSearchData {
             BuildRegexString.assembleRegexString(gfeSearchData)
             BuildHeaderString.assembleHeaderString(gfeSearchData)
 
+            return gfeSearchData
+
         } catch (ex: Exception) {
             val noDataMsg = "GSG cannot create a search.\nPlease check to see if you have internet and data.\n" +
                     "Data files are located in Documents/GSG/GSGData/.\nIf the HLA folder is empty, you need to download data."
