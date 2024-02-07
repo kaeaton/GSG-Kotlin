@@ -1,6 +1,7 @@
 .DS_Store
 .gradle
-#build/
+build
+*.pages
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -11,9 +12,12 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
+/lib
+
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
 # IDE
-.idea/
+.idea
 *.iml
+local.properties
