@@ -1,7 +1,7 @@
 package org.b12x.gfe.plugins.namesearch.view
 
 import javafx.beans.property.SimpleStringProperty
-import org.b12x.gfe.core.controller.tabstate.TabStateContext
+import org.b12x.gfe.core.controller.locistate.LociStateContext
 import org.b12x.gfe.core.view.MenuVersion
 import org.b12x.gfe.plugins.namesearch.controller.locistatenamesearch.LociStateContextNameSearch
 import tornadofx.*
@@ -9,7 +9,7 @@ import tornadofx.*
 class NameMenuVersion : View(), MenuVersion {
 
     private val stateContext = LociStateContextNameSearch
-    private val tabStateContext = TabStateContext
+    private val tabStateContext = LociStateContext
 
     /* list of Versions */
     var versions: List<String> = tabStateContext.versionList

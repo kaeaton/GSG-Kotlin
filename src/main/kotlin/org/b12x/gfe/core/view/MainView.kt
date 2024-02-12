@@ -1,7 +1,7 @@
 package org.b12x.gfe.core.view
 
 import javafx.scene.control.TabPane
-import org.b12x.gfe.core.controller.tabstate.TabStateContext
+import org.b12x.gfe.core.controller.locistate.LociStateContext
 import org.b12x.gfe.core.view.debugtab.DebugView
 import org.b12x.gfe.plugins.gfesearch.view.GfeViewParent
 import org.b12x.gfe.plugins.namesearch.view.NameViewParent
@@ -14,7 +14,7 @@ class MainView : View("GFE Search Generator") {
     private val nameViewParent = find(NameViewParent::class)
     private val optionsView = find(OptionsView::class)
     private val debugView = find(DebugView::class)
-    private val tabStateContext = TabStateContext
+    private val tabStateContext = LociStateContext
 
     override val root = tabpane {
 

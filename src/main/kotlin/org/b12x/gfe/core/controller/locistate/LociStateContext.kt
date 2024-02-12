@@ -1,12 +1,11 @@
-package org.b12x.gfe.core.controller.tabstate
+package org.b12x.gfe.core.controller.locistate
 
 import org.b12x.gfe.core.controller.version.Version
 import org.b12x.gfe.core.controller.version.VersionList
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import kotlin.properties.Delegates
 
-object TabStateContext {
-    private var currentState: TabState? = null
+object LociStateContext {
+    private var currentState: LociState? = null
 
     init {
         currentState = when ("GFE") { //Prefs.currentTab) {
@@ -36,18 +35,18 @@ object TabStateContext {
 
     /* Loci */
 //    var loci: String by Delegates.observable(currentState?.loci.toString()) { _, _, newValue ->
-//        println("TabState: loci: ${newValue}")
-//        TabStateContext.currentState?.loci = newValue
+//        println("LociState: loci: ${newValue}")
+//        LociStateContext.currentState?.loci = newValue
 //    }
 
-    var loci: String by Delegates.observable(PrefsTabSearch.currentLociGroup)
+    var loci: String by Delegates.observable(PrefsLociState.currentLociGroup)
     { _, _, newValue ->
-        PrefsTabSearch.currentLociGroup = newValue
+        PrefsLociState.currentLociGroup = newValue
     }
 
     /* Version */
     var version: String by Delegates.observable(currentState?.version.toString()) { _, _, newValue ->
-        println("TabState: version: ${newValue}")
+        println("LociState: version: ${newValue}")
         currentState?.version = newValue
     }
 

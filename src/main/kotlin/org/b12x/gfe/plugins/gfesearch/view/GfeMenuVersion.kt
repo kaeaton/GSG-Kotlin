@@ -1,8 +1,7 @@
 package org.b12x.gfe.plugins.gfesearch.view
 
 import javafx.beans.property.SimpleStringProperty
-import org.b12x.gfe.core.controller.tabstate.TabStateContext
-import org.b12x.gfe.core.controller.version.VersionList
+import org.b12x.gfe.core.controller.locistate.LociStateContext
 import org.b12x.gfe.core.view.MenuVersion
 import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
@@ -10,7 +9,7 @@ import tornadofx.*
 class GfeMenuVersion : View(), MenuVersion {
 
     private val stateContext = LociStateContextGfeSearch
-    private val tabStateContext = TabStateContext
+    private val tabStateContext = LociStateContext
 
     /* list of Versions */
 //    override var versionList: VersionList = find(VersionList::class)

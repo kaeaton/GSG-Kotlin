@@ -1,18 +1,19 @@
-package org.b12x.gfe.core.controller.tabstate
+package org.b12x.gfe.core.controller.locistate
 
 import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.Version
 import kotlin.properties.Delegates
 
-class OptionState : TabState {
+class ComparisonState: LociState {
 
     /* What tab */
-    override fun getTab(ctx: TabStateContext) = "OPT"
+    override fun getTab(ctx: LociStateContext) = "COMP"
 
     /* Version */
-    override var version: String by Delegates.observable(PrefsTabSearch.currentVersionHla)
+
+    override var version: String by Delegates.observable(PrefsLociState.currentVersionHla)
     { _, _, newValue ->
-        PrefsTabSearch.currentVersionHla = newValue
+        PrefsLociState.currentVersionHla = newValue
     }
 
     override var versionObject: Version by Delegates.observable(

@@ -1,10 +1,10 @@
-package org.b12x.gfe.core.controller.tabstate
+package org.b12x.gfe.core.controller.locistate
 
 import org.b12x.gfe.core.controller.version.CreateNewHlaVersionObject
 import org.b12x.gfe.core.controller.version.Version
 import kotlin.properties.Delegates
 
-class GfeSearchState : TabState {
+class GfeSearchState : LociState {
 
     // setting up so the core can identify which tab the version
     // request is coming from.
@@ -13,27 +13,27 @@ class GfeSearchState : TabState {
     // Because you only need to pull it once.
     // Each tab can use the same version list.
     // I ended up putting the version initialization
-    // and generation in TabStateContext because
+    // and generation in LociStateContext because
     // it doesn't need to be reinitialized for each tab.
 
     /* What tab */
-    override fun getTab(ctx: TabStateContext) = "GFE"
+    override fun getTab(ctx: LociStateContext) = "GFE"
 
     /* What Loci */
 
-    var loci: String by Delegates.observable(PrefsTabSearch.currentLociGroup)
+    var loci: String by Delegates.observable(PrefsLociState.currentLociGroup)
     { _, _, newValue ->
-        PrefsTabSearch.currentLociGroup = newValue
+        PrefsLociState.currentLociGroup = newValue
     }
 
     /* Version */
-//    override fun getCurrentVersion(ctx: TabStateContext): String {
+//    override fun getCurrentVersion(ctx: LociStateContext): String {
 //        return "version"
 //    }
 
-    override var version: String by Delegates.observable(PrefsTabSearch.currentVersionHla)
+    override var version: String by Delegates.observable(PrefsLociState.currentVersionHla)
     { _, _, newValue ->
-        PrefsTabSearch.currentVersionHla = newValue
+        PrefsLociState.currentVersionHla = newValue
     }
 
     override var versionObject: Version by Delegates.observable(

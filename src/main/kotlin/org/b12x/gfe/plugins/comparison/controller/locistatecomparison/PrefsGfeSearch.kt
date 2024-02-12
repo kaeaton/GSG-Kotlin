@@ -1,4 +1,4 @@
-package org.b12x.gfe.core.controller.tabstate
+package org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch
 
 import org.b12x.gfe.GSG
 import org.b12x.gfe.core.controller.PrefsCore
@@ -11,26 +11,44 @@ import kotlin.io.path.exists
 import kotlin.io.path.isDirectory
 import kotlin.properties.Delegates
 
-object PrefsTabSearch {
+object PrefsGfeSearch {
 
     var prefs: Preferences = PrefsCore.prefs
 
-    var currentLociGroup: String by Delegates.observable(
+    var currentGfeSearchLociGroup: String by Delegates.observable(
         prefs.get(
-            "currentLociGroup",
+            "currentGfeSearchLociGroup",
             "HLA"
         )
     ) { _, _, new ->
-        prefs.put("currentLociGroup", new)
+        prefs.put("currentGfeSearchLociGroup", new)
     }
 
-    var currentVersionHla: String by Delegates.observable(
+    var currentGfeSearchLocusHla: String by Delegates.observable(
         prefs.get(
-            "currentVersionHla",
+            "currentGfeSearchLocusHla",
+            "HLA-A"
+        )
+    ) { _, _, new ->
+        prefs.put("currentGfeSearchLocusHla", new)
+    }
+
+    var currentGfeSearchLocusKir: String by Delegates.observable(
+        prefs.get(
+            "currentGfeSearchLocusKir",
+            "KIR2DL1"
+        )
+    ) { _, _, new ->
+        prefs.put("currentGfeSearchLocusKir", new)
+    }
+
+    var currentGfeSearchVersionHla: String by Delegates.observable(
+        prefs.get(
+            "currentGfeSearchVersionHla",
             defaultHlaVersion()
         )
     ) { _, _, new ->
-        prefs.put("currentVersionHla", new)
+        prefs.put("currentGfeSearchVersionHla", new)
     }
 
     // checks for existing HLA directory, creates one if it doesn't exist
@@ -44,20 +62,18 @@ object PrefsTabSearch {
             val directories = fileList!!.filter { it.isDirectory }.toMutableList() // !! - checked in the if statement above
             directories.sort()
             return directories.last().toString().split("/").last()
-        } else {
-            Files.createDirectories(Paths.get(gsgDataLocation))
         }
 
-//        Files.createDirectories(Paths.get(gsgDataLocation))
+        Files.createDirectories(Paths.get(gsgDataLocation))
         return ""
     }
 
     var currentGfeSearchVersionKir: String by Delegates.observable(
         prefs.get(
-            "currentVersionKir",
+            "currentGfeSearchVersionKir",
             "2.7.0"
         )
     ) { _, _, new ->
-        prefs.put("currentVersionKir", new)
+        prefs.put("currentGfeSearchVersionKir", new)
     }
 }

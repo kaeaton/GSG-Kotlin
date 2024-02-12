@@ -4,16 +4,15 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
 import org.b12x.gfe.core.controller.loci.AvailableLoci
-import org.b12x.gfe.core.controller.tabstate.TabStateContext
+import org.b12x.gfe.core.controller.locistate.LociStateContext
 import org.b12x.gfe.core.view.MenuLoci
-import org.b12x.gfe.plugins.gfesearch.controller.locistategfesearch.LociStateContextGfeSearch
 import tornadofx.*
 import tornadofx.getValue
 import tornadofx.setValue
 
 class GfeMenuLoci : View(), MenuLoci {
 
-    private val stateContext = TabStateContext
+    private val stateContext = LociStateContext
 
 //    val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
     val lociListProperty = SimpleObjectProperty(observableListOf(AvailableLoci.AVAILABLE_LOCI))
